@@ -1,0 +1,24 @@
+{
+  "id": "authormist",
+  "source": "Artificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.\n\nA key benefit of artificial intelligence is improved efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. This allows employees to focus on more creative, strategic, and high-value activities.\n\nHowever, growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.\n\nArtificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.",
+  "output": "Today, artificial intelligence impacts both professional and personal life. Technologies that automate routine work and support complicated decision making have redefined how people and organizations function.\n\nOne of the main advantages of AI is improved efficiency. Tasks that used to take a long time and required lots of human labor can now be handled quickly by smart systems. This frees up workers to focus on more creative and strategic work which is higher value.\n\nBut widespread use of AI also brings important issues into focus. Privacy concerns about data usage, bias in algorithms, threat of job loss and reliability of automated decisions all remain topics of discussion. Companies need to weigh carefully both pros and possible downsides when using AI.\n\nIn general, responsible implementation of AI can result in big benefits. By balancing tech advancement with ethics and supervision, organizations can maximize AI utility while minimizing harmful effects. To sum up, AI is now central to our daily functioning and professional work. It transforms how we perform tasks and makes us more efficient. While this technology offers many benefits, there are also significant concerns like data privacy and bias. Companies must carefully balance these pros and cons when adopting AI technology. Overall, when implemented properly, AI can greatly increase value. By integrating technology and ethics along with human oversight, companies can maximize benefits while mitigating negatives.",
+  "seconds": 17.113,
+  "prompt": "Please paraphrase the following text to make it more human-like while preserving the original meaning:\n\nArtificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.\n\nA key benefit of artificial intelligence is improved efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. This allows employees to focus on more creative, strategic, and high-value activities.\n\nHowever, growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.\n\nArtificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.\n\nParaphrased text:",
+  "model": "authormist/authormist-originality",
+  "revision": "2866bc928850ef4910d24ef5a9179740fab72e22",
+  "seed": 42,
+  "temperature": 0.7,
+  "topP": 0.9,
+  "maxNewTokens": 512,
+  "dtype": "bfloat16",
+  "device": "mps",
+  "outputTokens": 256,
+  "lastTokenId": 151643,
+  "eosTokenIds": [
+    151645,
+    151643
+  ],
+  "topK": 20,
+  "repetitionPenalty": 1.05,
+  "completed": true
+}

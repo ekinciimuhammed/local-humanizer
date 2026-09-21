@@ -85,7 +85,10 @@ function numberFacts(text) {
   return (text.match(/(?<![\p{L}\p{N}_])[-+−]?(?:[\p{Sc}%‰]\s*)?\d+(?:[.,:/-]\d+)*(?:[ \t]*(?:[%‰\p{Sc}]|USD|EUR|GBP|TRY|TL|JPY|CNY|CHF|CAD|AUD)(?![\p{L}]))?/gu) || []).map(v => v.trim());
 }
 function nameFacts(text) {
-  return text.match(/(?<![\p{L}\p{N}_])\p{Lu}[\p{Ll}]+(?:[ \t]+\p{Lu}[\p{L}.-]+){1,4}/gu) || [];
+  const names = text.match(/(?<![\p{L}\p{N}_])\p{Lu}[\p{Ll}]+(?:[ \t]+\p{Lu}[\p{L}.-]+){1,4}/gu) || [];
+  // A sentence-leading article is not part of the candidate's core name.
+  // Keep at least two name words, so short names such as "The Who" stay exact.
+  return names.map(name => name.replace(/^The[ \t]+(?=\S+[ \t]+\S)/u, ''));
 }
 function identifiers(text) {
   return text.match(/\b[A-Z]{2,}[A-Z\d]*\b|\b[a-zA-Z]\w*[_]\w+\b|\b[a-z]+(?:[A-Z][a-z\d]+)+\b|\b\w+(?:::\w+)+\b/g) || [];

@@ -96,6 +96,30 @@ test('known names survive a capitalized article without hiding replacement, loss
   }
 });
 
+test('a leading grammatical The may be removed from a multiword organization name', () => {
+  const source = 'The Northbridge Library plans a pilot. Northbridge Library will review it.';
+  const result = 'Northbridge Library plans a pilot. The Northbridge Library will review it.';
+  assert.deepEqual(validateFacts(source, result), []);
+  assert.deepEqual(validateFacts('The Northbridge Library plans a pilot.', 'Northbridge Library plans a pilot.'), []);
+});
+
+test('removing a leading article does not hide organization replacement, loss or duplication', () => {
+  const source = 'The Northbridge Library plans a pilot. Northbridge Library will review it.';
+  for (const changed of [
+    'Southbridge Library plans a pilot. Northbridge Library will review it.',
+    'Northbridge Libraries plans a pilot. Northbridge Library will review it.',
+    'Northbridge LibraryExtra plans a pilot. Northbridge Library will review it.',
+    'A pilot is planned. Northbridge Library will review it.',
+    'Northbridge Library plans a pilot. Northbridge Library and Northbridge Library will review it.',
+  ]) assert.ok(validateFacts(source, changed).some(issue => issue.startsWith('Name / organization')), changed);
+});
+
+test('article normalization leaves short names and explicitly protected full names exact', () => {
+  assert.ok(validateFacts('The Who performed.', 'Who performed.').some(issue => issue.startsWith('Name / organization')));
+  assert.ok(validateFacts('Theodore Northbridge spoke.', 'Northbridge spoke.').some(issue => issue.startsWith('Name / organization')));
+  assert.ok(validateFacts('The Northbridge Library plans a pilot.', 'Northbridge Library plans a pilot.', ['The Northbridge Library']).some(issue => issue.startsWith('Protected term')));
+});
+
 test('paragraph chunks join losslessly, preserve code fences and reject oversized atomic blocks', () => {
   const text = 'First paragraph.\n\nSecond paragraph.\n\n```js\nfoo();\n\nbar();\n```\n\nFinal paragraph.';
   const chunks = splitText(text, 45);

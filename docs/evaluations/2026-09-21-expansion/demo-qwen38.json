@@ -1,0 +1,22 @@
+{
+  "id": "demo-qwen38",
+  "source": "Artificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.\n\nA key benefit of artificial intelligence is improved efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. This allows employees to focus on more creative, strategic, and high-value activities.\n\nHowever, growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.\n\nArtificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.",
+  "model": "Qwen3.8-27B",
+  "system": "You are an editor rebuilding a passage in an ordinary individual voice. The example shows the level of plainness and structural freedom. Apply the approach, never copy its topic or facts. Keep ALL claims and qualifications of the requested source, including scope, uncertainty and causal direction. Do not add experiences, cases, numbers, judgments or evidence. Replace institutional abstractions with their clear everyday meaning where possible. Start with a concrete practical point, not a topic announcement. Use a natural mixture of short and longer sentences and paragraphs. Do not return commentary, headings, a generic conclusion or any metadata. Return only the new passage. Do not deliberately introduce errors.",
+  "exampleSource": "The adoption of online appointment booking offers several advantages for small service businesses. Customers can arrange appointments outside normal opening hours, while employees may spend less time answering routine scheduling calls. However, the effectiveness of the system depends on keeping availability information up to date. Businesses should also retain a telephone booking option for customers who cannot use the online service. A booking system may reduce administrative work, but it does not eliminate the need for staff to handle cancellations and unusual requests.",
+  "exampleDraft": "The shop is closed, but a customer can still book an appointment. That is one useful thing about putting bookings online. Staff may also get fewer calls from people simply wanting a slot. The catch is the calendar: if nobody keeps it current, the system will not work as well. Some customers cannot book online at all, so the phone option needs to stay. And staff still have cancellations and awkward requests to deal with. Online booking can cut down the admin; it cannot take over all of it.",
+  "temperature": 0.9,
+  "output": "\n\nAI is now built into both work and everyday life. It can take over repetitive tasks and help with complex decisions, and that is changing how people and organizations work.\n\nA key benefit is efficiency. Tasks that used to take a lot of time and manual effort can now be done faster with AI systems. This can let employees focus on work that is more creative, strategic, and high-value.\n\nHowever, the growing use of AI raises important concerns. Issues like data privacy, algorithmic bias, job displacement, and the reliability of automated decisions are still being debated. Organizations should carefully consider both the opportunities and the potential risks of adopting AI.\n\nAI has the potential to create significant value when it is implemented responsibly. If organizations combine new technology with ethical care and human oversight, they can use AI while reducing possible negative effects.",
+  "error": null,
+  "finishReason": "stop",
+  "usage": {
+    "prompt_tokens": 556,
+    "completion_tokens": 1838,
+    "total_tokens": 2394,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1669
+    }
+  },
+  "preservationIssues": [],
+  "seconds": 18.115
+}

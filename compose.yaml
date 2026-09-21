@@ -1,7 +1,9 @@
 services:
   humanizer:
     build: .
-    image: local-humanizer:1.4.0
+    image: local-humanizer:1.5.0
+    environment:
+      HUMANIZER_BROWSER_CHECKER_URL: http://browser-checker:18083
     ports:
       - "127.0.0.1:${HUMANIZER_PORT:-3000}:3000"
     volumes:
@@ -10,6 +12,25 @@ services:
       - "host.docker.internal:host-gateway"
     restart: unless-stopped
     init: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+  browser-checker:
+    profiles: [browser-checker]
+    build: ./browser-checker
+    image: local-humanizer-browser-checker:1.62.1
+    ports:
+      - "127.0.0.1:18083:18083"
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+      - /home/pwuser:size=32m,uid=1000,gid=1000,mode=700
+    shm_size: 256m
+    mem_limit: 1g
+    pids_limit: 256
     security_opt:
       - no-new-privileges:true
     cap_drop:

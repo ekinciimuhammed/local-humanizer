@@ -1,0 +1,327 @@
+{
+  "created": "2026-09-21T12:36:18.704Z",
+  "syntheticOnly": true,
+  "records": [
+    {
+      "trial": "plain-lexical-app",
+      "case": "overview",
+      "model": "gemma-4-31B-it",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Plainspoken",
+        "review": false
+      },
+      "generation": {
+        "temperature": 0.9,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [],
+      "seconds": 4.1,
+      "accepted": true,
+      "output": "AI is now a part of how we work and live every day. These technologies change how people and groups function by handling dull, repeating chores and helping with hard choices.\n\nOne main plus is that work gets done faster. Systems that can think now handle tasks that used to take a lot of time and hand-work. Because of this, staff can spend more time on imaginative work, long-term planning, and tasks that are more important.\n\nBut using AI more often brings up big worries. People are still debating things like the privacy of data, whether the systems treat people unfairly in how they reach decisions, people losing their jobs, and if you can trust a decision made by a machine. Groups need to think hard about both the wins and the possible dangers of using AI.\n\nAI can bring great benefits if it is put to use in a fair and careful way. If groups mix new tech with a focus on what is right and keep people watching and retaining control, they can use AI while cutting down on the possible bad results.",
+      "writingNotes": {
+        "before": {
+          "words": 141,
+          "sentences": 10,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 9,
+            "max": 19,
+            "average": 14.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 187,
+          "sentences": 10,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 9,
+            "max": 36,
+            "average": 18.7
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "plain-lexical-app",
+      "case": "library",
+      "model": "gemma-4-31B-it",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Plainspoken",
+        "review": false
+      },
+      "generation": {
+        "temperature": 0.9,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [],
+      "seconds": 1.6,
+      "accepted": true,
+      "output": "The Northbridge Library has set aside $4,800 to pay for more staff during a six-week trial starting October 5. The plan is to keep the building open until 9 pm on Tuesdays and Thursdays, rather than closing at 6 pm.\n\nThe goal is to make it easier for people who cannot get to the library during a standard workday to visit. This trial does not include opening on Sundays, and the library has not yet decided if these later hours will stay after the six weeks end. All current daytime services will still be provided.\n\nTo see if people actually want these hours, staff will track how many people visit during the extra time and ask users to fill out an optional feedback form. The library notes that these results might not reflect the views of residents who do not come in. Once the trial ends, the library committee will look at the visitor numbers, what the staffing cost, and the feedback to decide if they should suggest a permanent change. Because of this, starting the trial does not mean the longer hours are guaranteed to last.",
+      "writingNotes": {
+        "before": {
+          "words": 181,
+          "sentences": 10,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 10,
+            "max": 24,
+            "average": 18.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 189,
+          "sentences": 9,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 8,
+            "max": 29,
+            "average": 21
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "plain-lexical-app",
+      "case": "survey",
+      "model": "gemma-4-31B-it",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Plainspoken",
+        "review": false
+      },
+      "generation": {
+        "temperature": 0.9,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [],
+      "seconds": 1.7,
+      "accepted": true,
+      "output": "Bellfield Design recently asked its staff about their time using a hybrid work schedule. Out of 84 invited employees, 56 answered. From that group, 39 said they could focus better on their tasks while working from home. These results show that working remotely might help some people concentrate, but they don't prove that it makes the whole company more productive.\n\nThe survey also pointed out problems with how people talk to each other. Some people mentioned that it was tougher to have casual chats when coworkers were in different places. Other staff members said that planned online meetings kept them up to date on project choices. The survey didn't ask people to weigh the quality of the work they did at home against what they did in the office.\n\nManagers will keep the current schedule for three more months and gather more feedback. People can still choose whether or not to take part in the next survey. Because these results are based on what people said about themselves and leave out those who didn't answer, they should be viewed with care. More proof is required before deciding how hybrid work affects total performance.",
+      "writingNotes": {
+        "before": {
+          "words": 185,
+          "sentences": 12,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 8,
+            "max": 24,
+            "average": 15.4
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 193,
+          "sentences": 12,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 7,
+            "max": 24,
+            "average": 16.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

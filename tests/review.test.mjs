@@ -48,3 +48,19 @@ test('review changing a fact or truncating cannot publish a completed result', (
     assert.equal(events.some(e => e.type === 'done'), false, mode);
   }
 }));
+
+test('Plainspoken is an explicit one-pass tone and retains protected source facts', () => fixture(async ({ mock, call, generate }) => {
+  const saved = await call('/api/settings', { writing: { tone: 'Plainspoken', review: false } }, 'PATCH');
+  assert.equal(saved.status, 200);
+  assert.equal((await saved.json()).writing.tone, 'Plainspoken');
+  const before = mock.state.calls.length;
+  const events = await generate();
+  assert.equal(mock.state.calls.length - before, 1);
+  const done = events.find(event => event.type === 'done');
+  assert.ok(done); assert.equal(done.tone, 'Plainspoken');
+  assert.equal(done.text, '2026 is uncertain. "Not proven."');
+  const body = mock.state.calls.at(-1).data;
+  assert.match(body.messages[0].content, /plain, specific/i);
+  assert.match(body.messages[0].content, /__KEEP_/);
+  assert.ok(JSON.parse(body.messages.at(-1).content).text.includes('__KEEP_'));
+}));

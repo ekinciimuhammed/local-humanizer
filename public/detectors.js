@@ -1,6 +1,6 @@
-const labels = { gptzero: 'GPTZero', zerogpt: 'ZeroGPT.com' };
+const labels = { gptzero: 'GPTZero API', zerogpt: 'ZeroGPT.com API', 'zerogpt-web': 'ZeroGPT public website (experimental)' };
 function node(tag, text, className = '') { const element = document.createElement(tag); if (text !== undefined) element.textContent = text; if (className) element.className = className; return element; }
-const ready = settings => settings.provider === 'gptzero' ? settings.hasGptzeroApiKey : settings.hasZerogptBearerToken || settings.hasZerogptApiKey;
+const ready = settings => settings.provider === 'zerogpt-web' || (settings.provider === 'gptzero' ? settings.hasGptzeroApiKey : settings.hasZerogptBearerToken || settings.hasZerogptApiKey);
 
 export function mountDetectors({ settingsRoot, resultRoot, api, getTexts, onSettingsChange = () => {} }) {
   let settings = { enabled: false, autoCheck: false, compareSource: false, provider: 'gptzero' };
@@ -28,8 +28,9 @@ export function mountDetectors({ settingsRoot, resultRoot, api, getTexts, onSett
   const zeroKey = field('zerogptApiKey', 'ZeroGPT API key (if your account requires it)', 'password');
   const credentialState = node('p', '', 'field-note');
   const zeroNotice = node('p', 'ZeroGPT Business documents JWT authentication; account-specific API key requirements vary. Live authentication has not been verified for this integration.', 'field-note');
+  const webNotice = node('p', 'Experimental public website checking needs the optional browser helper, but no API key. It sends text to the visible ZeroGPT page once, up to 15,000 characters. A challenge, quota, or changed page stops the check. Start it with: docker compose --profile browser-checker up -d --build browser-checker', 'field-note');
   const remove = field('removeCredentials', 'Remove saved credentials for the selected service');
-  credentials.append(gptKey, zeroBearer, zeroKey, credentialState, zeroNotice, remove);
+  credentials.append(gptKey, zeroBearer, zeroKey, credentialState, zeroNotice, webNotice, remove);
   const save = node('button', 'Save checker settings', 'button secondary'); save.type = 'submit';
   const saveStatus = node('p', '', 'field-note'); saveStatus.setAttribute('role', 'status');
   form.append(enabled, providerLabel, auto, compare, credentials, save, saveStatus); settingsRoot.append(title, notice, form);
@@ -41,6 +42,7 @@ export function mountDetectors({ settingsRoot, resultRoot, api, getTexts, onSett
     checkButton.textContent = `Check with ${labels[settings.provider]}`;
     cancelButton.hidden = !controller;
     gptKey.hidden = provider.value !== 'gptzero'; zeroBearer.hidden = zeroKey.hidden = zeroNotice.hidden = provider.value !== 'zerogpt';
+    webNotice.hidden = provider.value !== 'zerogpt-web'; credentialState.hidden = remove.hidden = provider.value === 'zerogpt-web';
     credentialState.textContent = ready({ ...settings, provider: provider.value }) ? 'Credentials saved locally and encrypted.' : 'No credentials saved for this service.';
     save.disabled = saving;
   }
@@ -48,7 +50,7 @@ export function mountDetectors({ settingsRoot, resultRoot, api, getTexts, onSett
     revision++; controller?.abort(); controller = null; results.replaceChildren(); status.textContent = message; controls();
   }
   function updateSettings(value) {
-    settings = { ...value }; invalidate(settings.enabled ? 'Ready to check when credentials are saved.' : 'External checking is off.');
+    settings = { ...value }; invalidate(settings.enabled ? settings.provider === 'zerogpt-web' ? 'Ready when the optional browser helper is running.' : 'Ready to check when credentials are saved.' : 'External checking is off.');
     for (const key of ['enabled', 'autoCheck', 'compareSource']) inputs[key].checked = Boolean(settings[key]);
     provider.value = settings.provider; controls();
   }
@@ -58,6 +60,7 @@ export function mountDetectors({ settingsRoot, resultRoot, api, getTexts, onSett
       const scan = data[kind]; if (!scan) continue;
       const card = node('div', undefined, 'checker-card'); card.append(node('h4', `${kind === 'source' ? 'Original' : 'Output'} · ${labels[data.provider]}`));
       if (data.provider === 'gptzero') for (const [key, label] of [['ai', 'AI-only class probability'], ['mixed', 'Mixed class probability'], ['human', 'Human-only class probability']]) card.append(node('p', `${label}: ${(scan.metrics[key] * 100).toFixed(1)}%`));
+      else if (data.provider === 'zerogpt-web') card.append(node('p', `ZeroGPT visible website percentage: ${scan.metrics.visiblePercentage.toFixed(1)}%`));
       else card.append(node('p', `ZeroGPT fakePercentage: ${scan.metrics.fakePercentage.toFixed(1)}%`));
       if (scan.classification) card.append(node('p', `Classification: ${scan.classification}`));
       card.append(node('p', `${new Date(scan.checkedAt).toLocaleString()} · Text ${scan.textHash.slice(0, 12)} · Detector version ${scan.detectorVersion || 'not reported'}`, 'field-note'));
@@ -86,7 +89,7 @@ export function mountDetectors({ settingsRoot, resultRoot, api, getTexts, onSett
     event.preventDefault(); if (saving) return; saving = true; loading++; invalidate('Checker settings are changing.'); controls(); saveStatus.textContent = '';
     const patch = { provider: provider.value };
     for (const key of ['enabled', 'autoCheck', 'compareSource']) patch[key] = inputs[key].checked;
-    const keys = patch.provider === 'gptzero' ? ['gptzeroApiKey'] : ['zerogptBearerToken', 'zerogptApiKey'];
+    const keys = patch.provider === 'zerogpt-web' ? [] : patch.provider === 'gptzero' ? ['gptzeroApiKey'] : ['zerogptBearerToken', 'zerogptApiKey'];
     for (const key of keys) if (inputs.removeCredentials.checked) patch[key] = ''; else if (inputs[key].value) patch[key] = inputs[key].value;
     try {
       updateSettings(await api('/api/detectors/settings', patch, 'PATCH')); onSettingsChange(settings);

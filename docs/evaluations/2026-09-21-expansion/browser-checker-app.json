@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-09-21T12:21:44.206Z",
+  "httpStatus": 200,
+  "inputSource": "Artificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.\n\nA key benefit of artificial intelligence is improved efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. This allows employees to focus on more creative, strategic, and high-value activities.\n\nHowever, growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.\n\nArtificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.",
+  "inputResult": "A lot of the appeal of AI comes down to time. A task that used to take a lot of time and hands-on effort can be done faster with an intelligent system. That leaves employees more time for creative work, strategic work and work that carries more value. Repetitive jobs are an obvious place to use it. Helping someone work through a complicated decision is another. Those uses are changing how people and organizations operate; AI is already woven into working life and life outside work.\n\nThere is more to weigh up than the time saved, though. What happens to private data? Do the algorithms treat people unfairly? Will jobs disappear, and how much trust can anyone put in a decision made by a machine? These questions are still being debated as AI use grows. An organization considering it needs to look carefully at the possible gains and the things that could go wrong.\n\nUsed responsibly, AI could be worth a great deal. Keeping people in charge of oversight matters here, alongside attention to ethics and advances in the technology itself. Combining those things gives organizations a way to use AI while limiting the harm it might cause.",
+  "result": {
+    "provider": "zerogpt-web",
+    "source": {
+      "metrics": {
+        "visiblePercentage": 100
+      },
+      "classification": null,
+      "detectorVersion": null,
+      "checkedAt": "2026-09-21T12:21:41.052Z",
+      "textHash": "b4679e04031b340fc0b1a7f05167f54baada4eb7c12c01f25433ddd74bc1cd9b"
+    },
+    "result": {
+      "metrics": {
+        "visiblePercentage": 0
+      },
+      "classification": null,
+      "detectorVersion": null,
+      "checkedAt": "2026-09-21T12:21:44.174Z",
+      "textHash": "277a6cd49669f40f20c6c1f10daf0def7540042c1abe96b119135c763c82704b"
+    }
+  },
+  "productionSettingsTouched": false
+}

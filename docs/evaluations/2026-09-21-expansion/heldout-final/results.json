@@ -1,0 +1,220 @@
+{
+  "created": "2026-09-21T12:38:20.158Z",
+  "syntheticOnly": true,
+  "records": [
+    {
+      "trial": "frozen-lexical",
+      "case": "garden",
+      "model": "gemma-4-31B-it",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Plainspoken",
+        "review": false
+      },
+      "generation": {
+        "temperature": 0.9,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [],
+      "seconds": 2.4,
+      "accepted": true,
+      "output": "Starting April 10, the Westmere Garden Club might try a tool-sharing plan for eight weeks. During this test, members could borrow 12 hand tools on Saturday mornings. This would not include any machines with motors, and membership costs would stay the same.\n\nThe goal is to stop members from buying tools they rarely use. This could help new gardeners attempt jobs they are not used to, but they can only do so if the tool they need has not been taken already. The plan does not promise that every tool will be there when requested.\n\nPeople volunteering for the club would check every tool before it goes out and mark it when it comes back. While members must report if something breaks, the club is still debating who pays for the fixes. They must put these rules in writing before the test starts.\n\nAfter the eight weeks, the committee will look at how often tools were borrowed, what was spent on upkeep, and what members said. They will use this information to decide if the plan should keep going. If few people borrow tools, it might not mean there is no demand; the strict pickup times could simply stop some members from joining in.",
+      "writingNotes": {
+        "before": {
+          "words": 206,
+          "sentences": 12,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 12,
+            "max": 27,
+            "average": 17.2
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 205,
+          "sentences": 12,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 11,
+            "max": 28,
+            "average": 17.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "frozen-lexical",
+      "case": "bus",
+      "model": "gemma-4-31B-it",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Plainspoken",
+        "review": false
+      },
+      "generation": {
+        "temperature": 0.9,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [],
+      "seconds": 2.3,
+      "accepted": true,
+      "output": "The fictional Eastborough Transit Group ran a trial survey to see what passengers thought of a new bus timetable. Out of 120 passengers asked to join in, 72 filled out the questionnaire. From that group, 46 said the new departure times made their normal trips easier. These answers show how convenient passengers felt the changes were, but they do not prove that the buses actually arrived more reliably.\n\nSome people liked that the buses left earlier in the morning. Other passengers noted that the longer gaps between evening buses made it harder to change services. Because the questionnaire did not ask about trips that people stopped taking, the data cannot show how the new timetable impacted those who switched to a different way of traveling.\n\nFor another four weeks, the group will leave the timetable as it is and collect separate logs of when buses actually arrive. If another questionnaire is sent out, taking part in it will still be a choice. The group has not yet decided if the timetable will be kept forever.\n\nThese results might point out problems to look into more deeply, but they should not be seen as speaking for every passenger. Those who answered the survey might have had different experiences than the people who did not. To get a fuller picture, the group would need to look at both the running records and the feedback from passengers.",
+      "writingNotes": {
+        "before": {
+          "words": 196,
+          "sentences": 13,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 7,
+            "max": 20,
+            "average": 15.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 234,
+          "sentences": 13,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 11,
+            "max": 30,
+            "average": 18
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

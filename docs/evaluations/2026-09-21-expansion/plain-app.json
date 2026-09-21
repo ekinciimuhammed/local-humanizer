@@ -1,0 +1,255 @@
+{
+  "created": "2026-09-21T12:29:09.499Z",
+  "syntheticOnly": true,
+  "records": [
+    {
+      "trial": "plain-app",
+      "case": "overview",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "writing": {
+        "tone": "Plainspoken",
+        "review": false
+      },
+      "generation": {
+        "temperature": 0.9,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:turkish-clarity"
+      ],
+      "seconds": 1.4,
+      "accepted": true,
+      "output": "People now use artificial intelligence in both their professional and everyday lives. AI technologies change how individuals and organizations work by automating repetitive tasks and supporting complex decision-making.\n\nA main benefit of artificial intelligence is that it improves efficiency. Intelligent systems can now complete tasks faster that once took a lot of time and manual effort. This lets employees spend more time on creative, strategic, and high-value work.\n\nBut the growing use of artificial intelligence brings up important concerns. Do data privacy, algorithmic bias, job displacement, and the reliability of automated decisions remain problems? These issues continue to generate debate. Organizations should carefully weigh the opportunities against the potential risks of adopting AI technologies.\n\nArtificial intelligence can create a lot of value if it is implemented responsibly. Organizations can use AI while reducing negative effects by combining new technology with human oversight and a focus on ethics.",
+      "writingNotes": {
+        "before": {
+          "words": 141,
+          "sentences": 10,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 9,
+            "max": 19,
+            "average": 14.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 149,
+          "sentences": 11,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 6,
+            "max": 20,
+            "average": 13.5
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "plain-app",
+      "case": "library",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "writing": {
+        "tone": "Plainspoken",
+        "review": false
+      },
+      "generation": {
+        "temperature": 0.9,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:turkish-clarity"
+      ],
+      "seconds": 1.4,
+      "accepted": false,
+      "output": null,
+      "rejectedPreview": "Northbridge Library may stay open until 9 pm on Tuesdays and Thursdays instead of closing at 6 pm. This would be part of a six-week pilot starting October 5. The library has set aside $4,800 to pay for extra staff during this trial.\n\nThe goal is to make it easier for residents who cannot visit during normal working hours to use the library. The pilot will not include Sunday opening, and the library has not decided if it will keep these hours after the trial ends. All current daytime services will stay available during the six weeks.\n\nStaff will track how many people visit during the extra hours and ask users to fill out an optional feedback form. These steps will help the library see if there is enough demand, though will the responses reflect the views of residents who do not attend? Once the pilot ends, the library committee will look at attendance, staff costs, and feedback before deciding whether to recommend a permanent change. Because of this, approving the pilot does not guarantee that the hours will be extended permanently.",
+      "error": "Fact preservation check failed (draft). Name / organization changed: The Northbridge Library. The result was discarded. Try Light strength or a different model."
+    },
+    {
+      "trial": "plain-app",
+      "case": "survey",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "writing": {
+        "tone": "Plainspoken",
+        "review": false
+      },
+      "generation": {
+        "temperature": 0.9,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:turkish-clarity"
+      ],
+      "seconds": 1.4,
+      "accepted": true,
+      "output": "Bellfield Design recently ran an internal survey to see how employees feel about their hybrid working schedule. Out of 84 employees invited, 56 responded. Among them, 39 said it was easier to concentrate on tasks when they worked from home. These results suggest that remote work might help some employees focus, but they do not prove that productivity has improved across the whole organization.\n\nThe survey also highlighted communication problems. Some respondents said it was harder to arrange informal chats when colleagues were in different places. Others found that scheduled online meetings helped them stay up to date on project decisions. The survey did not ask employees to compare the quality of the work they did at home against the work they did in the office.\n\nManagement will keep the current schedule for another three months while they gather more feedback. Taking part in the next survey will still be voluntary. Because these results rely on self-reported experiences and leave out employees who did not respond, they should be viewed with caution. More evidence is needed before any conclusions can be drawn about how hybrid working affects overall performance.",
+      "writingNotes": {
+        "before": {
+          "words": 185,
+          "sentences": 12,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 8,
+            "max": 24,
+            "average": 15.4
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 190,
+          "sentences": 12,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 6,
+            "max": 25,
+            "average": 15.8
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

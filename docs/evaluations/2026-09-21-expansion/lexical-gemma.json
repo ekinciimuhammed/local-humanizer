@@ -1,0 +1,21 @@
+{
+  "id": "lexical-gemma",
+  "source": "Artificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.\n\nA key benefit of artificial intelligence is improved efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. This allows employees to focus on more creative, strategic, and high-value activities.\n\nHowever, growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.\n\nArtificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.",
+  "model": "gemma-4-31B-it",
+  "system": "Rewrite the requested passage as plain, specific English while keeping all its information. You are allowed to reorganize paragraphs completely. Translate abstract formal terms into their everyday meaning: e.g. oversight is people keeping watch and retaining control, algorithmic bias is unfair treatment in how a system reaches decisions. Preserve every qualifier, all affected groups, every causal link, and the complete list of issues. Never add examples, personal experiences, numbers, evidence or outcomes. For THIS rewrite, avoid these exact expressions because they encourage copying the source: artificial intelligence, integral, efficiency, strategic, high-value, however, concerns, algorithmic bias, job displacement, ethical considerations, potential, responsibly, significant value, technological innovation. Express their meaning accurately in ordinary words instead. AI may still be called AI. Start with the concrete point about time and hands-on work. Turn the four risks into four short questions in the middle paragraph, clearly still questions under debate. Finish with the practical conditions for using it well; do not add a stock summary. About 180\u2013230 words. Return ONLY the passage.",
+  "temperature": 0.9,
+  "output": "AI saves time and removes the need for hands-on work by handling boring, repeating tasks and helping with hard choices. This lets workers spend more time on creative and important thinking.\n\nPeople still debate several risks: Is private data safe? Does the system treat people unfairly when making decisions? Will people lose their jobs? Can we trust the answers the machine gives? Companies must weigh these dangers against the benefits before using these tools.\n\nAI works best when companies use it carefully. This means mixing new tools with a focus on what is right and wrong, while people keep watch and retain control. Doing this helps organizations use AI while lowering the chance of bad results.",
+  "error": null,
+  "finishReason": "stop",
+  "usage": {
+    "prompt_tokens": 404,
+    "completion_tokens": 134,
+    "total_tokens": 538,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "preservationIssues": [],
+  "seconds": 1.368,
+  "demonstrationsSent": false
+}

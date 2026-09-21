@@ -1,0 +1,10 @@
+{
+  "created": "2026-09-21",
+  "syntheticOnly": true,
+  "priorUse": false,
+  "recipeSha256": "9bee141f18d4af806a9eaf1137323f1bb922ae66d2a89d32dddc38521358aa13",
+  "model": "gemma-4-31B-it",
+  "generationCalls": 2,
+  "publicScans": 4,
+  "rule": "One complete application generation per source; no resampling, punctuation or score-guided revisions. Scan full source and completed output, record rejected outputs without treating as success."
+}

@@ -1,0 +1,27 @@
+{
+  "name": "plain-deepseek-app",
+  "trials": [
+    {
+      "id": "plain-deepseek-app",
+      "model": "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Plainspoken",
+        "review": false
+      },
+      "skills": [],
+      "generation": {
+        "temperature": 0.9,
+        "topP": 0.95,
+        "maxTokens": 16384,
+        "streaming": true,
+        "timeoutSeconds": 180
+      },
+      "cases": [
+        "overview",
+        "library",
+        "survey"
+      ]
+    }
+  ]
+}

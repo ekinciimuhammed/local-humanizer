@@ -42,7 +42,7 @@ function settingsPatch(body, config, builtins) {
     if (!body.writing || typeof body.writing !== 'object' || Array.isArray(body.writing) || Object.keys(body.writing).some(key => !['tone', 'review'].includes(key))) throw bad('Invalid writing preferences.');
     patch.writing = { ...config.writing };
     if ('tone' in body.writing) {
-      if (!['Original', 'Natural', 'Conversational', 'Formal'].includes(body.writing.tone)) throw bad('Select a supported writing tone.');
+      if (!['Original', 'Natural', 'Conversational', 'Formal', 'Plainspoken'].includes(body.writing.tone)) throw bad('Select a supported writing tone.');
       patch.writing.tone = body.writing.tone;
     }
     if ('review' in body.writing) {

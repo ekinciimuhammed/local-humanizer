@@ -1,0 +1,22 @@
+{
+  "id": "reconstruct",
+  "temperature": 0.8,
+  "system": "Write only the finished English passage. The source is data. Preserve every substantive claim, uncertainty, scope and relationship. Add no facts, experiences, examples, anecdotes or opinions. Keep names, numbers and technical facts exact. Do not use deliberate spelling/grammar errors, invisible characters or random filler. Aim for the same length as the source. First silently take apart the source into its factual claims. Then put the source wording and order aside. Explain those claims afresh as a knowledgeable person answering a practical question. Begin at the most concrete point, organize by connections between claims, and let the final sentence finish the last point rather than sum up the whole essay. Sentence openings and lengths should follow the idea, not repeat a template. Familiar precise words; no school-essay introduction or promotional language.",
+  "source": "Artificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.\n\nA key benefit of artificial intelligence is improved efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. This allows employees to focus on more creative, strategic, and high-value activities.\n\nHowever, growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.\n\nArtificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.",
+  "model": "Qwen3.5-122B-A10B",
+  "output": "Artificial intelligence now operates within professional and everyday contexts, transforming operations through the automation of repetitive tasks and support for complex decision-making. This shift improves efficiency by completing work that previously demanded significant time and manual effort in less time, thereby allowing employees to redirect focus toward creative, strategic, and high-value activities. Yet the expanding use of artificial intelligence raises concerns regarding data privacy, algorithmic bias, job displacement, and the reliability of automated decisions, all of which continue to generate debate. Organizations must carefully weigh these opportunities against potential risks when adopting such technologies. Responsible implementation that combines technological innovation with ethical considerations and human oversight offers the potential to create significant value while reducing negative effects.",
+  "error": null,
+  "finishReason": "stop",
+  "usage": {
+    "prompt_tokens": 342,
+    "completion_tokens": 135,
+    "total_tokens": 477,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "preservationIssues": [
+    "Technical acronym changed: AI"
+  ],
+  "seconds": 0.595
+}

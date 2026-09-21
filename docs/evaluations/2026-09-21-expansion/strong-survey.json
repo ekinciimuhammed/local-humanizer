@@ -1,0 +1,109 @@
+{
+  "trial": "plain-strong-app",
+  "case": "survey",
+  "model": "gemma-4-31B-it",
+  "strength": "Strong",
+  "writing": {
+    "tone": "Plainspoken",
+    "review": false
+  },
+  "generation": {
+    "temperature": 0.9,
+    "topP": 0.95,
+    "maxTokens": 8192,
+    "streaming": true,
+    "timeoutSeconds": 120
+  },
+  "skills": [],
+  "seconds": 1.7,
+  "accepted": true,
+  "output": "Bellfield Design recently ran an internal survey to see how employees feel about their hybrid work schedule. Out of 84 employees who were asked to take part, 56 sent in responses. From that group, 39 people said they could concentrate on their tasks more easily when they worked from home. These results suggest that working remotely might help some employees focus, but they don't prove that productivity has gone up for the whole company.\n\nThe survey also pointed out some problems with communication. A few people mentioned that it was harder to set up casual chats when their coworkers were in different places. Other employees said that scheduled online meetings kept them up to date on project decisions. The survey didn't ask employees to compare the quality of the work they did at home against the work they did in the office.\n\nManagers plan to keep the current schedule for three more months while they gather more feedback. Taking part in the next survey will still be voluntary. Because these results are based on what employees reported themselves and leave out those who didn't respond, people should be careful how they interpret them. More evidence is required before anyone can conclude how hybrid working affects overall performance.",
+  "writingNotes": {
+    "before": {
+      "words": 185,
+      "sentences": 12,
+      "paragraphs": 3,
+      "sentenceLength": {
+        "min": 8,
+        "max": 24,
+        "average": 15.4
+      },
+      "signals": [
+        {
+          "id": "ceremonial",
+          "label": "Ceremonial phrasing",
+          "suggestion": "Check whether the phrase adds meaning or delays the point.",
+          "count": 0
+        },
+        {
+          "id": "transitions",
+          "label": "Stock transitions",
+          "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+          "count": 0
+        },
+        {
+          "id": "inflation",
+          "label": "Inflated wording",
+          "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+          "count": 0
+        },
+        {
+          "id": "wrappers",
+          "label": "Assistant-style wrappers",
+          "suggestion": "Remove assistant commentary that is not part of the document.",
+          "count": 0
+        },
+        {
+          "id": "openings",
+          "label": "Repeated sentence openings",
+          "count": 0,
+          "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+        }
+      ]
+    },
+    "after": {
+      "words": 207,
+      "sentences": 12,
+      "paragraphs": 3,
+      "sentenceLength": {
+        "min": 9,
+        "max": 25,
+        "average": 17.3
+      },
+      "signals": [
+        {
+          "id": "ceremonial",
+          "label": "Ceremonial phrasing",
+          "suggestion": "Check whether the phrase adds meaning or delays the point.",
+          "count": 0
+        },
+        {
+          "id": "transitions",
+          "label": "Stock transitions",
+          "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+          "count": 0
+        },
+        {
+          "id": "inflation",
+          "label": "Inflated wording",
+          "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+          "count": 0
+        },
+        {
+          "id": "wrappers",
+          "label": "Assistant-style wrappers",
+          "suggestion": "Remove assistant commentary that is not part of the document.",
+          "count": 0
+        },
+        {
+          "id": "openings",
+          "label": "Repeated sentence openings",
+          "count": 0,
+          "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+        }
+      ]
+    }
+  },
+  "id": "strong-survey",
+  "source": "A recent internal survey at Bellfield Design examined employees' experiences with a hybrid working schedule. Of the 84 employees invited to participate, 56 submitted responses. Among those respondents, 39 reported that they found it easier to concentrate on tasks when working from home. The findings suggest that remote work may support concentration for some employees, but they do not establish that it improves productivity across the organization.\n\nThe survey also identified challenges associated with communication. Several respondents said that informal discussions were harder to arrange when colleagues worked in different locations. Others reported that scheduled online meetings helped them stay informed about project decisions. The survey did not ask employees to compare the quality of work completed at home with work completed in the office.\n\nManagement plans to retain the current schedule for another three months while collecting additional feedback. Participation in the next survey will remain voluntary. Because the original results reflect self-reported experiences and exclude employees who did not respond, they should be interpreted cautiously. Further evidence would be needed before drawing conclusions about the effects of hybrid working on overall performance."
+}

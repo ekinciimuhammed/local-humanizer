@@ -1,0 +1,23 @@
+{
+  "id": "targeted",
+  "source": "Artificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.\n\nA key benefit of artificial intelligence is improved efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. This allows employees to focus on more creative, strategic, and high-value activities.\n\nHowever, growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.\n\nArtificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.",
+  "draft": "AI is central now in work and everyday life, changing how people and organizations operate. It saves time and makes tasks faster by handling repeating tasks and helping with hard choices. This lets workers spend more time on creative, strategic, and high-value activities.\n\nAs use grows, people still debate several risks: Is private data safe? Does the system treat people unfairly when making decisions? Will people lose their jobs? Can we trust the decisions the machine makes? Organizations must weigh these dangers against the benefits before using these tools.\n\nAI could create a lot of value when organizations use it responsibly. This means mixing new tools with a focus on what is right and wrong, while people keep watch and retain control. Doing this helps organizations use AI while reducing potential negative effects.",
+  "selected": "It saves time and makes tasks faster by handling repeating tasks and helping with hard choices. This lets workers spend more time on creative, strategic, and high-value activities.",
+  "system": "Write a replacement for ONLY the selected passage. Keep every idea and causal relationship, but express them in everyday words and different sentence structures. No formal overview or summary. Make sure the replacement also retains the source point about work that formerly required a lot of time and hands-on effort being completed faster. Repetitive tasks, help with complex decisions, and employees freed for creative, strategic and high-value work must all survive. Express creative/strategic/high-value in plain equivalent phrases rather than this stock list. No new facts or opinions. No deliberate errors. Return only the replacement text, no quotes or explanation. The rest of the draft will remain unchanged.",
+  "model": "gemma-4-31B-it",
+  "temperature": 0.9,
+  "replacement": "Jobs that used to take a lot of manual work and time are now finished more quickly because AI takes over boring, repetitive chores and assists with tough decisions. This frees up staff to focus on coming up with new ideas, planning for the future, and doing the most important parts of their jobs.",
+  "finishReason": "stop",
+  "usage": {
+    "prompt_tokens": 524,
+    "completion_tokens": 60,
+    "total_tokens": 584,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "seconds": 0.649,
+  "output": "AI is central now in work and everyday life, changing how people and organizations operate. Jobs that used to take a lot of manual work and time are now finished more quickly because AI takes over boring, repetitive chores and assists with tough decisions. This frees up staff to focus on coming up with new ideas, planning for the future, and doing the most important parts of their jobs.\n\nAs use grows, people still debate several risks: Is private data safe? Does the system treat people unfairly when making decisions? Will people lose their jobs? Can we trust the decisions the machine makes? Organizations must weigh these dangers against the benefits before using these tools.\n\nAI could create a lot of value when organizations use it responsibly. This means mixing new tools with a focus on what is right and wrong, while people keep watch and retain control. Doing this helps organizations use AI while reducing potential negative effects.",
+  "error": null,
+  "preservationIssues": []
+}

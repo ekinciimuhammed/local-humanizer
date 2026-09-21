@@ -51,7 +51,7 @@ try{
  await page.locator('#close-settings').click();
  await page.locator('#humanize-button').click();
  await page.getByText('Check complete. Scores refer to the text versions shown below.',{exact:true}).waitFor({state:'attached'});
- await page.locator('#checker-results').locator('..').locator('summary').click();
+ if(!await page.locator('#checker-results').locator('..').evaluate(element=>element.open)) await page.locator('#checker-results').locator('..').locator('summary').click();
  assert.equal(await page.getByText('AI-only class probability: 60.0%',{exact:true}).count(),2);
  assert.equal(checkerCalls,1); // Identical source/output shares the same cached scan.
  await page.screenshot({path:'docs/screenshots/hip-checkers.png',fullPage:true});

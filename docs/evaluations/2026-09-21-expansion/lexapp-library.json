@@ -1,0 +1,109 @@
+{
+  "trial": "plain-lexical-app",
+  "case": "library",
+  "model": "gemma-4-31B-it",
+  "strength": "Strong",
+  "writing": {
+    "tone": "Plainspoken",
+    "review": false
+  },
+  "generation": {
+    "temperature": 0.9,
+    "topP": 0.95,
+    "maxTokens": 8192,
+    "streaming": true,
+    "timeoutSeconds": 120
+  },
+  "skills": [],
+  "seconds": 1.6,
+  "accepted": true,
+  "output": "The Northbridge Library has set aside $4,800 to pay for more staff during a six-week trial starting October 5. The plan is to keep the building open until 9 pm on Tuesdays and Thursdays, rather than closing at 6 pm.\n\nThe goal is to make it easier for people who cannot get to the library during a standard workday to visit. This trial does not include opening on Sundays, and the library has not yet decided if these later hours will stay after the six weeks end. All current daytime services will still be provided.\n\nTo see if people actually want these hours, staff will track how many people visit during the extra time and ask users to fill out an optional feedback form. The library notes that these results might not reflect the views of residents who do not come in. Once the trial ends, the library committee will look at the visitor numbers, what the staffing cost, and the feedback to decide if they should suggest a permanent change. Because of this, starting the trial does not mean the longer hours are guaranteed to last.",
+  "writingNotes": {
+    "before": {
+      "words": 181,
+      "sentences": 10,
+      "paragraphs": 3,
+      "sentenceLength": {
+        "min": 10,
+        "max": 24,
+        "average": 18.1
+      },
+      "signals": [
+        {
+          "id": "ceremonial",
+          "label": "Ceremonial phrasing",
+          "suggestion": "Check whether the phrase adds meaning or delays the point.",
+          "count": 0
+        },
+        {
+          "id": "transitions",
+          "label": "Stock transitions",
+          "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+          "count": 0
+        },
+        {
+          "id": "inflation",
+          "label": "Inflated wording",
+          "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+          "count": 0
+        },
+        {
+          "id": "wrappers",
+          "label": "Assistant-style wrappers",
+          "suggestion": "Remove assistant commentary that is not part of the document.",
+          "count": 0
+        },
+        {
+          "id": "openings",
+          "label": "Repeated sentence openings",
+          "count": 0,
+          "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+        }
+      ]
+    },
+    "after": {
+      "words": 189,
+      "sentences": 9,
+      "paragraphs": 3,
+      "sentenceLength": {
+        "min": 8,
+        "max": 29,
+        "average": 21
+      },
+      "signals": [
+        {
+          "id": "ceremonial",
+          "label": "Ceremonial phrasing",
+          "suggestion": "Check whether the phrase adds meaning or delays the point.",
+          "count": 0
+        },
+        {
+          "id": "transitions",
+          "label": "Stock transitions",
+          "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+          "count": 0
+        },
+        {
+          "id": "inflation",
+          "label": "Inflated wording",
+          "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+          "count": 0
+        },
+        {
+          "id": "wrappers",
+          "label": "Assistant-style wrappers",
+          "suggestion": "Remove assistant commentary that is not part of the document.",
+          "count": 0
+        },
+        {
+          "id": "openings",
+          "label": "Repeated sentence openings",
+          "count": 0,
+          "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+        }
+      ]
+    }
+  },
+  "id": "lexapp-library",
+  "source": "The Northbridge Library is considering an extension of its evening opening hours as part of a six-week pilot beginning on October 5. Under the proposal, the building would remain open until 9 pm on Tuesdays and Thursdays instead of closing at 6 pm. The library has allocated $4,800 to cover additional staffing during the trial.\n\nThe proposed change is intended to improve access for residents who cannot visit during normal working hours. However, the pilot would not include Sunday opening, and no decision has been made about continuing the extended schedule after the trial. Existing daytime services would remain available throughout the six weeks.\n\nStaff would record visitor numbers during the additional hours and invite users to complete an optional feedback form. These measures would help the library assess demand, although the responses might not represent residents who do not attend. At the end of the pilot, the library committee would review attendance, staffing costs, and feedback before deciding whether to recommend a permanent change. Approval of the pilot would therefore not guarantee a lasting extension of opening hours."
+}

@@ -1,0 +1,75 @@
+{
+  "created": "2026-09-21T12:32:52.926Z",
+  "syntheticOnly": true,
+  "records": [
+    {
+      "trial": "plain-deepseek-app",
+      "case": "overview",
+      "model": "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Plainspoken",
+        "review": false
+      },
+      "generation": {
+        "temperature": 0.9,
+        "topP": 0.95,
+        "maxTokens": 16384,
+        "streaming": true,
+        "timeoutSeconds": 180
+      },
+      "skills": [],
+      "seconds": 0.1,
+      "accepted": false,
+      "output": null,
+      "rejectedPreview": "",
+      "error": "403 Forbidden. Your API key does not have access to this endpoint or model."
+    },
+    {
+      "trial": "plain-deepseek-app",
+      "case": "library",
+      "model": "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Plainspoken",
+        "review": false
+      },
+      "generation": {
+        "temperature": 0.9,
+        "topP": 0.95,
+        "maxTokens": 16384,
+        "streaming": true,
+        "timeoutSeconds": 180
+      },
+      "skills": [],
+      "seconds": 0,
+      "accepted": false,
+      "output": null,
+      "rejectedPreview": "",
+      "error": "403 Forbidden. Your API key does not have access to this endpoint or model."
+    },
+    {
+      "trial": "plain-deepseek-app",
+      "case": "survey",
+      "model": "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Plainspoken",
+        "review": false
+      },
+      "generation": {
+        "temperature": 0.9,
+        "topP": 0.95,
+        "maxTokens": 16384,
+        "streaming": true,
+        "timeoutSeconds": 180
+      },
+      "skills": [],
+      "seconds": 0,
+      "accepted": false,
+      "output": null,
+      "rejectedPreview": "",
+      "error": "403 Forbidden. Your API key does not have access to this endpoint or model."
+    }
+  ]
+}

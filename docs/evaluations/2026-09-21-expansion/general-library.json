@@ -1,0 +1,23 @@
+{
+  "id": "general-library",
+  "source": "The Northbridge Library is considering an extension of its evening opening hours as part of a six-week pilot beginning on October 5. Under the proposal, the building would remain open until 9 pm on Tuesdays and Thursdays instead of closing at 6 pm. The library has allocated $4,800 to cover additional staffing during the trial.\n\nThe proposed change is intended to improve access for residents who cannot visit during normal working hours. However, the pilot would not include Sunday opening, and no decision has been made about continuing the extended schedule after the trial. Existing daytime services would remain available throughout the six weeks.\n\nStaff would record visitor numbers during the additional hours and invite users to complete an optional feedback form. These measures would help the library assess demand, although the responses might not represent residents who do not attend. At the end of the pilot, the library committee would review attendance, staffing costs, and feedback before deciding whether to recommend a permanent change. Approval of the pilot would therefore not guarantee a lasting extension of opening hours.",
+  "model": "gemma-4-31B-it",
+  "system": "Rewrite the source as plain, specific, conversational written English. Keep every claim, qualification, scope and causal link; do not summarize. Keep all names, numbers, dates, references and technical identifiers exactly. Translate formal abstractions into accurate everyday meanings wherever possible. Prefer common verbs and direct questions to institutional noun phrases. Avoid stock phrases such as integral, however, significant value, technological innovation, ethical considerations, leverage and enhance; express their meaning accurately without deleting the idea. Do not invent facts, personal stories, examples, advice, certainty or happy endings. Faster does not mean effortless, possible does not mean proven, and a benefit for some does not mean a benefit for all. Start from a concrete practical point rather than announcing the topic. If the source describes concerns or uncertainty, some may be introduced as short questions, while preserving their original attribution and uncertainty. Vary sentence length naturally, keep all points, and finish the final point without a generic summary. Write roughly as much as the source, not an abbreviated version. Return ONLY the new passage.",
+  "temperature": 0.9,
+  "output": "Northbridge Library might stay open later during a six-week test starting October 5. The plan is to keep the building open until 9 pm on Tuesdays and Thursdays, rather than closing at 6 pm. The library has set aside $4,800 to pay for the extra staff needed for this trial.\n\nThe library wants to make it easier for people who cannot visit during a typical workday to get inside. This test does not include opening on Sundays, and the library has not decided if these hours will continue after the trial ends. All current daytime services will still be available during these six weeks.\n\nStaff will count how many people visit during those extra hours and ask users to fill out an optional feedback form. The library will use this data to see if there is enough demand, though will the answers represent people who do not visit the library? When the trial ends, the library committee will look at the attendance numbers, the cost of staff, and the feedback. They will use this information to decide if they should suggest a permanent change. Because of this, approving the trial does not mean the longer hours are guaranteed to stay.",
+  "error": null,
+  "finishReason": "stop",
+  "usage": {
+    "prompt_tokens": 437,
+    "completion_tokens": 232,
+    "total_tokens": 669,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "preservationIssues": [
+    "Name / organization changed: The Northbridge Library"
+  ],
+  "seconds": 1.577,
+  "demonstrationsSent": false
+}

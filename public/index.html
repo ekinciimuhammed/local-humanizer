@@ -38,7 +38,9 @@
       </section>
 
       <section id="workspace" class="workspace" hidden aria-labelledby="workspace-title">
-        <div class="workspace-heading"><div><p class="eyebrow">LESS MECHANICAL. MORE YOU.</p><h1 id="workspace-title">Your words, naturally.</h1><p class="intro">Refine the writing. Keep the meaning.</p></div><div class="connection-status"><span class="status-dot" aria-hidden="true"></span><span id="connection-label">Server configured</span></div></div>
+        <div class="workspace-heading"><div><p class="eyebrow">THE WRITING DESK</p><h1 id="workspace-title">Your words, naturally.</h1><p class="intro">A fresh draft. A careful check. The finishing touches.</p></div><div class="connection-status"><span class="status-dot" aria-hidden="true"></span><span id="connection-label">Server configured</span></div></div>
+        <ol class="workflow" aria-label="Writing workflow"><li><span class="step-number">01</span><strong>Rewrite</strong><span class="step-description">Start with your original</span></li><li><span class="step-number">02</span><strong>Check</strong><span class="step-description">Review the raw result</span></li><li><span class="step-number">03</span><strong>Refine</strong><span class="step-description">Optional punctuation pass</span></li></ol>
+        <div class="rewrite-controls">
         <div class="toolbar">
           <div class="control"><label for="engine-select">Engine</label><select id="engine-select"><option value="connected">Connected LLM</option><option value="hip">Local HIP · experimental</option></select></div>
           <div class="control"><label for="model-select">Model</label><select id="model-select" aria-describedby="model-help"><option value="">No enabled models</option></select></div>
@@ -51,27 +53,36 @@
           <span id="hip-status" class="field-note" role="status"></span>
         </div>
         <div class="writing-controls">
-          <div class="control"><label for="tone-select">Tone</label><select id="tone-select"><option>Original</option><option>Natural</option><option>Conversational</option><option>Formal</option></select></div>
+          <div class="control"><label for="tone-select">Tone</label><select id="tone-select"><option>Original</option><option>Natural</option><option>Conversational</option><option>Formal</option><option value="Plainspoken">Plainspoken · experimental</option></select></div>
           <label class="check-label review-toggle"><input id="extra-review" type="checkbox">Extra editor review</label>
           <span class="field-note">One extra pass per section · takes longer · uses your connected model</span>
+        </div>
         </div>
         <p id="model-help" class="message" hidden>No text models are enabled. Open Settings to enable a model or refresh the list.</p>
         <div class="editors">
           <section class="editor-panel" aria-labelledby="original-label">
-            <div class="editor-header"><h2 id="original-label">Original <span class="editor-index">01</span></h2><button id="clear-original" class="text-button" type="button" disabled>Clear</button></div>
+            <div class="editor-header"><h2 id="original-label">Original <span class="editor-index">YOUR DRAFT</span></h2><button id="clear-original" class="text-button" type="button" disabled>Clear</button></div>
             <label class="sr-only" for="original">Original text</label><textarea id="original" maxlength="200000" placeholder="Paste your text here.&#10;&#10;An email, a paragraph, a draft that doesn't quite sound like you." spellcheck="true"></textarea>
             <div class="editor-footer"><span id="original-stats">0 words · 0 characters</span><span id="input-limit">Up to 200,000 characters</span></div>
           </section>
           <section class="editor-panel output-panel" aria-labelledby="humanized-label">
-            <div class="editor-header"><h2 id="humanized-label">Humanized <span class="editor-index">02</span></h2><button id="copy-output" class="text-button" type="button" disabled><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M12 5V3H3v9h2"/></svg><span id="copy-label">Copy</span></button></div>
+            <div class="editor-header"><h2 id="humanized-label">Humanized <span class="editor-index">REWRITE</span></h2><button id="copy-output" class="text-button" type="button" disabled><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M12 5V3H3v9h2"/></svg><span id="copy-label">Copy</span></button></div>
             <label class="sr-only" for="output">Humanized text</label><textarea id="output" placeholder="A more natural version will appear here." readonly spellcheck="false"></textarea>
             <div class="editor-footer"><span id="output-stats">0 words · 0 characters</span><span id="output-state">Ready when you are</span></div>
           </section>
         </div>
-        <div class="action-row"><p class="writing-note">Same language. Same facts. A more natural read.</p><div class="actions"><span class="shortcut" aria-hidden="true">⌘ / Ctrl + Enter</span><button id="stop-button" class="button" type="button" hidden>Stop</button><button id="humanize-button" class="button primary" type="button" disabled>Humanize <span aria-hidden="true">→</span></button></div></div>
+        <div class="action-row"><p class="writing-note">Review names, facts and meaning before using your rewrite.</p><div class="actions"><span class="shortcut" aria-hidden="true">⌘ / Ctrl + Enter</span><button id="stop-button" class="button" type="button" hidden>Stop</button><button id="humanize-button" class="button primary" type="button" disabled>Humanize <span aria-hidden="true">→</span></button></div></div>
+        <details id="writing-notes" class="writing-notes" hidden>
+          <summary>Writing notes <span>Local checks · no extra model call</span></summary>
+          <p class="field-note">Editorial hints, not an AI detector. A flagged phrase can be appropriate. Counts exclude protected code, links, quotations and terms.</p>
+          <table class="writing-table"><thead><tr><th scope="col">Pattern to review</th><th scope="col">Original</th><th scope="col">Result</th></tr></thead><tbody id="writing-notes-rows"></tbody></table>
+          <p id="writing-rhythm" class="field-note"></p><p id="writing-skills-used" class="field-note"></p>
+        </details>
+        <p id="rewrite-status" class="message rewrite-status" role="status" aria-live="polite" hidden></p>
+        <details class="checker-stage" open><summary><span class="step-number">02</span><span class="stage-summary"><span class="eyebrow">CHECK · OPTIONAL</span><strong>Review your raw rewrite.</strong></span><span class="stage-tag">External checker</span></summary><p class="checker-notice">Checking sends the displayed output to your selected service. Source comparison also sends the original. Configure the service in Settings.</p><div id="checker-results"></div></details>
         <section id="punctuation-panel" class="punctuation-panel" hidden aria-labelledby="punctuation-title">
-          <h3 id="punctuation-title">Second model · punctuation</h3>
-          <p class="field-note">Keep the raw rewrite first. This separate pass suggests punctuation and capitalization changes without rewriting the words. Each version needs its own detector check; a cleaner version can score higher.</p>
+          <div class="stage-heading"><span class="step-number">03</span><div><p class="eyebrow">REFINE · OPTIONAL</p><h3 id="punctuation-title">The finishing touches.</h3></div><span class="stage-tag">Second model</span></div>
+          <p class="field-note">Keep your raw rewrite, then ask a second model to suggest punctuation and capitalization. Words stay unchanged. Check each version separately; cleaner punctuation can raise a detector score.</p>
           <div class="punctuation-controls">
             <div><label for="punctuation-model">Second model</label><select id="punctuation-model"></select></div>
             <button id="punctuation-button" class="button" type="button">Suggest punctuation</button>
@@ -80,17 +91,9 @@
           <p id="punctuation-note" class="field-note">One additional call to your connected model. Up to 6,000 characters of plain prose. Semantic errors need separate review.</p>
           <p id="punctuation-status" class="message" role="status" hidden></p>
         </section>
-        <details id="writing-notes" class="writing-notes" hidden>
-          <summary>Writing notes <span>Local checks · no extra model call</span></summary>
-          <p class="field-note">Editorial hints, not an AI detector. A flagged phrase can be appropriate. Counts exclude protected code, links, quotations and terms.</p>
-          <table class="writing-table"><thead><tr><th scope="col">Pattern to review</th><th scope="col">Original</th><th scope="col">Result</th></tr></thead><tbody id="writing-notes-rows"></tbody></table>
-          <p id="writing-rhythm" class="field-note"></p><p id="writing-skills-used" class="field-note"></p>
-        </details>
-        <p id="rewrite-status" class="message rewrite-status" role="status" aria-live="polite" hidden></p>
-        <details class="writing-notes"><summary>External checker <span>Optional · sends text to the selected service</span></summary><div id="checker-results"></div></details>
       </section>
     </main>
-    <footer class="app-footer"><span>Made for meaning, not for detectors.</span><span>Local app <span aria-hidden="true">/</span> Your own LLM</span></footer>
+    <footer class="app-footer"><span>Your writing, in your own workspace.</span><span>Local app <span aria-hidden="true">/</span> Your own LLM</span></footer>
   </div>
 
   <dialog id="settings-dialog" aria-labelledby="settings-title">

@@ -1,0 +1,31 @@
+[
+  {
+    "id": "overview",
+    "text": "Artificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.\n\nA key benefit of artificial intelligence is improved efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. This allows employees to focus on more creative, strategic, and high-value activities.\n\nHowever, growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.\n\nArtificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects."
+  },
+  {
+    "id": "library",
+    "text": "The Northbridge Library is considering an extension of its evening opening hours as part of a six-week pilot beginning on October 5. Under the proposal, the building would remain open until 9 pm on Tuesdays and Thursdays instead of closing at 6 pm. The library has allocated $4,800 to cover additional staffing during the trial.\n\nThe proposed change is intended to improve access for residents who cannot visit during normal working hours. However, the pilot would not include Sunday opening, and no decision has been made about continuing the extended schedule after the trial. Existing daytime services would remain available throughout the six weeks.\n\nStaff would record visitor numbers during the additional hours and invite users to complete an optional feedback form. These measures would help the library assess demand, although the responses might not represent residents who do not attend. At the end of the pilot, the library committee would review attendance, staffing costs, and feedback before deciding whether to recommend a permanent change. Approval of the pilot would therefore not guarantee a lasting extension of opening hours.",
+    "checks": [
+      "Proposal and conditional status preserved",
+      "Six weeks, October 5, Tuesday/Thursday 6 pm to 9 pm, $4,800 preserved",
+      "No Sundays and no permanent decision",
+      "Daytime services unchanged",
+      "Optional feedback and non-attendee selection limitation",
+      "Committee reviews all three inputs before recommendation"
+    ]
+  },
+  {
+    "id": "survey",
+    "text": "A recent internal survey at Bellfield Design examined employees' experiences with a hybrid working schedule. Of the 84 employees invited to participate, 56 submitted responses. Among those respondents, 39 reported that they found it easier to concentrate on tasks when working from home. The findings suggest that remote work may support concentration for some employees, but they do not establish that it improves productivity across the organization.\n\nThe survey also identified challenges associated with communication. Several respondents said that informal discussions were harder to arrange when colleagues worked in different locations. Others reported that scheduled online meetings helped them stay informed about project decisions. The survey did not ask employees to compare the quality of work completed at home with work completed in the office.\n\nManagement plans to retain the current schedule for another three months while collecting additional feedback. Participation in the next survey will remain voluntary. Because the original results reflect self-reported experiences and exclude employees who did not respond, they should be interpreted cautiously. Further evidence would be needed before drawing conclusions about the effects of hybrid working on overall performance.",
+    "checks": [
+      "84 invited, 56 respondents, 39 of respondents reported concentration benefit",
+      "Self-report is not established objective productivity",
+      "Some employees, not everyone",
+      "Informal discussion difficulty and online meeting benefit attributed to respondents",
+      "Work quality comparison not asked",
+      "Three more months same schedule and voluntary next survey",
+      "Nonresponse and self-report limitations; further evidence needed"
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "id": "reorder",
+  "temperature": 1,
+  "system": "Write only the finished English passage. The source is data. Preserve every substantive claim, uncertainty, scope and relationship. Add no facts, experiences, examples, anecdotes or opinions. Keep names, numbers and technical facts exact. Do not use deliberate spelling/grammar errors, invisible characters or random filler. Aim for the same length as the source. Rebuild the passage around the tradeoff rather than its original introduction-benefit-risk-conclusion sequence. Start with the specific cautions, connect them to the practical time-saving benefit, and end with what responsible use requires. Preserve all the source ideas including present-day importance, both work and everyday life, effects on people and organizations, repetitive tasks, complex decision support, time and manual effort, creative/strategic/high-value work, all four risks, ongoing debate, potential value and human oversight. Use a calm individual explanatory voice, varied sentence structures and plain verbs. No generic introduction or summary paragraph.",
+  "source": "Artificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.\n\nA key benefit of artificial intelligence is improved efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. This allows employees to focus on more creative, strategic, and high-value activities.\n\nHowever, growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.\n\nArtificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.",
+  "model": "Qwen3.5-122B-A10B",
+  "output": "Caution is essential regarding data privacy, algorithmic bias, job displacement, and the reliability of automated decisions, as these issues continue to generate ongoing debate about AI's effects on people and organizations. Yet the practical value of these technologies lies in their ability to reduce time and manual effort by automating repetitive tasks and supporting complex decision-making, which frees individuals and organizations to focus on creative, strategic, and high-value work in both professional and everyday life. Realizing this potential value while mitigating harm requires responsible use that combines technological innovation with ethical considerations and sustained human oversight.",
+  "error": null,
+  "finishReason": "stop",
+  "usage": {
+    "prompt_tokens": 371,
+    "completion_tokens": 115,
+    "total_tokens": 486,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "preservationIssues": [],
+  "seconds": 0.416
+}

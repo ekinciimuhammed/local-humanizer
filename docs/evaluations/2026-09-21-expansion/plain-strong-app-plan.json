@@ -1,0 +1,27 @@
+{
+  "name": "plain-strong-app",
+  "trials": [
+    {
+      "id": "plain-strong-app",
+      "model": "gemma-4-31B-it",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Plainspoken",
+        "review": false
+      },
+      "skills": [],
+      "generation": {
+        "temperature": 0.9,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "cases": [
+        "overview",
+        "library",
+        "survey"
+      ]
+    }
+  ]
+}
