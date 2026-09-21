@@ -1,0 +1,52 @@
+# Implementation ledger
+- Repository is empty; no Git checkout or existing files to preserve. Work directly in the supplied workspace.
+- User authorizes implementation without intermediate approval. Design and plan recorded, execution inline.
+- Tests will use a loopback mock provider, no real user texts or external credentials.
+- Task 1 complete: normalization, model merge, encrypted config, protected content and paragraph chunking; core tests observed failing then passing.
+- Task 2 complete: actual HTTP mock-provider tests cover discovery, preferences, streaming/JSON/fallback, preservation failure, truncation, auth/context/rate errors and cancellation. 14 tests passed.
+- Local HTTP listeners require execution outside the sandbox. Test-only loopback escalation approved. Node fetch normalizes Host headers, so rebinding test correctly uses node:http for the wire-level request.
+- Task 3 implemented: frontend and Docker files. Browser and Docker verification pending.
+- Independent final review completed. All five findings fixed with RED→GREEN regression coverage: split UTF-8 request decoding, written dates/prefix percentages/currency, longer/unclosed code fences and multiline quotes, stale model-refresh reconciliation, image-generation classification.
+- Added protection for nested Markdown link destinations, multiline quote chunk boundaries, and introduced URLs/emails; regression cases observed failing then passing.
+- Changed live transport from repeated full previews to incremental deltas; output transfer regression observed failing then passing. UI statistics are throttled during streaming.
+- Final Node suite: 26/26 passed on host and in the final Node 24.18.0 Docker image with external networking disabled.
+- Final Chromium acceptance passed with external networking disabled: onboarding, discovery, rewrite, copy, toggles, refresh, preferences, fact failure, stop, reload, mobile layout; zero browser page errors and zero external browser requests. Screenshots inspected in docs/screenshots.
+- Docker Compose built, launched and health-checked. Port 3000 was occupied, so the local .env uses 3002. Application is running at http://localhost:3002.
+- Docker-to-host discovery verified with local mock at host.docker.internal:18080. Settings survived container restart; temporary temperature marker restored. A connection was saved concurrently by the user during verification; that connection and model choices were preserved.
+- All JavaScript syntax checks and docker compose config passed. README includes Docker/offline/host networking, local credential threat model, preservation limits and provider compatibility details.
+- Temporary mock and standalone test server stopped; the production Docker app remains running. No real LLM semantic-quality benchmark was performed; test provider responses are deterministic fixtures.
+
+# Skills extension — 2026-09-21
+- User requested GitHub research, integration and skills inside the app. Design/plan saved for the skills extension.
+- Reviewed MIT sources at fixed commits: blader/humanizer 9862685f575c65a8247f90369951df1b3416e3d6; andreaskonopka/humanizer 862609a2caf3cadb63b9bef78576e6f5a1ed4e19; harshaneel/humanize 4ec797314537ec9c2105f276d4561d240a0390ba.
+- Adapt only editing-related guidance; exclude detector scoring, made-up personal details, arbitrary sentence quotas and blanket punctuation bans. Runtime stays offline except the user's configured LLM.
+- Four adapted profiles implemented; source commit and SHA-256 verified, complete MIT notices carried in each portable SKILL.md and bundled files. Downloadable ZIP matches every source/license byte.
+- Skill parser/import/selection/persistence and old-config migration tests passed. Active profiles are sent as subordinate editorial preferences, once per existing rewrite request; immutable core constraints remain in the system prompt.
+- Deterministic Writing notes implemented for before/after prose patterns and rhythm, excluding protected spans; no detector scores and no extra LLM calls.
+- Independent code and skill review found two issues: stale catalog responses after mutation, and YAML inline comments. Both reproduced with failing tests then fixed. Reviewer also applied Turkish profile to a fictional sample, preserving names, date, numbers, uncertainty, negation and citation.
+- Four standard skill-validator checks passed. Test-only PyYAML was installed in /tmp; no runtime dependency added.
+- Full Node suite: 40/40 passed. Offline Chromium acceptance: all previous flows plus skill selection/limits, file upload/preview/import, ZIP download, delete, persistence and writing notes; no page errors or external browser requests. New screenshots inspected.
+- Delivered Docker version 1.1.0 at http://localhost:3002; healthy. Production settings.json and credential.key SHA-256 values are identical before/after upgrade; no production test writes or LLM calls performed.
+- Final shipped-image verification: 40/40 tests passed with network disabled; catalog has four bundled profiles and two defaults; ZIP endpoint valid. Skills download at /humanizer-skills.zip. Existing connection and model preferences remain intact.
+
+# Live English quality tuning — 2026-09-21
+- User explicitly requested quality settings, self-authored AI-sounding English samples, and checking the results. Used only synthetic examples and the user's already-configured endpoint.
+- Authored five cases with gold semantic checks: email, research, technical Markdown/code, personal account, and natural control. Ran 29 comparison requests across discovered Gemma, Qwen and DeepSeek IDs; retained failures. DeepSeek returned 403, so no quality claim is made for it.
+- Fixed a live false alarm: source-derived name counts now accept Northstar Labs after a capitalized article while still detecting changes/loss/duplication. Clarified numeric spellings in the prompt to avoid 3 -> three failures. Regressions observed failing then passing.
+- Independent blinded editing review preferred Qwen over both Gemma profiles; no unsupported factual additions found in the comparison set. Full review and raw samples are in docs/evaluations/2026-09-21.
+- Applied Qwen3.5-122B-A10B, Balanced, temperature 0.30, topP 0.95, maxTokens 8192, streaming on, timeout 120; Natural writing + Structure & clarity + Türkçe açıklık. Connection, decrypted key, model toggles, custom skills and humanizer settings compared unchanged in memory. No credentials written to evaluation artifacts.
+- Final profile passed 5/5 synthetic cases; limited formulaic-phrase counts fell 17 -> 0. This is not an authorship score or general quality guarantee. Strong truncated the research example even at 8192 and unnecessarily merged the natural control's paragraphs.
+- Additional held-out production test found a duplicated full stop after a protected quote. Added a narrowly scoped restoration fix preserving original punctuation, code and ellipses; regression observed failing then passing. Independent code reviewer found no material issue.
+- Benchmark runner rejects private custom guides; temporary settings live on container tmpfs, source data volume is read-only. Benchmark files contain only synthetic text, settings without connection details, and timing/check results.
+- Final 1.1.1 image built and deployed healthy. Full 43/43 Node tests passed on host and offline Docker after the punctuation fix. Detailed report: docs/evaluations/2026-09-21/REPORT.md.
+
+- Final production confirmation passed on a sixth, held-out synthetic document in 12.6 seconds: configured settings persisted, quote punctuation corrected, source qualifiers preserved. Total31 live requests (29 comparison +2 production); raw evidence and report complete.
+
+# External checker investigation — 2026-09-21
+- User supplied a failing detector screenshot and requested research and improvement. Researched primary product documentation, open-source editing projects and detector research; notes and full evidence are in docs/evaluations/2026-09-21-natural-v2.
+- Ran 30 app document trials and two isolated prompt probes using the configured provider. Made seven real public ZeroGPT scans and one Basic Humanizer comparison, using only the supplied general text and synthetic evaluation texts.
+- Measured result: source 100% AI; all four scanned app variants 100%; competitor Basic output 0% with grammatical errors and omitted meaning; agent-authored natural control 27.8%. The detector objective remains unsolved; no claim of a best profile or successful bypass.
+- Added selectable writing tone and optional source-grounded second editor pass, with validation at both stages, progress, cancellation, persistence and visible extra-call cost. Extra review remains off by default because a general benefit was not demonstrated.
+- Corrected acronym repetition false alarms while preserving acronym identity and strict mixed identifiers; removed model-added outer blank lines without stripping indentation. Independent code review found no blockers; blinded editing review documented remaining semantic drift in some aggressive candidates.
+- Final verification: 46/46 tests passed on host and offline final Docker image; offline browser acceptance passed including new controls and previous flows. These tests establish software behavior, not detector success.
+- Version 1.2.0 deployed healthy at http://localhost:3002. Production settings.json and credential.key hashes match before and after deployment. Existing connection, generation preferences and skills were preserved; new writing preferences default to Original with extra review disabled.

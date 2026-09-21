@@ -1,0 +1,23 @@
+# Kör editör değerlendirmesi
+
+Yalnızca `blind-review-input.json` içindeki özgün metinler, anlam kontrolleri ve A/B/C çıktıları incelendi. Bu küçük örneklemde genel sıralama **A > B ≈ C**. B ile C arasındaki fark, ayrı bir kalite düzeyi iddia etmeye yetmiyor. Üç aday da temel olguları büyük ölçüde koruyor; hiçbirinde desteklenmeyen yeni olay, deneyim veya araştırma sonucu görmedim. Değerlendirme yazarlık kökenini veya herhangi bir tespit aracının sonucunu ölçmüyor.
+
+## Örnek bazında
+
+| Örnek | Hüküm |
+|---|---|
+| İş e-postası | **A en iyi.** Tarih, bütçe, gönüllü sayısı, katılım hakkı, cuma teslimi, destek kapsamı, bekleyen güvenlik onayı ve öncelik üçünde de korunuyor. A gereksiz girişleri daha temiz kaldırıyor. B ve C, özgün `In order to facilitate a seamless process` ifadesini `To ensure a seamless process` yaparak kalıp dili büyük ölçüde bırakıyor. C ayrıca özgün `The current budget is $18,500` ifadesini `with a budget of $18,500` yapıyor: tutar doğru, fakat bütçenin mevcut duruma ait olduğunu belirten küçük niteleme kayboluyor. B, C'ye göre özgün cümle düzenini daha iyi koruyor. |
+| Araştırma özeti | **A hafif üstün; B ve C de başarılı.** Kurgusallık, isim, örneklem, yüzdeler, seçilim yanlılığı, verimliliğin ölçülmemesi, nedensellik sınırı ve doğrudan alıntı eksiksiz korunuyor. B/C'nin cümle birleştirmeleri anlam kaybı yaratmıyor, ancak ihtiyat kayıtlarını daha uzun cümlelere topluyor. A bunları kolay taranan ayrı cümlelerde bırakıyor. C'nin `better` yerine `superior` seçimi gereksiz ve daha resmî. |
+| Teknik sürüm notları | **A en iyi.** Üçü de istemcinin beklemeyi kesmesi ile sunucudaki işin iptali arasındaki ayrımı, tekrar denemenin mükerrer iş oluşturabileceğini ve işlem bazında güvenlik kararını koruyor. Başlık, kod bloğu, tanımlayıcılar ve bağlantı değişmemiş. A madde metinlerini de aynen koruyor. B/C özgün ``Leave `request_timeout_ms` unset to retain the existing behavior.`` maddesinden `the` sözcüğünü çıkarıyor. Bu anlam hatası değil; korunan madde metninin de birebir kalması isteniyorsa gereksiz bir ihlal. B/C'nin `demonstrates` ve `determine` seçimleri A'nın `shows` ve `decide` tercihlerinden daha doğal görünmüyor. |
+| Kişisel anlatı | **A hafif üstün; B=C.** Birinci şahıs, kaçırılan son tarih, uygulamalara dağılmış hatırlatmalar, acil işlerin listeyi değiştirmesi, iyileşmenin nedenine ilişkin belirsizlik, unutulan defter ve kişisel tercih sınırı üçünde de korunuyor. Yeni yaşantı eklenmiyor. A açılış dolgusunu çıkarıp anlatıcının sade ritmini bırakıyor. B/C'nin `While`, `also` ve `though` ile yeniden bağladığı cümleler kabul edilebilir; belirgin bir kazanım sağlamayan daha kapsamlı müdahaleler. |
+| Zaten doğal kontrol | **A açık ara en iyi; B=C gereksiz müdahale ediyor.** A yalnızca `when you have had` ifadesini `when you've had` yapıyor; bu da zorunlu değil. B/C, özgün `Could you cut the repeated explanation and keep the last paragraph?` sorusunu `Please cut the repeated explanation and keep the last paragraph;` biçimine çeviriyor. İstenen iş aynı, fakat yumuşak bir rica daha doğrudan bir talimata dönüşüyor. Ardından gelen cümleyi noktalı virgülle birleştirmek de özgün konuşma ritmini değiştiriyor. Broşür benzetmesi ve zaman baskısının olmaması korunuyor. |
+
+## Pratik tercih ve sınırlar
+
+**Varsayılan profil için A'yı seçerdim.** Bu örneklerde gereksiz çerçeve cümlelerini temizliyor, anlam ve ihtiyat kayıtlarını koruyor, zaten iyi olan metne daha az dokunuyor. Daha az değişiklik yapması tek başına üstünlük gerekçesi değil: buradaki müdahaleler hedeflenen yapay resmiyeti azaltırken anlatıcının cümlelerini çoğunlukla koruyor.
+
+A'nın beş çıktısı da iki boş satırla başlıyor (`\n\n`). Bu içerik hatası değil, fakat son kullanıcı çıktısında düzeltilmesi gereken tutarlı bir biçim kusuru. Doğal kontroldeki küçük kısaltma da, değişiklik gerekmiyorsa metni aynen döndürme davranışının henüz kusursuz olmadığını gösteriyor.
+
+B ve C okunabilir, anlam bakımından güvenilir sonuçlar üretmiş. Daha yoğun yeniden yazım isteyen bir kullanımda kabul edilebilirler. Bu örneklemde cümleleri yeniden kurmaları somut kalite kazancından çok üslup değişikliği getiriyor; kontrol örneğinde rica tonunu değiştirmeleri özellikle önemli. C'nin bütçe nitelemesini kaldırması ve `superior` tercihi nedeniyle B'yi çok küçük bir farkla öne koyabilirim, ancak pratikte eşdeğer değerlendiririm.
+
+Bu beş örnek daha uzun metinler, farklı sesler veya farklı çalıştırmalardaki tutarlılık hakkında güçlü genelleme sağlamaz. Mevcut kanıtın desteklediği sonuç, **A'nın bu görev kümesinde en dengeli editör olduğu**, üç adayın da temel anlam korumasında başarılı olduğudur.

@@ -1,0 +1,16 @@
+{
+  "appliedAt": "2026-09-21T08:55:42.325Z",
+  "before": {
+    "model": "gemma-4-31B-it",
+    "strength": "Strong",
+    "generation": { "temperature": 0.45, "topP": 0.95, "maxTokens": 4096, "streaming": true, "timeoutSeconds": 120 },
+    "skills": ["builtin:natural-writing", "builtin:turkish-clarity", "builtin:structure-clarity"]
+  },
+  "after": {
+    "selectedModel": "Qwen3.5-122B-A10B",
+    "strength": "Balanced",
+    "generation": { "temperature": 0.3, "topP": 0.95, "maxTokens": 8192, "streaming": true, "timeoutSeconds": 120 },
+    "skills": { "enabledIds": ["builtin:natural-writing", "builtin:structure-clarity", "builtin:turkish-clarity"] }
+  },
+  "preserved": { "connection": true, "apiKey": true, "modelToggles": true, "humanizer": true, "customSkills": true }
+}

@@ -1,0 +1,144 @@
+{
+  "created": "2026-09-21T08:50:10.469Z",
+  "syntheticOnly": true,
+  "records": [
+    {
+      "trial": "gemma-baseline",
+      "case": "email",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 1,
+      "accepted": false,
+      "output": null,
+      "rejectedPreview": "Hi Maya Chen,\n\nThe Northstar Labs pilot is scheduled to begin on 14 October 2026 with a budget of $18,500 and 24 volunteers. Participation is optional, and managers must not treat a decision to decline as a performance issue.\n\nTo ensure a seamless process, please send the draft schedule by Friday. This should identify who will cover support while volunteers attend the sessions. Note that we may need to postpone the start if the security review is not complete, as approval has not yet been granted.\n\nI appreciate the work you have put into the plan. Please flag any gaps rather than assuming another team will cover them. The immediate priority is a workable schedule, not a wider rollout.",
+      "error": "Fact preservation check failed. Name / organization changed: Northstar Labs. The result was discarded. Try Light strength or a different model."
+    },
+    {
+      "trial": "gemma-baseline",
+      "case": "research",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 1,
+      "accepted": false,
+      "output": null,
+      "rejectedPreview": "A fictional survey by Elena Ruiz included 240 respondents from three offices. Employees who reported having a quiet workspace also reported fewer interruptions; however, this association does not establish that quiet workspaces caused the difference, and the survey did not measure productivity.\n\nAmong respondents, 38% preferred working remotely, 42% preferred a hybrid arrangement, and 20% preferred working in the office. These preferences describe the sample rather than the wider workforce, and because participation was voluntary, selection bias may have affected the results.\n\nThe report states, \"The results are preliminary and should not guide staffing decisions.\" A follow-up survey could help determine whether preferences change over time, but it would not, by itself, establish causation. Ultimately, the findings offer a limited description of this sample rather than proof that one working arrangement is superior.",
+      "error": "Fact preservation check failed. Number / date changed: 3. The result was discarded. Try Light strength or a different model."
+    },
+    {
+      "trial": "qwen-baseline",
+      "case": "email",
+      "model": "Qwen3.5-122B-A10B",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 9,
+      "accepted": false,
+      "output": null,
+      "rejectedPreview": "\n\nHi Maya Chen,\n\nThe Northstar Labs pilot is scheduled to begin on 14 October 2026. The current budget is $18,500, and the pilot will involve 24 volunteers. Participation is optional, and managers must not treat a decision to decline as a performance issue.\n\nPlease send the draft schedule by Friday. It should identify who will cover support while volunteers attend the sessions. We may need to postpone the start if the security review is not complete; approval has not yet been granted.\n\nI appreciate the work you have already put into the plan. Please flag any gaps rather than assuming another team will cover them. The immediate priority is a workable schedule, not a wider rollout.",
+      "error": "Fact preservation check failed. Name / organization changed: Northstar Labs. The result was discarded. Try Light strength or a different model."
+    },
+    {
+      "trial": "qwen-baseline",
+      "case": "research",
+      "model": "Qwen3.5-122B-A10B",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 11.4,
+      "accepted": false,
+      "output": null,
+      "rejectedPreview": "",
+      "error": "The response reached the token limit and was truncated. Increase Max tokens or reduce Chunk size in Settings."
+    },
+    {
+      "trial": "deepseek-baseline",
+      "case": "email",
+      "model": "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 0.1,
+      "accepted": false,
+      "output": null,
+      "rejectedPreview": "",
+      "error": "403 Forbidden. Your API key does not have access to this endpoint or model."
+    },
+    {
+      "trial": "deepseek-baseline",
+      "case": "research",
+      "model": "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 0.1,
+      "accepted": false,
+      "output": null,
+      "rejectedPreview": "",
+      "error": "403 Forbidden. Your API key does not have access to this endpoint or model."
+    }
+  ]
+}

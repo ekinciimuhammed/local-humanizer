@@ -1,0 +1,8 @@
+{
+  "name": "comparison",
+  "trials": [
+    { "id": "gemma-repaired", "model": "gemma-4-31B-it", "cases": ["email", "research", "technical", "personal", "control"] },
+    { "id": "qwen-expanded", "model": "Qwen3.5-122B-A10B", "generation": { "maxTokens": 8192 }, "cases": ["email", "research", "technical", "personal", "control"] },
+    { "id": "gemma-voice-030", "model": "gemma-4-31B-it", "generation": { "temperature": 0.3 }, "skills": ["builtin:natural-writing", "builtin:structure-clarity", "builtin:voice-rhythm"], "cases": ["email", "research", "technical", "personal", "control"] }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "reviewedOn": "2026-09-21",
+  "skills": [
+    {
+      "id": "builtin:natural-writing",
+      "title": "Natural writing",
+      "path": "skills/natural-writing/SKILL.md",
+      "source": {
+        "repository": "https://github.com/blader/humanizer",
+        "commit": "9862685f575c65a8247f90369951df1b3416e3d6",
+        "license": "MIT",
+        "files": [
+          {
+            "path": "skills/natural-writing/references/UPSTREAM.md",
+            "upstreamPath": "SKILL.md",
+            "sha256": "e8269e236bed06ed0fe4824c274112e54950b0cb46b0bafe5e1576ef7c9f93d5"
+          },
+          {
+            "path": "skills/natural-writing/LICENSE.upstream",
+            "upstreamPath": "LICENSE",
+            "sha256": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96"
+          }
+        ]
+      }
+    },
+    {
+      "id": "builtin:structure-clarity",
+      "title": "Structure & clarity",
+      "path": "skills/structure-clarity/SKILL.md",
+      "source": {
+        "repository": "https://github.com/andreaskonopka/humanizer",
+        "commit": "862609a2caf3cadb63b9bef78576e6f5a1ed4e19",
+        "license": "MIT",
+        "files": [
+          {
+            "path": "skills/structure-clarity/references/UPSTREAM.md",
+            "upstreamPath": "skills/humanizer/SKILL.md",
+            "sha256": "06c9f964d2823f399af67c365fd0864faf6d4e5c662c2219e424f23f5382ce95"
+          },
+          {
+            "path": "skills/structure-clarity/LICENSE.upstream",
+            "upstreamPath": "LICENSE",
+            "sha256": "19a9570975fa99ebabcbcfc560de6cf6662f6f1c052eb20834095cee6e8cec86"
+          }
+        ]
+      }
+    },
+    {
+      "id": "builtin:voice-rhythm",
+      "title": "Voice & rhythm",
+      "path": "skills/voice-rhythm/SKILL.md",
+      "source": {
+        "repository": "https://github.com/harshaneel/humanize",
+        "commit": "4ec797314537ec9c2105f276d4561d240a0390ba",
+        "license": "MIT",
+        "files": [
+          {
+            "path": "skills/voice-rhythm/references/UPSTREAM.md",
+            "upstreamPath": "humanize/SKILL.md",
+            "sha256": "bfb3c5fb90c837f44b5732b33f13e9e1dd61885cc77d0cfe99ce8a3e6ef541aa"
+          },
+          {
+            "path": "skills/voice-rhythm/LICENSE.upstream",
+            "upstreamPath": "LICENSE",
+            "sha256": "0261d6664eea6c1cd1203686249c3fc9b9f4cef47b6e1706503a5c5525d522ad"
+          }
+        ]
+      }
+    },
+    {
+      "id": "builtin:turkish-clarity",
+      "title": "Türkçe açıklık",
+      "path": "skills/turkish-clarity/SKILL.md",
+      "source": null
+    }
+  ]
+}

@@ -1,0 +1,1611 @@
+{
+  "created": "2026-09-21T08:52:19.075Z",
+  "syntheticOnly": true,
+  "records": [
+    {
+      "trial": "gemma-repaired",
+      "case": "email",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 1,
+      "accepted": true,
+      "output": "Hi Maya Chen,\n\nThe Northstar Labs pilot is scheduled to begin on 14 October 2026, with a budget of $18,500 and 24 volunteers. Participation is optional, and managers must not treat a decision to decline as a performance issue.\n\nTo ensure a seamless process, please send the draft schedule by Friday. The schedule should identify who will cover support while volunteers attend the sessions. Note that we may need to postpone the start if the security review is not complete, as approval has not yet been granted.\n\nI appreciate the work you have already put into the plan. Please flag any gaps rather than assuming another team will cover them. The immediate priority is a workable schedule, not a wider rollout.",
+      "writingNotes": {
+        "before": {
+          "words": 135,
+          "sentences": 10,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 3,
+            "max": 21,
+            "average": 13.5
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 122,
+          "sentences": 9,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 3,
+            "max": 23,
+            "average": 13.6
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "gemma-repaired",
+      "case": "research",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 1,
+      "accepted": true,
+      "output": "A fictional survey by Elena Ruiz included 240 respondents from 3 offices. Employees who reported having a quiet workspace also reported fewer interruptions, though this association does not establish that quiet workspaces caused the difference, nor did the survey measure productivity.\n\nAmong respondents, 38% preferred working remotely, 42% preferred a hybrid arrangement, and 20% preferred working in the office. These preferences describe the respondents rather than the wider workforce, and because participation was voluntary, selection bias may have affected the results.\n\nThe report states, \"The results are preliminary and should not guide staffing decisions.\" A follow-up survey could help determine whether preferences change over time, but it would not, by itself, establish causation. These findings offer a limited description of this sample rather than proof that one working arrangement is superior.",
+      "writingNotes": {
+        "before": {
+          "words": 131,
+          "sentences": 9,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 8,
+            "max": 24,
+            "average": 14.6
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 122,
+          "sentences": 6,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 12,
+            "max": 29,
+            "average": 20.3
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "gemma-repaired",
+      "case": "technical",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 1.2,
+      "accepted": true,
+      "output": "## Release notes\n\nVersion 2.4.1 introduces an optional request timeout. This allows callers to stop waiting for a response, though it does not cancel work already started by the server.\n\n- Set `request_timeout_ms` to `2500` to stop waiting after 2500 ms.\n- Leave `request_timeout_ms` unset to retain existing behavior.\n- Requests that time out may still finish on the server; retrying can create duplicate work.\n\nThe example below demonstrates how to configure the client. It does not include retry logic.\n\n```js\nconst client = new Client({ request_timeout_ms: 2500 });\nawait client.send({ job_id: \"demo-7\" });\n```\n\nThe [migration guide](https://example.com/migrate/v2.4.1) describes compatibility limits. The API response format has not changed. Callers should determine whether retrying is safe for their operation before enabling automatic retries.",
+      "writingNotes": {
+        "before": {
+          "words": 120,
+          "sentences": 11,
+          "paragraphs": 5,
+          "sentenceLength": {
+            "min": 2,
+            "max": 26,
+            "average": 10.9
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 1
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 100,
+          "sentences": 11,
+          "paragraphs": 5,
+          "sentenceLength": {
+            "min": 2,
+            "max": 20,
+            "average": 9.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "gemma-repaired",
+      "case": "personal",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 0.9,
+      "accepted": true,
+      "output": "I began keeping a paper notebook after I missed a deadline. I had been putting reminders in several apps and often forgot which one held the note I needed. While the notebook did not solve every problem, it gave me a single place to look during the workday.\n\nI also found that writing a short list before opening my inbox helped me choose where to start, though I still changed the list when urgent work arrived. I cannot tell whether the improvement came from the notebook itself or from taking a moment to plan.\n\nThe approach has a clear limitation: I sometimes leave the notebook at home. On those days, I use a note on my phone and copy it over later. I intend to keep using the notebook because it is useful to me, not because I believe everyone should organize their work this way.",
+      "writingNotes": {
+        "before": {
+          "words": 154,
+          "sentences": 9,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 9,
+            "max": 26,
+            "average": 17.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 146,
+          "sentences": 8,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 11,
+            "max": 28,
+            "average": 18.3
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "gemma-repaired",
+      "case": "control",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 0.5,
+      "accepted": true,
+      "output": "I left the draft on your desk. The opening still feels slow, but the middle example works. Please cut the repeated explanation and keep the last paragraph; I want the ending to sound like someone making a decision, not a brochure asking for applause.\n\nNo rush tonight. Send it back once you've had a chance to read it properly.",
+      "writingNotes": {
+        "before": {
+          "words": 64,
+          "sentences": 6,
+          "paragraphs": 2,
+          "sentenceLength": {
+            "min": 3,
+            "max": 18,
+            "average": 10.7
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 59,
+          "sentences": 5,
+          "paragraphs": 2,
+          "sentenceLength": {
+            "min": 3,
+            "max": 27,
+            "average": 11.8
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "qwen-expanded",
+      "case": "email",
+      "model": "Qwen3.5-122B-A10B",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 10.8,
+      "accepted": true,
+      "output": "\n\nHi Maya Chen,\n\nThe Northstar Labs pilot is scheduled to begin on 14 October 2026. The current budget is $18,500, and the pilot will involve 24 volunteers. Participation is optional, and managers must not treat a decision to decline as a performance issue.\n\nPlease send the draft schedule by Friday. The schedule should identify who will cover support while volunteers attend the sessions. We may need to postpone the start if the security review is not complete; approval has not yet been granted.\n\nI appreciate the work you have already put into the plan. Please flag any gaps rather than assuming another team will cover them. The immediate priority is a workable schedule, not a wider rollout.",
+      "writingNotes": {
+        "before": {
+          "words": 135,
+          "sentences": 10,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 3,
+            "max": 21,
+            "average": 13.5
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 118,
+          "sentences": 10,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 3,
+            "max": 20,
+            "average": 11.8
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "qwen-expanded",
+      "case": "research",
+      "model": "Qwen3.5-122B-A10B",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 19.5,
+      "accepted": true,
+      "output": "\n\nA fictional survey by Elena Ruiz included 240 respondents from 3 offices. Employees who reported a quiet workspace also reported fewer interruptions. This association does not establish that quiet workspaces caused the difference, and the survey did not measure productivity.\n\n38% of respondents preferred working remotely, while 42% preferred a hybrid arrangement. The remaining 20% preferred working in the office. These preferences describe the respondents, not the wider workforce. Participation was voluntary, so selection bias may have affected the results.\n\nThe report states, \"The results are preliminary and should not guide staffing decisions.\" A follow-up survey could help determine whether preferences change over time, but it would not, by itself, establish causation. The findings offer a limited description of this sample rather than proof that one working arrangement is better.",
+      "writingNotes": {
+        "before": {
+          "words": 131,
+          "sentences": 9,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 8,
+            "max": 24,
+            "average": 14.6
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 121,
+          "sentences": 9,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 8,
+            "max": 23,
+            "average": 13.4
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "qwen-expanded",
+      "case": "technical",
+      "model": "Qwen3.5-122B-A10B",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 14.5,
+      "accepted": true,
+      "output": "\n\n## Release notes\n\nVersion 2.4.1 introduces an optional request timeout. This allows callers to stop waiting for a response, but it does not cancel work the server has already started.\n\n- Set `request_timeout_ms` to `2500` to stop waiting after 2500 ms.\n- Leave `request_timeout_ms` unset to retain the existing behavior.\n- Requests that time out may still finish on the server; retrying can create duplicate work.\n\nThe example below shows how to configure the client. It does not add retry logic.\n\n```js\nconst client = new Client({ request_timeout_ms: 2500 });\nawait client.send({ job_id: \"demo-7\" });\n```\n\nThe [migration guide](https://example.com/migrate/v2.4.1) describes the compatibility limits. The API response format has not changed. Callers should decide whether retrying is safe for their operation before enabling automatic retries.",
+      "writingNotes": {
+        "before": {
+          "words": 120,
+          "sentences": 11,
+          "paragraphs": 5,
+          "sentenceLength": {
+            "min": 2,
+            "max": 26,
+            "average": 10.9
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 1
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 102,
+          "sentences": 11,
+          "paragraphs": 5,
+          "sentenceLength": {
+            "min": 2,
+            "max": 20,
+            "average": 9.3
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "qwen-expanded",
+      "case": "personal",
+      "model": "Qwen3.5-122B-A10B",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 10,
+      "accepted": true,
+      "output": "\n\nI began keeping a paper notebook after I missed a deadline. I had been putting reminders in several apps, and I often forgot which app held the note I needed. The notebook did not solve every problem, but it gave me a single place to look during the workday.\n\nWriting a short list before opening my inbox helped me choose where to start. I still changed the list when urgent work arrived. I cannot tell whether the improvement came from the notebook itself or from taking a moment to plan.\n\nThe approach has a clear limitation: I sometimes leave the notebook at home. On those days, I use a note on my phone and copy it over later. I intend to keep using the notebook because it is useful to me, not because I believe everyone should organize their work this way.",
+      "writingNotes": {
+        "before": {
+          "words": 154,
+          "sentences": 9,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 9,
+            "max": 26,
+            "average": 17.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 142,
+          "sentences": 9,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 9,
+            "max": 24,
+            "average": 15.8
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "qwen-expanded",
+      "case": "control",
+      "model": "Qwen3.5-122B-A10B",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.45,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:turkish-clarity",
+        "builtin:structure-clarity"
+      ],
+      "seconds": 18.6,
+      "accepted": true,
+      "output": "\n\nI left the draft on your desk. The opening still feels slow, but the example in the middle works. Could you cut the repeated explanation and keep the last paragraph? I want the ending to sound like a person making a decision, not a brochure asking for applause.\n\nNo rush tonight. Send it back when you've had a chance to read it properly.",
+      "writingNotes": {
+        "before": {
+          "words": 64,
+          "sentences": 6,
+          "paragraphs": 2,
+          "sentenceLength": {
+            "min": 3,
+            "max": 18,
+            "average": 10.7
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 63,
+          "sentences": 6,
+          "paragraphs": 2,
+          "sentenceLength": {
+            "min": 3,
+            "max": 18,
+            "average": 10.5
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "gemma-voice-030",
+      "case": "email",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.3,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:voice-rhythm"
+      ],
+      "seconds": 0.8,
+      "accepted": true,
+      "output": "Hi Maya Chen,\n\nThe Northstar Labs pilot is scheduled to begin on 14 October 2026. The current budget is $18,500, and the pilot will involve 24 volunteers. Participation is optional, and managers must not treat a decision to decline as a performance issue.\n\nTo ensure a seamless process, please send the draft schedule by Friday. The schedule should identify who will cover support while volunteers attend the sessions. We may need to postpone the start if the security review is not complete, as approval has not yet been granted.\n\nI appreciate the work you have already put into the plan. Please flag any gaps rather than assuming another team will cover them. The immediate priority is a workable schedule, not a wider rollout.",
+      "writingNotes": {
+        "before": {
+          "words": 135,
+          "sentences": 10,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 3,
+            "max": 21,
+            "average": 13.5
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 124,
+          "sentences": 10,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 3,
+            "max": 21,
+            "average": 12.4
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "gemma-voice-030",
+      "case": "research",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.3,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:voice-rhythm"
+      ],
+      "seconds": 0.9,
+      "accepted": true,
+      "output": "A fictional survey by Elena Ruiz included 240 respondents from 3 offices. Employees who reported having a quiet workspace also reported fewer interruptions, though this association does not establish that quiet workspaces caused the difference, nor did the survey measure productivity.\n\nAmong respondents, 38% preferred working remotely, 42% preferred a hybrid arrangement, and 20% preferred working in the office. These preferences describe the respondents rather than the wider workforce, and because participation was voluntary, selection bias may have affected the results.\n\nThe report states, \"The results are preliminary and should not guide staffing decisions.\" A follow-up survey could help determine whether preferences change over time, but it would not, by itself, establish causation. These findings offer a limited description of this sample rather than proof that one working arrangement is better.",
+      "writingNotes": {
+        "before": {
+          "words": 131,
+          "sentences": 9,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 8,
+            "max": 24,
+            "average": 14.6
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 122,
+          "sentences": 6,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 12,
+            "max": 29,
+            "average": 20.3
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "gemma-voice-030",
+      "case": "technical",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.3,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:voice-rhythm"
+      ],
+      "seconds": 1.1,
+      "accepted": true,
+      "output": "## Release notes\n\nVersion 2.4.1 introduces an optional request timeout. This allows callers to stop waiting for a response, though it does not cancel work the server has already started.\n\n- Set `request_timeout_ms` to `2500` to stop waiting after 2500 ms.\n- Leave `request_timeout_ms` unset to retain existing behavior.\n- Requests that time out may still finish on the server; retrying can create duplicate work.\n\nThe example below demonstrates how to configure the client. It does not include retry logic.\n\n```js\nconst client = new Client({ request_timeout_ms: 2500 });\nawait client.send({ job_id: \"demo-7\" });\n```\n\nThe [migration guide](https://example.com/migrate/v2.4.1) describes compatibility limits. The API response format has not changed. Callers should determine if retrying is safe for their operation before enabling automatic retries.",
+      "writingNotes": {
+        "before": {
+          "words": 120,
+          "sentences": 11,
+          "paragraphs": 5,
+          "sentenceLength": {
+            "min": 2,
+            "max": 26,
+            "average": 10.9
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 1
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 100,
+          "sentences": 11,
+          "paragraphs": 5,
+          "sentenceLength": {
+            "min": 2,
+            "max": 20,
+            "average": 9.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "gemma-voice-030",
+      "case": "personal",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.3,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:voice-rhythm"
+      ],
+      "seconds": 0.9,
+      "accepted": true,
+      "output": "I began keeping a paper notebook after I missed a deadline. I had been putting reminders in several apps and often forgot which one held the note I needed. While the notebook did not solve every problem, it gave me a single place to look during the workday.\n\nI also found that writing a short list before opening my inbox helped me choose where to start, though I still changed the list when urgent work arrived. I cannot tell whether the improvement came from the notebook itself or from taking a moment to plan.\n\nThe approach has a clear limitation: I sometimes leave the notebook at home. On those days, I use a note on my phone and copy it over later. I intend to keep using the notebook because it is useful to me, not because I believe everyone should organize their work this way.",
+      "writingNotes": {
+        "before": {
+          "words": 154,
+          "sentences": 9,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 9,
+            "max": 26,
+            "average": 17.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 146,
+          "sentences": 8,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 11,
+            "max": 28,
+            "average": 18.3
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "gemma-voice-030",
+      "case": "control",
+      "model": "gemma-4-31B-it",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.3,
+        "topP": 0.95,
+        "maxTokens": 4096,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:voice-rhythm"
+      ],
+      "seconds": 0.5,
+      "accepted": true,
+      "output": "I left the draft on your desk. The opening still feels slow, but the middle example works. Please cut the repeated explanation and keep the last paragraph; I want the ending to sound like someone making a decision, not a brochure asking for applause.\n\nNo rush tonight. Send it back once you've had a chance to read it properly.",
+      "writingNotes": {
+        "before": {
+          "words": 64,
+          "sentences": 6,
+          "paragraphs": 2,
+          "sentenceLength": {
+            "min": 3,
+            "max": 18,
+            "average": 10.7
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 59,
+          "sentences": 5,
+          "paragraphs": 2,
+          "sentenceLength": {
+            "min": 3,
+            "max": 27,
+            "average": 11.8
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "baseline",
+  "trials": [
+    {
+      "id": "v111-qwen",
+      "model": "Qwen3.5-122B-A10B",
+      "cases": [
+        "screenshot",
+        "research",
+        "control"
+      ]
+    }
+  ]
+}

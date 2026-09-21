@@ -1,0 +1,243 @@
+{
+  "created": "2026-09-21T08:55:23.058Z",
+  "syntheticOnly": true,
+  "records": [
+    {
+      "trial": "qwen-strong-030",
+      "case": "research",
+      "model": "Qwen3.5-122B-A10B",
+      "strength": "Strong",
+      "generation": {
+        "temperature": 0.3,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:turkish-clarity"
+      ],
+      "seconds": 26.2,
+      "accepted": false,
+      "output": null,
+      "rejectedPreview": "",
+      "error": "The response reached the token limit and was truncated. Increase Max tokens or reduce Chunk size in Settings."
+    },
+    {
+      "trial": "qwen-strong-030",
+      "case": "personal",
+      "model": "Qwen3.5-122B-A10B",
+      "strength": "Strong",
+      "generation": {
+        "temperature": 0.3,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:turkish-clarity"
+      ],
+      "seconds": 13.2,
+      "accepted": true,
+      "output": "\n\nI began keeping a paper notebook after I missed a deadline. I had been putting reminders in several apps and often forgot which app held the note I needed. The notebook did not solve every problem, but it gave me a single place to look during the workday.\n\nWriting a short list before opening my inbox helped me choose where to start. I still changed the list when urgent work arrived. I cannot tell whether the improvement came from the notebook itself or from taking a moment to plan.\n\nThe approach has a clear limitation: I sometimes leave the notebook at home. On those days, I use a note on my phone and copy it over later. I intend to keep using the notebook because it is useful to me, not because I believe everyone should organize their work this way.",
+      "writingNotes": {
+        "before": {
+          "words": 154,
+          "sentences": 9,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 9,
+            "max": 26,
+            "average": 17.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 141,
+          "sentences": 9,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 9,
+            "max": 24,
+            "average": 15.7
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "qwen-strong-030",
+      "case": "control",
+      "model": "Qwen3.5-122B-A10B",
+      "strength": "Strong",
+      "generation": {
+        "temperature": 0.3,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:turkish-clarity"
+      ],
+      "seconds": 12.9,
+      "accepted": true,
+      "output": "\n\nI left the draft on your desk. The opening still feels slow, though the example in the middle works. Could you cut the repeated explanation and keep the last paragraph? I want the ending to sound like a person making a decision, not a brochure asking for applause. No rush tonight; send it back once you've had a chance to read it properly.",
+      "writingNotes": {
+        "before": {
+          "words": 64,
+          "sentences": 6,
+          "paragraphs": 2,
+          "sentenceLength": {
+            "min": 3,
+            "max": 18,
+            "average": 10.7
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 63,
+          "sentences": 5,
+          "paragraphs": 1,
+          "sentenceLength": {
+            "min": 7,
+            "max": 18,
+            "average": 12.6
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

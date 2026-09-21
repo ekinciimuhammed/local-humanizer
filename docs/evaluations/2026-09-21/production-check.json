@@ -1,0 +1,120 @@
+{
+  "created": "2026-09-21T08:56:39.918Z",
+  "syntheticOnly": true,
+  "production": true,
+  "source": "It is important to note that Harbor Analytics estimates the new queue could reduce median response time by 12%. This is a forecast, not an observed result. Furthermore, the estimate comes from a 6-week pilot involving 16 participants; allocation was not random, and no estimate of long-term savings is available.\n\nThe pilot did not evaluate accessibility. The team should not expand deployment until that review is complete. Moreover, Lena Ortiz described the proposal as \"promising, but unproven.\" Details are in the [pilot note](https://example.com/pilot).",
+  "accepted": true,
+  "model": "Qwen3.5-122B-A10B",
+  "strength": "Balanced",
+  "generation": {
+    "temperature": 0.3,
+    "topP": 0.95,
+    "maxTokens": 8192,
+    "streaming": true,
+    "timeoutSeconds": 120
+  },
+  "seconds": 20.1,
+  "type": "done",
+  "text": "\n\nHarbor Analytics estimates the new queue could reduce median response time by 12%. This is a forecast, not an observed result. The estimate comes from a 6-week pilot involving 16 participants; allocation was not random, and no long-term savings estimate is available.\n\nThe pilot did not evaluate accessibility. The team should not expand deployment until that review is complete. Lena Ortiz described the proposal as \"promising, but unproven.\". Details are in the [pilot note](https://example.com/pilot).",
+  "chunks": 1,
+  "skills": [
+    {
+      "id": "builtin:natural-writing",
+      "title": "Natural writing"
+    },
+    {
+      "id": "builtin:structure-clarity",
+      "title": "Structure & clarity"
+    },
+    {
+      "id": "builtin:turkish-clarity",
+      "title": "Türkçe açıklık"
+    }
+  ],
+  "writingNotes": {
+    "before": {
+      "words": 80,
+      "sentences": 6,
+      "paragraphs": 2,
+      "sentenceLength": {
+        "min": 6,
+        "max": 25,
+        "average": 13.3
+      },
+      "signals": [
+        {
+          "id": "ceremonial",
+          "label": "Ceremonial phrasing",
+          "suggestion": "Check whether the phrase adds meaning or delays the point.",
+          "count": 1
+        },
+        {
+          "id": "transitions",
+          "label": "Stock transitions",
+          "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+          "count": 2
+        },
+        {
+          "id": "inflation",
+          "label": "Inflated wording",
+          "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+          "count": 0
+        },
+        {
+          "id": "wrappers",
+          "label": "Assistant-style wrappers",
+          "suggestion": "Remove assistant commentary that is not part of the document.",
+          "count": 0
+        },
+        {
+          "id": "openings",
+          "label": "Repeated sentence openings",
+          "count": 0,
+          "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+        }
+      ]
+    },
+    "after": {
+      "words": 71,
+      "sentences": 7,
+      "paragraphs": 2,
+      "sentenceLength": {
+        "min": 4,
+        "max": 23,
+        "average": 10.1
+      },
+      "signals": [
+        {
+          "id": "ceremonial",
+          "label": "Ceremonial phrasing",
+          "suggestion": "Check whether the phrase adds meaning or delays the point.",
+          "count": 0
+        },
+        {
+          "id": "transitions",
+          "label": "Stock transitions",
+          "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+          "count": 0
+        },
+        {
+          "id": "inflation",
+          "label": "Inflated wording",
+          "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+          "count": 0
+        },
+        {
+          "id": "wrappers",
+          "label": "Assistant-style wrappers",
+          "suggestion": "Remove assistant commentary that is not part of the document.",
+          "count": 0
+        },
+        {
+          "id": "openings",
+          "label": "Repeated sentence openings",
+          "count": 0,
+          "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+        }
+      ]
+    }
+  }
+}

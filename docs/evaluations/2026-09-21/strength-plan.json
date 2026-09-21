@@ -1,0 +1,6 @@
+{
+  "name": "strength",
+  "trials": [
+    { "id": "qwen-strong-030", "model": "Qwen3.5-122B-A10B", "strength": "Strong", "generation": { "temperature": 0.3, "maxTokens": 8192 }, "skills": ["builtin:natural-writing", "builtin:structure-clarity", "builtin:turkish-clarity"], "cases": ["research", "personal", "control"] }
+  ]
+}

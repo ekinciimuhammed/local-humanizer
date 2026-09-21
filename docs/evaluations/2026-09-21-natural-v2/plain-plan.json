@@ -1,0 +1,43 @@
+{
+  "name": "plain-candidates",
+  "trials": [
+    {
+      "id": "qwen38-plain",
+      "model": "Qwen3.8-27B",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Natural",
+        "review": false
+      },
+      "skills": [],
+      "generation": {
+        "temperature": 0.65,
+        "maxTokens": 12288
+      },
+      "cases": [
+        "screenshot",
+        "research",
+        "control"
+      ]
+    },
+    {
+      "id": "gemma-plain",
+      "model": "gemma-4-31B-it",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Natural",
+        "review": false
+      },
+      "skills": [],
+      "generation": {
+        "temperature": 0.65,
+        "maxTokens": 12288
+      },
+      "cases": [
+        "screenshot",
+        "research",
+        "control"
+      ]
+    }
+  ]
+}

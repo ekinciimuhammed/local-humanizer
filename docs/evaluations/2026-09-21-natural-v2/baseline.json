@@ -1,0 +1,327 @@
+{
+  "created": "2026-09-21T10:32:02.449Z",
+  "syntheticOnly": true,
+  "records": [
+    {
+      "trial": "v111-qwen",
+      "case": "screenshot",
+      "model": "Qwen3.5-122B-A10B",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.3,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:turkish-clarity"
+      ],
+      "seconds": 17,
+      "accepted": true,
+      "output": "\n\nArtificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.\n\nImproved efficiency is a key benefit of artificial intelligence. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems, allowing employees to focus on more creative, strategic, and high-value activities.\n\nHowever, the growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.\n\nArtificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.",
+      "writingNotes": {
+        "before": {
+          "words": 141,
+          "sentences": 10,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 9,
+            "max": 19,
+            "average": 14.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 141,
+          "sentences": 9,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 9,
+            "max": 28,
+            "average": 15.7
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "v111-qwen",
+      "case": "research",
+      "model": "Qwen3.5-122B-A10B",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.3,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:turkish-clarity"
+      ],
+      "seconds": 14.4,
+      "accepted": true,
+      "output": "\n\nElena Ruiz's fictional survey included 240 respondents from 3 offices. Employees reporting a quiet workspace also reported fewer interruptions. This association does not establish that quiet workspaces caused the difference, and the survey did not measure productivity.\n\n38% of respondents preferred working remotely, while 42% preferred a hybrid arrangement. The remaining 20% preferred working in the office. These preferences describe the respondents, not the wider workforce. Participation was voluntary, so selection bias may have affected the results.\n\nThe report states, \"The results are preliminary and should not guide staffing decisions.\" A follow-up survey could help determine whether preferences change over time, but it would not, by itself, establish causation. The findings offer a limited description of this sample rather than proof that one working arrangement is better.",
+      "writingNotes": {
+        "before": {
+          "words": 131,
+          "sentences": 9,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 8,
+            "max": 24,
+            "average": 14.6
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 1
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 3
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 118,
+          "sentences": 9,
+          "paragraphs": 3,
+          "sentenceLength": {
+            "min": 8,
+            "max": 23,
+            "average": 13.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "trial": "v111-qwen",
+      "case": "control",
+      "model": "Qwen3.5-122B-A10B",
+      "strength": "Balanced",
+      "generation": {
+        "temperature": 0.3,
+        "topP": 0.95,
+        "maxTokens": 8192,
+        "streaming": true,
+        "timeoutSeconds": 120
+      },
+      "skills": [
+        "builtin:natural-writing",
+        "builtin:structure-clarity",
+        "builtin:turkish-clarity"
+      ],
+      "seconds": 14.1,
+      "accepted": true,
+      "output": "\n\nI left the draft on your desk. The opening still feels slow, but the example in the middle works. Could you cut the repeated explanation and keep the last paragraph? I want the ending to sound like a person making a decision, not a brochure asking for applause.\n\nNo rush tonight. Send it back when you've had a chance to read it properly.",
+      "writingNotes": {
+        "before": {
+          "words": 64,
+          "sentences": 6,
+          "paragraphs": 2,
+          "sentenceLength": {
+            "min": 3,
+            "max": 18,
+            "average": 10.7
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 63,
+          "sentences": 6,
+          "paragraphs": 2,
+          "sentenceLength": {
+            "min": 3,
+            "max": 18,
+            "average": 10.5
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

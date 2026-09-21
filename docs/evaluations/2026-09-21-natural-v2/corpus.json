@@ -1,0 +1,74 @@
+[
+  {
+    "id": "screenshot",
+    "genre": "Generic AI overview transcribed from user screenshot",
+    "text": "Artificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.\n\nA key benefit of artificial intelligence is improved efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. This allows employees to focus on more creative, strategic, and high-value activities.\n\nHowever, growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.\n\nArtificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.",
+    "checks": [
+      "AI in work and daily life; repetitive task automation and complex decision support",
+      "Faster completion permits employee focus on creative, strategic and high-value work",
+      "Privacy, algorithmic bias, displacement and automated decision reliability all preserved",
+      "Organizations should consider opportunities and risks",
+      "Responsible implementation offers potential value, not certainty; ethics and human oversight reduce possible harm"
+    ]
+  },
+  {
+    "id": "email",
+    "genre": "Workplace email",
+    "text": "Hi Maya Chen,\n\nIt is important to note that the Northstar Labs pilot is scheduled to begin on 14 October 2026. The current budget is $18,500, and the pilot will involve 24 volunteers. Furthermore, participation is optional, and managers must not treat a decision to decline as a performance issue.\n\nIn order to facilitate a seamless process, please send the draft schedule by Friday. The schedule should identify who will cover support while volunteers attend the sessions. Moreover, we may need to postpone the start if the security review is not complete; approval has not yet been granted.\n\nI appreciate the work you have already put into the plan. Please flag any gaps rather than assuming another team will cover them. In conclusion, the immediate priority is a workable schedule, not a wider rollout.",
+    "checks": [
+      "Pilot scheduled, not already started; 14 October 2026; $18,500; 24 volunteers",
+      "Participation optional; declining must not affect performance assessment",
+      "Draft schedule due Friday and must identify support coverage",
+      "Security approval still pending; incomplete review may postpone start",
+      "Appreciation, flagging gaps and schedule-over-rollout priority preserved"
+    ]
+  },
+  {
+    "id": "research",
+    "genre": "Cautious research summary",
+    "text": "It is worth noting that a fictional survey by Elena Ruiz included 240 respondents from 3 offices. Employees who reported having a quiet workspace also reported fewer interruptions. This association does not establish that quiet workspaces caused the difference, and the survey did not measure productivity.\n\nFurthermore, 38% of respondents preferred working remotely, while 42% preferred a hybrid arrangement. The remaining 20% preferred working in the office. These preferences describe the respondents, not the wider workforce. Participation was voluntary, so selection bias may have affected the results.\n\nMoreover, the report states, \"The results are preliminary and should not guide staffing decisions.\" A follow-up survey could help determine whether preferences change over time, but it would not, by itself, establish causation. In conclusion, the findings offer a limited description of this sample rather than proof that one working arrangement is better.",
+    "checks": [
+      "Fictional survey; Elena Ruiz; 240 respondents; 3 offices",
+      "Association is not causation; productivity not measured",
+      "38% remote, 42% hybrid, 20% office; applies only to respondents",
+      "Voluntary participation and possible selection bias retained",
+      "Quotation verbatim; follow-up could assess change but cannot alone prove causation"
+    ]
+  },
+  {
+    "id": "technical",
+    "genre": "Technical release notes with protected Markdown",
+    "text": "## Release notes\n\nIt is important to note that version 2.4.1 introduces an optional request timeout. This capability plays a pivotal role in helping callers stop waiting for a response, but it does not cancel work that the server has already started.\n\n- Set `request_timeout_ms` to `2500` to stop waiting after 2500 ms.\n- Leave `request_timeout_ms` unset to retain the existing behavior.\n- Requests that time out may still finish on the server; retrying can create duplicate work.\n\nFurthermore, the example below demonstrates how to configure the client. The example does not add retry logic.\n\n```js\nconst client = new Client({ request_timeout_ms: 2500 });\nawait client.send({ job_id: \"demo-7\" });\n```\n\nMoreover, the [migration guide](https://example.com/migrate/v2.4.1) describes the compatibility limits. The API response format has not changed. In conclusion, callers should decide whether retrying is safe for their own operation before enabling automatic retries.",
+    "checks": [
+      "2.4.1 optional client wait timeout, not server cancellation",
+      "Unset option retains behavior; timed-out requests may finish; retries can duplicate work",
+      "All headings, bullets, code, inline identifiers and Markdown link preserved",
+      "Example adds no retries; API response format unchanged",
+      "Automatic retries require operation-specific safety decision"
+    ]
+  },
+  {
+    "id": "personal",
+    "genre": "First-person reflection",
+    "text": "It is worth mentioning that I began keeping a paper notebook after I missed a deadline. I had been putting reminders in several apps, and I often forgot which app held the note I needed. The notebook did not solve every problem, but it gave me a single place to look during the workday.\n\nFurthermore, I found that writing a short list before opening my inbox helped me choose where to start. I still changed the list when urgent work arrived. I cannot tell whether the improvement came from the notebook itself or from taking a moment to plan.\n\nMoreover, the approach has a clear limitation: I sometimes leave the notebook at home. On those days, I use a note on my phone and copy it over later. In conclusion, I intend to keep using the notebook because it is useful to me, not because I believe everyone should organize their work this way.",
+    "checks": [
+      "Existing first-person experience only; missed deadline precedes notebook",
+      "Scattered app reminders and single daytime reference retained",
+      "List before inbox helps choose start; urgent work changes it",
+      "Cause of improvement uncertain; notebook versus planning",
+      "Sometimes forgotten at home; phone notes later copied; personal preference not universal advice"
+    ]
+  },
+  {
+    "id": "control",
+    "genre": "Already natural control",
+    "text": "I left the draft on your desk. The opening still feels slow, but the example in the middle works. Could you cut the repeated explanation and keep the last paragraph? I want the ending to sound like a person making a decision, not a brochure asking for applause.\n\nNo rush tonight. Send it back when you have had a chance to read it properly.",
+    "checks": [
+      "Draft on recipient's desk; opening slow; middle example works",
+      "Cut repetition but keep last paragraph",
+      "Desired ending and figurative brochure criticism retained",
+      "No rush tonight; send after proper reading",
+      "Do not add facts, deadlines or corporate framing"
+    ]
+  }
+]

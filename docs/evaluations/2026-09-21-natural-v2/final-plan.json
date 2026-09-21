@@ -1,0 +1,43 @@
+{
+  "name": "final-candidates",
+  "trials": [
+    {
+      "id": "qwen38-conversational",
+      "model": "Qwen3.8-27B",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Conversational",
+        "review": true
+      },
+      "skills": [],
+      "generation": {
+        "temperature": 0.65,
+        "maxTokens": 12288
+      },
+      "cases": [
+        "screenshot",
+        "research",
+        "control"
+      ]
+    },
+    {
+      "id": "gemma-conversational",
+      "model": "gemma-4-31B-it",
+      "strength": "Strong",
+      "writing": {
+        "tone": "Conversational",
+        "review": true
+      },
+      "skills": [],
+      "generation": {
+        "temperature": 0.65,
+        "maxTokens": 12288
+      },
+      "cases": [
+        "screenshot",
+        "research",
+        "control"
+      ]
+    }
+  ]
+}

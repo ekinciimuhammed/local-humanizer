@@ -1,0 +1,14 @@
+{
+  "name": "local-humanizer",
+  "version": "1.2.0",
+  "private": true,
+  "type": "module",
+  "description": "A local-first text editor for your own OpenAI-compatible LLM",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "dev": "node --watch src/server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:mock": "node tests/mock-provider.mjs"
+  }
+}

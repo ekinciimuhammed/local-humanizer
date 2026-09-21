@@ -1,0 +1,19 @@
+services:
+  humanizer:
+    build: .
+    image: local-humanizer:1.2.0
+    ports:
+      - "127.0.0.1:${HUMANIZER_PORT:-3000}:3000"
+    volumes:
+      - humanizer-data:/app/data
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+volumes:
+  humanizer-data:
