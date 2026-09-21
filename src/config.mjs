@@ -8,6 +8,7 @@ export const defaults = Object.freeze({
   generation: { temperature: 0.45, topP: 0.95, maxTokens: 4096, streaming: true, timeoutSeconds: 120 },
   humanizer: { chunkChars: 6000, protectedTerms: [] },
   writing: { tone: 'Original', review: false },
+  engine: { kind: 'connected', hipRounds: 1 },
   skills: { enabledIds: [...DEFAULT_SKILL_IDS], custom: [] },
 });
 

@@ -1,0 +1,5 @@
+# Optional native worker only; Node/Docker runtime remains dependency-free.
+torch==2.14.0
+transformers==4.57.6
+peft==0.19.1
+huggingface-hub==0.36.2

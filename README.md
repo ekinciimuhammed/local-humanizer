@@ -2,9 +2,9 @@
 
 Kendi OpenAI-compatible LLM sunucunuzla çalışan, tamamen yerel bir metin düzenleme uygulaması. İki metin alanı, otomatik model keşfi ve üç yeniden yazım seviyesi. Amaç anlamı koruyarak daha doğal yazmak; AI detector atlatmak değildir.
 
-Son araştırma: [özel paraphrase modelleri, resmî checker API'leri ve sınırlı pilot kararı](docs/research/2026-09-21-method-decision.md). Bu belge gelecek deneyin tasarımıdır; HIP modeli veya otomatik dış checker mevcut sürüme eklenmiş değildir.
+**1.3.0:** İsteğe bağlı yerel HIP motoru ve dış checker bağlantıları eklendi. HIP deneysel İngilizce düzyazı desteğidir; mevcut LLM bağlantısı varsayılan kalır. [Gerçek doğrulama raporu](docs/evaluations/2026-09-21-hip/REPORT.md): tek örnekte ZeroGPT %74,8 AI verdi, ancak anlam kontrolü başarısız oldu. Genel kalite veya detector geçiş başarısı gösterilmedi. [Ön araştırma](docs/research/2026-09-21-method-decision.md), uygulama öncesindeki kararı ve sınırları kaydeder.
 
-Node.js dışında **çalışma zamanı bağımlılığı yoktur**. Frontend, backend ve bütün font/asset kullanımı yereldir. Telemetry, analytics, cloud database, dış loglama veya zorunlu servis bulunmaz.
+Ana uygulamanın Node.js dışında **çalışma zamanı bağımlılığı yoktur**. İsteğe bağlı HIP worker ayrıca Python/model ağırlıkları kullanır. Frontend, backend ve bütün font/asset kullanımı yereldir. Telemetry, analytics, cloud database veya zorunlu dış servis bulunmaz. Açıkça etkinleştirilen checker, metni seçilen dış servise gönderir.
 
 ## Docker ile başlatma
 
@@ -59,10 +59,10 @@ LLM başka bir container'daysa iki uygulamayı aynı Docker ağına alın; Base 
 
 ### İnternetsiz kullanım
 
-Uygulama çalışma sırasında internet istemez. Ancak ilk Docker build için sabitlenmiş Node base imajı, Docker olmadan kullanımda ise Node kurulumu önceden bulunmalıdır. Hazır imajı bağlı bir makinede oluşturup çevrimdışı makineye taşıyabilirsiniz:
+Yerel LLM/HIP kullanıp dış checker'ı kapalı tuttuğunuzda uygulama çalışma sırasında internet istemez. Uzak LLM veya dış checker seçilirse ilgili servis için bağlantı gerekir. İlk Docker build için sabitlenmiş Node base imajı, Docker olmadan kullanımda ise Node kurulumu önceden bulunmalıdır. Hazır imajı bağlı bir makinede oluşturup çevrimdışı makineye taşıyabilirsiniz:
 
 ```bash
-docker save local-humanizer:1.2.0 -o humanizer-image.tar
+docker save local-humanizer:1.3.0 -o humanizer-image.tar
 # Dosyayı çevrimdışı makineye taşıdıktan sonra:
 docker load -i humanizer-image.tar
 docker compose up -d --no-build
@@ -101,6 +101,42 @@ npm run dev  # Kaynak değişikliklerinde sunucuyu yeniden başlatır
 `Refresh Models`, yeni modelleri ekler, kaybolanları “No longer on this server” olarak işaretler ve aynı endpoint için önceki aç/kapat seçimlerini korur. Yeniden gelen bir model önceki tercihini alır. Açıkça embedding/reranker/speech/OCR/guard/image-generation görünen modeller varsayılan kapalıdır. Metin de üretebilen vision modelleri açık gelebilir. Sınıflandırma isim/metadata sezgisidir; kullanılabilir her model manuel açılabilir.
 
 Boş model listesi bir çökme sebebi değildir: LLM sunucusunda bir model yükleyin ve listeyi yenileyin. Kapalı ya da kaldırılmış modelle üretim engellenir.
+
+## Local HIP engine
+
+**Engine → Local HIP · experimental**, `Qwen/Qwen3-4B-Base` üzerine yayımlanmış HIP LoRA adaptörünü kullanır. Yerel worker ayrı çalışır; mevcut LLM endpoint'i ve anahtarı değiştirilmez. Temiz kurulumda Connect yerine **Use local HIP instead** seçilebilir.
+
+Mac'te proje klasöründe kurulum:
+
+```bash
+python3 -m venv data/hip/.venv
+data/hip/.venv/bin/pip install -r scripts/hip-requirements.txt
+data/hip/.venv/bin/python scripts/setup-hip.py
+data/hip/.venv/bin/python scripts/hip_worker.py
+```
+
+Python 3.11+ gerekir; bu kurulum Python 3.14 üzerinde doğrulanmıştır. İlk kurulum yaklaşık **9.1 GB model ağırlığı** indirir; ortam/cache ek alan kullanır. Revision'lar sabittir, safetensors SHA-256 değerleri doğrulanır. Worker her başlangıçta dosyaları denetler, yalnızca yerel dosyaları açar; remote model code çalıştırmaz ve inference sırasında indirme yapmaz. `data/` Git/Docker build dışında kalır.
+
+Worker `127.0.0.1:18081` üzerinde çalışır. Apple GPU/MPS, NVIDIA CUDA veya CPU otomatik seçilir; GPU'da yayımlanmış bfloat16, CPU'da float32 kullanılır. Modelin disk boyutu çalışma belleği gereksinimi değildir; CPU kullanımı daha fazla bellek ve süre isteyebilir. Worker açık olduğu sürece model bellekte kalır; terminalinde Ctrl+C ile durdurulur. Mac Docker Desktop'taki uygulama `host.docker.internal:18081` üzerinden bağlanır. Node doğrudan çalışıyorsa `127.0.0.1:18081` kullanılır. Linux Docker bridge'in host loopback'e erişimi varsayılmaz; Linux'ta en basit yol uygulamayı ve worker'ı host üzerinde çalıştırmaktır. Gerekirse `HUMANIZER_HIP_URL` yerel HTTP worker origin'ini değiştirir.
+
+HIP yalnızca **İngilizce düz yazı**, belge başına en fazla **6.000 karakter / 1.024 input token** destekler. Kod, alıntı, citation, bağlantı, belirgin Markdown veya eşleşen protected term içeren metinlerde Connected LLM kullanılır. Kaynak sessizce kesilmez. Metni otomatik bölerek bağlamı kaybetmemek için HIP'te chunking yapılmaz.
+
+Bir veya en fazla iki geçiş seçilebilir. Her geçiş 180 saniye ve 1.024 yeni token ile sınırlıdır; tamamlanmayan çıktı reddedilir. Stop native worker'a iptal iletir. HIP eğitimindeki source/target formatını kullanır; genel chat prompt'u, tone/strength, skill metni veya ek editör çağrısı bu yola eklenmez. Bu kontroller Connected LLM için korunur. Her HIP geçişi özgün metne karşı yerel bilgi kontrollerinden geçer; bu kontroller anlam eşdeğerliğini kanıtlamaz. Deneysel model önemli iddiaları değiştirebilir; çıktıyı inceleyin.
+
+Kaynaklar: [HIP kodu (MIT)](https://github.com/YixuanEvenXu/humanization-by-iterative-paraphrasing), [adaptör (Apache-2.0)](https://huggingface.co/YixuanEvenXu/Qwen3-4B-Base-HIP-adapter). Tam upstream uygulaması ürüne kopyalanmadı; worker bu modelin eğitim formatını uygulayan küçük bir yerel servis olarak yazıldı.
+
+## İsteğe bağlı dış checker
+
+**Settings → External checker** altında GPTZero veya ZeroGPT.com seçilir. Varsayılan kapalıdır. Bu servislerin kendi API hesapları gerekir; LLM anahtarınız checker anahtarı olarak kullanılmaz. Anahtarları Settings'e girin; sohbete veya Git'e yazmayın. [GPTZero API kurulumu](https://support.gptzero.me/articles/5840144813-how-can-i-get-the-api-and-request-code-samples), [ZeroGPT Business API](https://api.zerogpt.com/docs/).
+
+- **Enable external checking:** seçilen servise çıktı gönderimini açar. **Also send and check the original text:** kaynak metni de gönderir. Dış servisin kullanım ücreti ve veri saklama politikası geçerlidir.
+- **Check automatically after a successful rewrite:** yerel rewrite bittikten sonra ayrı bir tarama başlatır. Yazmayı veya Copy'yi bekletmez. Manuel kontrol, sonuç altındaki External checker panelindedir. Cancel check yalnızca taramayı durdurur.
+- GPTZero'nun AI-only, mixed ve human-only sınıf olasılıkları ayrı gösterilir. ZeroGPT.com'un `fakePercentage` ölçümü kendi adıyla gösterilir; ortak/ortalama bir AI skoru üretilmez.
+- Skorlar metnin hash'i, zaman ve bildirilmişse detector sürümüne bağlıdır. Metin değişince eski sonuç kaldırılır. Başka sekmede servis/izin değişirse eski sekme gönderim yapamaz; yenileyerek yeni ayarı yükleyin.
+- Bir işlemde en fazla kaynak ve sonuç için birer tarama; otomatik retry/yeniden yazım yok. Aynı metin için 10 dakikalık bellekte önbellek vardır. En fazla 50 kayıt; metin diske yazılmaz. Detector sürümü servis tarafından değişebilir; önbellekli sonucun zamanı görünür.
+- Metin başına 50.000 karakter, işlem başına 30 saniye; servis hesabının daha düşük limitleri ayrıca geçerlidir. Limit/kota/izin/ağ hatası skor değildir; **0%** olarak sunulmaz. Metin kırpılmaz.
+
+Checker credential'ları ana LLM ayarlarından ayrı `data/detectors/` altında AES-256-GCM ile şifrelenir; dosyalar `0600`, dizin `0700` olur. Backup için bu klasördeki ayar ve key dosyalarını birlikte koruyun. API credential'ı olmadan başarılı canlı detector API doğrulaması yapılmış sayılmaz. ZeroGPT Business şeması JWT bildirir; hesap örneğiniz gerektiriyorsa ayrıca ApiKey girilebilir. Hesaba özgü auth uyumluluğu gerçek bir taramayla sınanmalıdır.
 
 ## OpenAI-compatible protokol
 
@@ -202,7 +238,7 @@ Tek paragraf/kod bloğu limiti aşıyorsa açık bir hata gösterilir. Paragraf 
 
 ## Gizlilik ve yerel depolama
 
-Metin yalnızca tarayıcı ve uygulama belleğinde, yeniden yazım sırasında da **sizin belirlediğiniz LLM endpoint'inde** bulunur. Uygulama metin geçmişi, request body logu veya hata içeriği logu tutmaz. Sayfa yenilenince metin alanları sıfırlanır. Bağladığınız LLM sunucusunun kendi log politikası ayrıca geçerlidir.
+Metin tarayıcı/uygulama belleğinde, yeniden yazım sırasında seçtiğiniz LLM endpoint'inde veya yerel HIP worker'da bulunur. Dış checker'ı açarsanız taranacak metin ayrıca seçilen servise gider. Uygulama metin geçmişi, request body logu veya hata içeriği logu tutmaz. Sayfa yenilenince metin alanları sıfırlanır. Bağladığınız sunucu ve dış servisin kendi log/veri saklama politikası ayrıca geçerlidir.
 
 Key tarayıcı localStorage'ına yazılmaz ve Settings API'sinden geri dönmez. Sunucuda AES-256-GCM ile şifrelenir; `credential.key` ve `settings.json` dosyaları `0600`, veri dizini `0700` izniyle saklanır. İşletim sistemi keychain bağımlılığı yoktur. **Tüm veri dizinine erişimi olan kişi key'i çözebilir**; bu çözüm ele geçirilmiş kullanıcı hesabına karşı koruma değildir. Başka bir Base URL'ye geçildiğinde eski key otomatik taşınmaz. Key'i silmek için “Remove the saved API key” seçip kaydedin.
 

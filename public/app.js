@@ -1,5 +1,6 @@
 import { initSkills } from './skills.js';
 import { clearWritingNotes, showWritingNotes } from './writing-notes.js';
+import { mountDetectors } from './detectors.js';
 
 const $ = id => document.getElementById(id);
 let config;
@@ -16,8 +17,8 @@ const strengths = {
 function message(id, text = '', error = false) {
   const element = $(id); element.textContent = text; element.hidden = !text; element.classList.toggle('error', error);
 }
-async function api(path, body, method = 'POST') {
-  const response = await fetch(path, { method, headers: { 'Content-Type': 'application/json', 'X-Humanizer-Request': '1' }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
+async function api(path, body, method = 'POST', signal) {
+  const response = await fetch(path, { method, signal, headers: { 'Content-Type': 'application/json', 'X-Humanizer-Request': '1' }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
   let data;
   try { data = await response.json(); } catch { throw new Error('The local app returned an invalid response. Restart the app and try again.'); }
   if (!response.ok) throw new Error(data.message || `Request failed (${response.status}).`);
@@ -31,25 +32,38 @@ function stats(text) {
 function updateTextState() {
   $('original-stats').textContent = stats($('original').value);
   $('output-stats').textContent = stats($('output').value);
-  $('humanize-button').disabled = busy || !$('original').value.trim() || !$('model-select').value;
+  $('humanize-button').disabled = busy || !$('original').value.trim() || (config?.engine.kind !== 'hip' && !$('model-select').value);
   $('clear-original').disabled = busy || !$('original').value;
   $('copy-output').disabled = busy || !verified || !$('output').value;
 }
 function renderMain() {
-  const connected = Boolean(config.baseUrl);
+  const isHip = config.engine.kind === 'hip';
+  const connected = Boolean(config.baseUrl) || isHip;
   $('onboarding').hidden = connected; $('workspace').hidden = !connected; $('open-settings').hidden = !connected;
   const select = $('model-select'); select.replaceChildren();
   const models = config.models.filter(m => m.enabled && m.available);
   if (!models.length) select.add(new Option('No enabled models', ''));
   for (const model of models) select.add(new Option(model.id, model.id));
   if (models.some(m => m.id === config.selectedModel)) select.value = config.selectedModel;
-  $('model-help').hidden = models.length > 0;
+  $('model-help').hidden = isHip || models.length > 0;
   $('strength-select').value = config.strength;
   $('strength-description').textContent = strengths[config.strength];
   $('tone-select').value = config.writing.tone;
   $('extra-review').checked = config.writing.review;
-  if (connected) { $('connection-label').textContent = new URL(config.baseUrl).host; $('connection-label').title = 'Configured server. Use Test Connection in Settings to check availability.'; }
+  $('engine-select').value = config.engine.kind; $('hip-rounds').value = config.engine.hipRounds;
+  $('hip-controls').hidden = !isHip;
+  for (const id of ['model-select','strength-select','tone-select','extra-review']) $(id).disabled = busy || isHip;
+  $('input-limit').textContent = isHip ? 'Up to 6,000 characters · English prose' : 'Up to 200,000 characters';
+  // Keep the whole pasted source; HIP's smaller limit is a validation error,
+  // never a browser maxlength truncation.
+  $('original').maxLength = 200000;
+  if (connected) { $('connection-label').textContent = isHip ? 'Local HIP · experimental' : new URL(config.baseUrl).host; $('connection-label').title = 'Selected rewriting engine.'; }
   updateTextState();
+}
+async function hipStatus() {
+  $('hip-status').textContent = 'Checking local worker…';
+  try {const result=await api('/api/hip/status',undefined,'GET'); $('hip-status').textContent=result.ready?`Worker ready · ${result.device}`:result.message;}
+  catch { $('hip-status').textContent='Local worker unavailable. See the setup guide.'; }
 }
 function renderModels() {
   $('model-count').textContent = config.models.filter(m => m.available).length;
@@ -92,6 +106,10 @@ async function buttonAction(buttonId, statusId, task, working) {
   finally { button.disabled = false; button.textContent = original; }
 }
 const skillsUI = initSkills({ api, saveSettings, getConfig: () => config });
+const detectorUI = mountDetectors({ settingsRoot:$('checker-settings'), resultRoot:$('checker-results'), api, getTexts:()=>({source:$('original').value,result:verified?$('output').value:''}) });
+$('use-hip').addEventListener('click',async()=>{try {await saveSettings({engine:{kind:'hip'}});void hipStatus();}catch(error){message('connect-status',friendly(error),true);}});
+$('engine-select').addEventListener('change',async()=>{try {await saveSettings({engine:{kind:$('engine-select').value}});if(config.engine.kind==='hip')void hipStatus();}catch(error){renderMain();message('rewrite-status',friendly(error),true);}});
+$('hip-rounds').addEventListener('change',async()=>{try {await saveSettings({engine:{hipRounds:Number($('hip-rounds').value)}});}catch(error){renderMain();message('rewrite-status',friendly(error),true);}});
 
 $('connect-form').addEventListener('submit', event => {
   event.preventDefault();
@@ -134,19 +152,22 @@ for (const id of ['tone-select', 'extra-review']) $(id).addEventListener('change
   const writing = id === 'tone-select' ? { tone: $(id).value } : { review: $(id).checked };
   try { await saveSettings({ writing }); } catch (error) { renderMain(); message('rewrite-status', friendly(error), true); }
 });
-$('original').addEventListener('input', updateTextState);
+$('original').addEventListener('input', () => {updateTextState();detectorUI.invalidate();});
 $('clear-original').addEventListener('click', () => { $('original').value = ''; $('output').value = ''; verified = false; clearWritingNotes(); $('output-state').textContent = 'Ready when you are'; message('rewrite-status'); updateTextState(); $('original').focus(); });
+$('clear-original').addEventListener('click',()=>detectorUI.invalidate('Text cleared.'));
 $('copy-output').addEventListener('click', async () => {
   try { await navigator.clipboard.writeText($('output').value); $('copy-label').textContent = 'Copied'; setTimeout(() => { $('copy-label').textContent = 'Copy'; }, 1600); }
   catch { $('output').focus(); $('output').select(); message('rewrite-status', 'Text selected. Press Ctrl+C or ⌘C to copy.'); }
 });
 function setBusy(value) {
   busy = value; document.body.classList.toggle('is-busy', value); $('original').readOnly = value;
-  for (const id of ['model-select', 'strength-select', 'tone-select', 'extra-review', 'open-settings']) $(id).disabled = value;
+  for (const id of ['engine-select','hip-rounds','open-settings']) $(id).disabled=value;
+  for (const id of ['model-select', 'strength-select', 'tone-select', 'extra-review']) $(id).disabled = value || config.engine.kind === 'hip';
   $('stop-button').hidden = !value; $('humanize-button').hidden = value; updateTextState();
 }
 async function humanize() {
-  if (busy || !$('original').value.trim() || !$('model-select').value) return;
+  if (busy || !$('original').value.trim() || (config.engine.kind !== 'hip' && !$('model-select').value)) return;
+  detectorUI.invalidate('Waiting for the new rewrite.');
   setBusy(true); verified = false; clearWritingNotes(); $('output').value = ''; $('output-state').textContent = 'Writing · not yet checked';
   message('rewrite-status', 'Rewriting… The live preview is provisional until local checks finish.');
   controller = new AbortController();
@@ -160,7 +181,7 @@ async function humanize() {
       if (!line.trim()) return;
       const event = JSON.parse(line);
       if (event.type === 'error') throw new Error(event.message);
-      if (event.type === 'progress') $('output-state').textContent = `${event.stage === 'review' ? 'Reviewing' : 'Writing'} ${event.current}/${event.total} · not yet checked`;
+      if (event.type === 'progress') $('output-state').textContent = `${event.stage === 'hip' ? 'HIP pass' : event.stage === 'review' ? 'Reviewing' : 'Writing'} ${event.current}/${event.total} · not yet checked`;
       if (event.type === 'delta') $('output').value += event.text;
       if (['replace', 'done'].includes(event.type)) $('output').value = event.text;
       if (statsTimer === null) statsTimer = setTimeout(() => { statsTimer = null; updateTextState(); }, 150);
@@ -179,7 +200,7 @@ async function humanize() {
   } catch (error) {
     $('output').value = ''; verified = false; clearWritingNotes(); $('output-state').textContent = 'No result';
     message('rewrite-status', controller.signal.aborted ? 'Stopped. Your original text is unchanged; the partial result was discarded.' : friendly(error), !controller.signal.aborted);
-  } finally { controller = null; setBusy(false); }
+  } finally { controller = null; setBusy(false); if(completed && verified)void detectorUI.check($('original').value,$('output').value,{automatic:true}); }
 }
 $('humanize-button').addEventListener('click', humanize);
 $('stop-button').addEventListener('click', () => controller?.abort());
@@ -187,5 +208,5 @@ document.addEventListener('keydown', event => {
   if ((event.metaKey || event.ctrlKey) && event.key === 'Enter' && !$('settings-dialog').open) { event.preventDefault(); humanize(); }
   if (event.key === 'Escape' && busy) controller?.abort();
 });
-try { config = await api('/api/settings', undefined, 'GET'); $('boot-status').hidden = true; renderMain(); }
+try { config = await api('/api/settings', undefined, 'GET'); $('boot-status').hidden = true; renderMain(); void detectorUI.load(); if(config.engine.kind==='hip')void hipStatus(); }
 catch (error) { $('boot-status').textContent = friendly(error); }

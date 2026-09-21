@@ -1,0 +1,123 @@
+{
+  "checkedAt": "2026-09-21T11:21:33.014Z",
+  "status": {
+    "ready": true,
+    "device": "mps",
+    "model": "Qwen3-4B-Base + HIP"
+  },
+  "seconds": 20.028,
+  "purpose": "Transport integration only: isolated app configuration, same source and seed; not a second paraphrasing pass or new quality candidate.",
+  "matchesDirectWorkerOutput": true,
+  "events": [
+    {
+      "type": "start",
+      "chunks": 1
+    },
+    {
+      "type": "progress",
+      "current": 1,
+      "total": 1,
+      "stage": "hip"
+    },
+    {
+      "type": "replace",
+      "text": "Artificial intelligence has become an integral part of the workplace and daily life. AI technologies are now being used to automate repetitive tasks and assist with more complex decision making. There are many benefits to artificial intelligence, such as efficiency. Artificial intelligence technologies allow tasks to be performed faster without the need for employees to dedicate much time or effort. Employees can then focus on more creative, strategic, or high value activities. However, there are also some concerns associated with the increased use of artificial intelligence. For example, issues around data privacy, algorithmic bias, job displacement, and the reliability of automated decisions are all debated. Organizations should weigh both the potential value and risks associated with adopting artificial intelligence technologies. Artificial intelligence can have significant value when responsibly implemented. When organizations use technology along with ethical concerns and human oversight, they can harness the benefits of artificial intelligence while minimizing negative impacts."
+    },
+    {
+      "type": "done",
+      "text": "Artificial intelligence has become an integral part of the workplace and daily life. AI technologies are now being used to automate repetitive tasks and assist with more complex decision making. There are many benefits to artificial intelligence, such as efficiency. Artificial intelligence technologies allow tasks to be performed faster without the need for employees to dedicate much time or effort. Employees can then focus on more creative, strategic, or high value activities. However, there are also some concerns associated with the increased use of artificial intelligence. For example, issues around data privacy, algorithmic bias, job displacement, and the reliability of automated decisions are all debated. Organizations should weigh both the potential value and risks associated with adopting artificial intelligence technologies. Artificial intelligence can have significant value when responsibly implemented. When organizations use technology along with ethical concerns and human oversight, they can harness the benefits of artificial intelligence while minimizing negative impacts.",
+      "engine": "hip",
+      "rounds": 1,
+      "chunks": 1,
+      "reviewed": false,
+      "tone": "HIP",
+      "skills": [],
+      "writingNotes": {
+        "before": {
+          "words": 141,
+          "sentences": 10,
+          "paragraphs": 4,
+          "sentenceLength": {
+            "min": 9,
+            "max": 19,
+            "average": 14.1
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        },
+        "after": {
+          "words": 152,
+          "sentences": 10,
+          "paragraphs": 1,
+          "sentenceLength": {
+            "min": 9,
+            "max": 23,
+            "average": 15.2
+          },
+          "signals": [
+            {
+              "id": "ceremonial",
+              "label": "Ceremonial phrasing",
+              "suggestion": "Check whether the phrase adds meaning or delays the point.",
+              "count": 0
+            },
+            {
+              "id": "transitions",
+              "label": "Stock transitions",
+              "suggestion": "Keep transitions that express a real relationship; trim redundant ones.",
+              "count": 0
+            },
+            {
+              "id": "inflation",
+              "label": "Inflated wording",
+              "suggestion": "Use the supported fact rather than an unearned claim of significance.",
+              "count": 0
+            },
+            {
+              "id": "wrappers",
+              "label": "Assistant-style wrappers",
+              "suggestion": "Remove assistant commentary that is not part of the document.",
+              "count": 0
+            },
+            {
+              "id": "openings",
+              "label": "Repeated sentence openings",
+              "count": 0,
+              "suggestion": "Three adjacent sentences begin alike. Keep deliberate repetition; vary mechanical repetition."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

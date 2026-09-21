@@ -8,9 +8,12 @@ import { AppError, discoverModels, rewrite } from './provider.mjs';
 import { protectText, validateFacts, splitText } from './preservation.mjs';
 import { loadBuiltinSkills, skillCatalog, resolveSkills, parseSkill, importSkill, removeSkill, SKILL_LIMITS } from './skills.mjs';
 import { compareWriting } from './style-analysis.mjs';
+import { HipClient, hipInput, runHip, defaultHipUrl } from './hip.mjs';
+import { DetectorStore, DetectorService } from './detectors.mjs';
 
 const publicDir = fileURLToPath(new URL('../public/', import.meta.url));
 const files = new Map([['/', ['index.html', 'text/html']], ['/styles.css', ['styles.css', 'text/css']], ['/app.js', ['app.js', 'text/javascript']], ['/skills.js', ['skills.js', 'text/javascript']], ['/writing-notes.js', ['writing-notes.js', 'text/javascript']], ['/humanizer-skills.zip', ['humanizer-skills.zip', 'application/zip']]]);
+files.set('/detectors.js', ['detectors.js', 'text/javascript']);
 const bad = message => new AppError(message, 400, 'invalid_input');
 function send(res, status, value) { res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8' }); res.end(JSON.stringify(value)); }
 async function readJson(req) {
@@ -28,6 +31,13 @@ function numeric(value, min, max, label, integer = false) {
 }
 function settingsPatch(body, config, builtins) {
   const patch = {};
+  if ('engine' in body) {
+    const value = body.engine;
+    if (!value || typeof value !== 'object' || Array.isArray(value) || Object.keys(value).some(k => !['kind','hipRounds'].includes(k))) throw bad('Invalid engine preferences.');
+    if ('kind' in value && !['connected','hip'].includes(value.kind)) throw bad('Select a supported engine.');
+    if ('hipRounds' in value && ![1,2].includes(value.hipRounds)) throw bad('HIP supports one or two passes.');
+    patch.engine = { ...config.engine, ...value };
+  }
   if ('writing' in body) {
     if (!body.writing || typeof body.writing !== 'object' || Array.isArray(body.writing) || Object.keys(body.writing).some(key => !['tone', 'review'].includes(key))) throw bad('Invalid writing preferences.');
     patch.writing = { ...config.writing };
@@ -85,8 +95,11 @@ function connection(body, config) {
   return { baseUrl, apiKey: body.apiKey ?? (baseUrl === config.baseUrl ? config.apiKey : '') };
 }
 
-export async function createApp({ dataDir = process.env.HUMANIZER_DATA_DIR || resolve('data') } = {}) {
+export async function createApp({ dataDir = process.env.HUMANIZER_DATA_DIR || resolve('data'), hipUrl = defaultHipUrl, detectorFetchImpl } = {}) {
   const store = new ConfigStore(dataDir); await store.init();
+  const hip = new HipClient(hipUrl);
+  const detectorStore = new DetectorStore(join(dataDir,'detectors')); await detectorStore.init();
+  const detectorService = new DetectorService(detectorStore,{fetchImpl:detectorFetchImpl});
   const builtins = await loadBuiltinSkills();
   const publicSkills = () => ({ items: skillCatalog(store.get().skills, builtins), enabledIds: store.get().skills.enabledIds, limits: SKILL_LIMITS });
   const allowedHosts = new Set(['localhost', '127.0.0.1', '[::1]', ...(process.env.HUMANIZER_ALLOWED_HOSTS || '').split(',').map(h => h.trim()).filter(Boolean)]);
@@ -103,6 +116,8 @@ export async function createApp({ dataDir = process.env.HUMANIZER_DATA_DIR || re
       if (req.headers.origin && req.headers.origin !== `http://${req.headers.host}`) throw new AppError('Cross-origin requests are not allowed.', 403);
       const route = requestUrl.pathname;
       if (req.method === 'GET' && route === '/api/health') return send(res, 200, { status: 'ok' });
+      if (req.method === 'GET' && route === '/api/hip/status') return send(res, 200, await hip.status());
+      if (req.method === 'GET' && route === '/api/detectors/settings') return send(res,200,detectorStore.public());
       if (req.method === 'GET' && route === '/api/skills') return send(res, 200, publicSkills());
       if (req.method === 'GET' && route === '/api/skills/download') {
         const skill = skillCatalog(store.get().skills, builtins).find(s => s.id === requestUrl.searchParams.get('id'));
@@ -117,6 +132,13 @@ export async function createApp({ dataDir = process.env.HUMANIZER_DATA_DIR || re
       }
       if (!['POST', 'PATCH'].includes(req.method)) return send(res, 404, { message: 'Endpoint not found.' });
       const body = await readJson(req); const config = store.get();
+      if (req.method === 'PATCH' && route === '/api/detectors/settings') return send(res,200,await detectorStore.update(body));
+      if (req.method === 'POST' && route === '/api/detectors/check') {
+        const controller=new AbortController(); res.on('close',()=>controller.abort());
+        const result=await detectorService.check(body,{signal:controller.signal});
+        if(!res.destroyed)send(res,200,result);
+        return;
+      }
       if (req.method === 'POST' && route === '/api/skills/preview') {
         try { return send(res, 200, parseSkill(body.markdown)); } catch (error) { throw bad(error.message); }
       }
@@ -150,6 +172,19 @@ export async function createApp({ dataDir = process.env.HUMANIZER_DATA_DIR || re
       }
       if (req.method === 'PATCH' && route === '/api/settings') return send(res, 200, await store.update(current => settingsPatch(body, current, builtins)));
       if (req.method === 'POST' && route === '/api/humanize') {
+        if (config.engine.kind === 'hip') {
+          if (active) throw new AppError('A rewrite is already running. Stop it or wait for it to finish.',409);
+          hipInput(body.text,config.humanizer.protectedTerms);
+          active=true; const controller=new AbortController();
+          res.on('close',()=>controller.abort());
+          res.writeHead(200,{'Content-Type':'application/x-ndjson; charset=utf-8','X-Accel-Buffering':'no'});
+          const emit=event=>{if(!res.destroyed)res.write(JSON.stringify(event)+'\n');};
+          emit({type:'start',chunks:1});
+          try { await runHip(hip,body.text,config,emit,controller.signal); }
+          catch(error) {if(!controller.signal.aborted)emit({type:'error',message:error instanceof AppError?error.message:'HIP rewrite failed. Result discarded.'});}
+          finally {active=false;res.end();}
+          return;
+        }
         if (!config.baseUrl) throw bad('Connect your LLM first.');
         if (active) throw new AppError('A rewrite is already running. Stop it or wait for it to finish.', 409);
         if (typeof body.text !== 'string' || !body.text.trim()) throw bad('Enter some original text.');
