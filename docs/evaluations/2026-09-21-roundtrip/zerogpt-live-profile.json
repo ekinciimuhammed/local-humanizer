@@ -1,0 +1,10 @@
+{
+  "id": "live-profile",
+  "site": "https://www.zerogpt.com/",
+  "method": "local-browser-helper-visible-page",
+  "submittedText": "AI now plays a central part in our jobs and daily routines. These tools change how people and groups work by handling dull, repeat tasks and helping with tough choices.\n\nOne main plus is that work gets done faster. Systems that think can now finish jobs that used to take a lot of manual effort and time. This frees up staff to spend their time on imaginative work, long-term planning, and tasks that are more important.\n\nBut using AI more often brings up serious worries. People still argue about whether data stays private, if systems treat people unfairly in how they reach decisions, if workers will lose their jobs, and if automated choices can be trusted. Groups need to weigh the good chances against the possible dangers of using these tools.\n\nAI can bring great rewards if it is put into practice in a way that is fair and careful. When groups mix new tech with a moral approach and keep people watching and retaining control, they can use AI while cutting down on possible bad results.",
+  "textHash": "fd87826afffb65eaf190112ae9772e05a215625973e148a0a8e971503ab5951c",
+  "percent": 0,
+  "error": null,
+  "checkedAt": "2026-09-21T12:56:37.156Z"
+}

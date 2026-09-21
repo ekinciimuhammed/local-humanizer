@@ -1,10 +1,13 @@
-// Explicit live smoke using only the already-public general AI example and generated control.
+// Explicit live smoke using the general AI example and a saved research output.
 import {readFile,writeFile,mkdtemp,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {createApp} from '../src/server.mjs';
-const directory='docs/evaluations/2026-09-21-expansion';
-const sample=JSON.parse(await readFile(join(directory,'editor-faithful.json'),'utf8'));
+if(process.argv[2] && process.argv[2]!=='--live-profile')throw Error('Unknown research fixture');
+const live=process.argv[2]==='--live-profile';
+const directory=live?'docs/evaluations/2026-09-21-roundtrip':'docs/evaluations/2026-09-21-expansion';
+const sample=JSON.parse(await readFile(join(directory,live?'live-profile.json':'editor-faithful.json'),'utf8'));
+if(live&&(!sample.complete||sample.error))throw Error('No completed live-app output');
 const data=await mkdtemp(join(tmpdir(),'browser-checker-smoke-'));
 const app=await createApp({dataDir:data});
 try{

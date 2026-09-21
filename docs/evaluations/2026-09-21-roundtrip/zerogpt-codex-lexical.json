@@ -1,0 +1,10 @@
+{
+  "id": "codex-lexical",
+  "site": "https://www.zerogpt.com/",
+  "method": "local-browser-helper-visible-page",
+  "submittedText": "Tasks that once took a lot of time and hands-on work can now be completed faster with AI systems. By taking over repetitive tasks, these systems allow employees to spend more time on creative work, planning what to do and why, and activities that contribute more. AI is now a central part of both work and everyday life. Its ability to automate repeated work and help with complicated decisions is changing how people and organizations get things done.\n\nAs AI becomes more widely used, four important questions remain under debate. How is people’s private data protected? Do systems treat people unfairly in how they reach decisions? Will people lose jobs as AI takes over their work? Can decisions made by automated systems be trusted? These questions matter when organizations decide whether and how to adopt AI. They should carefully weigh both what it could help them achieve and the risks it might bring.\n\nAI can bring substantial benefits when organizations put it to use with care. Using it well means combining new tools and methods with attention to what is right and fair, while people keep watch and retain control. Together, these conditions allow organizations to use AI while reducing the harm it might cause.",
+  "textHash": "78a1eb8837b902c9b90077290e2e441f5a048a4bd3f8e1e9f21e604c935898ae",
+  "percent": 33,
+  "error": null,
+  "checkedAt": "2026-09-21T12:53:00.290Z"
+}

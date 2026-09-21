@@ -2,6 +2,8 @@
 
 Yerelde sunulan, kendi OpenAI-compatible LLM sunucunuzla çalışan bir metin düzenleme uygulaması. İki metin alanı, otomatik model keşfi ve üç yeniden yazım seviyesi. Amaç anlamı koruyarak daha doğal yazmak; detector skoru yazım kalitesi veya anlam doğruluğu kanıtı değildir.
 
+**Son doğrulama:** Canlı uygulamanın verdiğiniz örnekten ürettiği ham çıktı, üç ayrı ZeroGPT taramasında **%0** aldı; aynı karşılaştırmada kaynak **%100** aldı. [Metin, ayarlar, ekran görüntüsü ve sınırlar](docs/evaluations/2026-09-21-roundtrip/REPORT.md). Önemli anlam kontrolü geçti; küçük ifade sorunları var. Bu tek örnek, her yeni üretimde veya başka checker’da sıfır garantisi değildir.
+
 **1.5.0:** Yeni **Rewrite → Check → Refine** çalışma alanı, Connected LLM için **Plainspoken · experimental** tonu ve API anahtarı gerektirmeyen isteğe bağlı **ZeroGPT public website (experimental)** checker. Web checker ayrı bir yerel tarayıcı yardımcısı kullanır; varsayılan kapalıdır ve açıldığında metni dış siteye gönderir. Bu seçenekler daha düşük skor veya anlam korunması garantisi vermez. [Yeni ölçümler](docs/evaluations/2026-09-21-expansion/REPORT.md): gerçek uygulamada örnek metin %100 → %22,4; iki yeni doğrulama metninden biri iyileşirken diğeri kötüleşti. Test ayarları ve başarısız sonuçlar raporda birlikte tutulur.
 
 **1.4.0:** Önce ham metin, ardından ayrı bir ikinci modelle noktalama önerisi. Ham/düzeltilmiş sürümler ayrı tutulur; HIP için 1/2/4 sabit geçiş seçilebilir. [Yeni gerçek ölçümler](docs/evaluations/2026-09-21-followup/REPORT.md): aynı örnekte dört geçişli ham metin %45,9, kaynakla karşılaştırmalı araştırma düzeltmesi %66,5 AI aldı. Ham metinde anlam kaymaları var; genel başarı kanıtı yok.

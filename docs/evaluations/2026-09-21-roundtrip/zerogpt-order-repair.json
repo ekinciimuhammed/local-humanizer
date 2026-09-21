@@ -1,0 +1,10 @@
+{
+  "id": "order-repair",
+  "site": "https://www.zerogpt.com/",
+  "method": "local-browser-helper-visible-page",
+  "submittedText": "AI could create a lot of value when organizations use it responsibly. This means mixing new tools with a focus on what is right and wrong, while people keep watch and retain control. Doing this helps organizations use AI while reducing potential negative effects.\n\nAI is central now in work and everyday life, changing how people and organizations operate. It saves time and makes tasks faster by handling repeating tasks and helping with hard choices. This lets workers spend more time on creative, strategic, and high-value activities.\n\nAs use grows, people still debate several risks: Is private data safe? Does the system treat people unfairly when making decisions? Will people lose their jobs? Can we trust the decisions the machine makes? Organizations must weigh these dangers against the benefits before using these tools.",
+  "textHash": "679d291430f8c73d363452e7b4a792ec3e318243470e5abc3b8fd2e51bf3f72b",
+  "percent": 14.7,
+  "error": null,
+  "checkedAt": "2026-09-21T12:48:24.028Z"
+}

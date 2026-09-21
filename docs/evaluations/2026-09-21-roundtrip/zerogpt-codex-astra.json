@@ -1,0 +1,10 @@
+{
+  "id": "codex-astra",
+  "site": "https://www.zerogpt.com/",
+  "method": "local-browser-helper-visible-page",
+  "submittedText": "AI can complete repetitive tasks faster than people could with substantial time and manual effort, freeing employees to focus on more creative, strategic, and high-value work. It also supports complex decision-making. These capabilities are changing how individuals and organizations operate, and artificial intelligence is now an integral part of both work and everyday life.\n\nAs its use grows, so do concerns about data privacy, algorithmic bias, job displacement, and the reliability of automated decisions. These issues remain subjects of debate, and organizations considering AI adoption should weigh its opportunities alongside its potential risks.\n\nResponsible implementation has the potential to create significant value. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing its possible negative effects.",
+  "textHash": "78113158b10d05074a006128bc70888603f1849664a9586cb2ec3e5df5ecae36",
+  "percent": 100,
+  "error": null,
+  "checkedAt": "2026-09-21T12:52:21.691Z"
+}

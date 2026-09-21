@@ -1,0 +1,10 @@
+{
+  "id": "codex-writing",
+  "site": "https://www.zerogpt.com/",
+  "method": "local-browser-helper-visible-page",
+  "submittedText": "Artificial intelligence is becoming part of how people work and manage everyday life. It can handle repetitive tasks and support complex decisions, changing how individuals and organizations operate. Work that once took considerable time and manual effort can be done faster, giving employees more room to focus on creative, strategic, and high-value activities.\n\nThat promise comes with concerns about data privacy, algorithmic bias, job displacement, and the reliability of automated decisions. These issues remain open to debate, so organizations should weigh the opportunities against the risks before adopting AI technologies. Used responsibly, with ethical considerations and human oversight alongside technological innovation, AI has the potential to create significant value while reducing possible negative effects.",
+  "textHash": "03ba5a33cd91fe8aac814149a6b0550b5d21c8bd805da969de7d48a4eac6f7ce",
+  "percent": 100,
+  "error": null,
+  "checkedAt": "2026-09-21T12:50:52.784Z"
+}

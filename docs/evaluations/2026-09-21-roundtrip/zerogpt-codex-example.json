@@ -1,0 +1,10 @@
+{
+  "id": "codex-example",
+  "site": "https://www.zerogpt.com/",
+  "method": "local-browser-helper-visible-page",
+  "submittedText": "AI is now an integral part of work and everyday life. It automates repetitive tasks and helps with complex decisions, changing how individuals and organizations get things done.\n\nOne of the main benefits is efficiency. Work that once took a lot of time and manual effort can now be done faster with intelligent systems. That gives employees more room to focus on work that calls for creativity or strategic thinking, and on activities that bring more value.\n\nBut as AI use grows, it also raises important concerns. Data privacy, algorithmic bias, job displacement and the reliability of automated decisions are all still being debated. Organizations considering AI need to look carefully at what it could help them do and at the risks that could come with adopting it.\n\nAI has the potential to create significant value. How it's put to use matters, though. Responsible use means combining technological innovation with ethical considerations and human oversight. With those in place, organizations can use AI while reducing its potential negative effects.",
+  "textHash": "9acc11ac308b332ddd7538008ff25ca46a9bf9c313850ead1dfac3502243acda",
+  "percent": 100,
+  "error": null,
+  "checkedAt": "2026-09-21T12:54:37.489Z"
+}

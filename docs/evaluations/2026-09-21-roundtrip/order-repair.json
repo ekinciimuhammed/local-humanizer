@@ -1,0 +1,17 @@
+{
+  "id": "order-repair",
+  "source": "Artificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.\n\nA key benefit of artificial intelligence is improved efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. This allows employees to focus on more creative, strategic, and high-value activities.\n\nHowever, growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.\n\nArtificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.",
+  "parent": "lexical-guided-repair",
+  "input": "AI is central now in work and everyday life, changing how people and organizations operate. It saves time and makes tasks faster by handling repeating tasks and helping with hard choices. This lets workers spend more time on creative, strategic, and high-value activities.\n\nAs use grows, people still debate several risks: Is private data safe? Does the system treat people unfairly when making decisions? Will people lose their jobs? Can we trust the decisions the machine makes? Organizations must weigh these dangers against the benefits before using these tools.\n\nAI could create a lot of value when organizations use it responsibly. This means mixing new tools with a focus on what is right and wrong, while people keep watch and retain control. Doing this helps organizations use AI while reducing potential negative effects.",
+  "order": [
+    2,
+    0,
+    1
+  ],
+  "output": "AI could create a lot of value when organizations use it responsibly. This means mixing new tools with a focus on what is right and wrong, while people keep watch and retain control. Doing this helps organizations use AI while reducing potential negative effects.\n\nAI is central now in work and everyday life, changing how people and organizations operate. It saves time and makes tasks faster by handling repeating tasks and helping with hard choices. This lets workers spend more time on creative, strategic, and high-value activities.\n\nAs use grows, people still debate several risks: Is private data safe? Does the system treat people unfairly when making decisions? Will people lose their jobs? Can we trust the decisions the machine makes? Organizations must weigh these dangers against the benefits before using these tools.",
+  "method": "whole-paragraph-permutation",
+  "complete": true,
+  "error": null,
+  "lexicalEdits": 0,
+  "punctuationEdits": 0
+}

@@ -1,0 +1,18 @@
+{
+  "id": "order-app",
+  "source": "Artificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.\n\nA key benefit of artificial intelligence is improved efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. This allows employees to focus on more creative, strategic, and high-value activities.\n\nHowever, growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.\n\nArtificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.",
+  "parent": "lexapp-overview",
+  "input": "AI is now a part of how we work and live every day. These technologies change how people and groups function by handling dull, repeating chores and helping with hard choices.\n\nOne main plus is that work gets done faster. Systems that can think now handle tasks that used to take a lot of time and hand-work. Because of this, staff can spend more time on imaginative work, long-term planning, and tasks that are more important.\n\nBut using AI more often brings up big worries. People are still debating things like the privacy of data, whether the systems treat people unfairly in how they reach decisions, people losing their jobs, and if you can trust a decision made by a machine. Groups need to think hard about both the wins and the possible dangers of using AI.\n\nAI can bring great benefits if it is put to use in a fair and careful way. If groups mix new tech with a focus on what is right and keep people watching and retaining control, they can use AI while cutting down on the possible bad results.",
+  "order": [
+    1,
+    0,
+    2,
+    3
+  ],
+  "output": "One main plus is that work gets done faster. Systems that can think now handle tasks that used to take a lot of time and hand-work. Because of this, staff can spend more time on imaginative work, long-term planning, and tasks that are more important.\n\nAI is now a part of how we work and live every day. These technologies change how people and groups function by handling dull, repeating chores and helping with hard choices.\n\nBut using AI more often brings up big worries. People are still debating things like the privacy of data, whether the systems treat people unfairly in how they reach decisions, people losing their jobs, and if you can trust a decision made by a machine. Groups need to think hard about both the wins and the possible dangers of using AI.\n\nAI can bring great benefits if it is put to use in a fair and careful way. If groups mix new tech with a focus on what is right and keep people watching and retaining control, they can use AI while cutting down on the possible bad results.",
+  "method": "whole-paragraph-permutation",
+  "complete": true,
+  "error": null,
+  "lexicalEdits": 0,
+  "punctuationEdits": 0
+}

@@ -1,0 +1,10 @@
+{
+  "id": "japanese",
+  "site": "https://www.zerogpt.com/",
+  "method": "local-browser-helper-visible-page",
+  "submittedText": "AI has become an essential part of both our professional and daily lives. By automating repetitive tasks and supporting complex decision-making, AI technology is transforming how individuals and organizations operate.\n\nOne of the primary benefits of AI is increased efficiency. Tasks that once required significant time and manual effort can now be completed much faster thanks to intelligent systems. This allows employees to focus on higher-value activities that are more creative and strategic.\n\nHowever, as the use of AI spreads, significant concerns have emerged. Ongoing debates center on issues such as data privacy, algorithmic bias, job loss, and the reliability of automated decision-making. Organizations should carefully weigh both the opportunities and the potential risks associated with implementing AI technology.\n\nIf deployed responsibly, AI has the potential to create immense value. By combining technological innovation with ethical considerations and human oversight, organizations can leverage AI while minimizing potential negative impacts.",
+  "textHash": "84e8212401927329639c7d8d18f9afb894a3da55c0d94670b89efd1c889fbfe2",
+  "percent": 100,
+  "error": null,
+  "checkedAt": "2026-09-21T12:46:37.578Z"
+}

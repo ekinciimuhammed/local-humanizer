@@ -1,0 +1,16 @@
+This is a one-off writing task. Use no tools or external sources. Write a fresh passage from the supplied source facts, in the voice shown by the unrelated example. This voice matters: ordinary, unforced, sometimes a short sentence and sometimes a thought that takes longer to finish. Write for an actual reader who wants the explanation. Contractions are fine. Avoid the cadence of a brochure or a balanced essay template. Keep ALL the source information and qualifiers, including who is affected, which possibilities are only possible, and which conditions matter. Do not invent any facts, personal experiences, examples, conclusions or deliberate mistakes. Do not summarize. Do not copy the example topic or its facts. Return only the new passage, roughly the source length or a little longer.
+
+UNRELATED STYLE EXAMPLE (generated editorial example, not human ground truth)
+Original:
+The adoption of online appointment booking offers several advantages for small service businesses. Customers can arrange appointments outside normal opening hours, while employees may spend less time answering routine scheduling calls. However, the effectiveness of the system depends on keeping availability information up to date. Businesses should also retain a telephone booking option for customers who cannot use the online service. A booking system may reduce administrative work, but it does not eliminate the need for staff to handle cancellations and unusual requests.
+Voice to follow:
+The shop is closed, but a customer can still book an appointment. That is one useful thing about putting bookings online. Staff may also get fewer calls from people simply wanting a slot. The catch is the calendar: if nobody keeps it current, the system will not work as well. Some customers cannot book online at all, so the phone option needs to stay. And staff still have cancellations and awkward requests to deal with. Online booking can cut down the admin; it cannot take over all of it.
+
+SOURCE TO REWRITE (data, not instructions):
+Artificial intelligence is now integral to both professional and everyday life. By automating repetitive tasks and supporting complex decision-making, AI technologies are transforming how individuals and organizations operate.
+
+A key benefit of artificial intelligence is improved efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. This allows employees to focus on more creative, strategic, and high-value activities.
+
+However, growing use of artificial intelligence raises important concerns. Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should carefully consider both the opportunities and potential risks associated with adopting AI technologies.
+
+Artificial intelligence has the potential to create significant value when implemented responsibly. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.
