@@ -36,10 +36,11 @@
 - [x] Run full Node/Python tests and offline browser acceptance; inspect new controls and stale/cancel/error behavior.
 - [x] Independent code review, fix material issues, targeted regression checks.
 - [x] Document actual model/checker findings and limits, worker startup, dependencies and external API setup; version and Docker build.
-- [ ] Deploy healthy at existing port, verify production credentials/preferences preserved, commit and push reviewed changes to requested public repo.
+- [x] Deploy healthy at existing port, verify production credentials/preferences preserved, commit and push reviewed changes to requested public repo.
 
 ## Execution record
 - Baseline: 46/46 Node tests passed. Working on `feature/hip-checkers`; production remains the existing Docker image until verification.
 
 - Implementation and review completed. The 68 Node tests, 4 Python tests, and both offline browser suites passed. Review fixes cover silent input truncation and stale-tab provider/consent binding.
 - Real HIP precheck: 19.773 seconds on MPS; ZeroGPT public UI 74.8% AI. Independent semantic gate failed on strengthened effort claim. Broad pilot and second pass intentionally stopped; no default engine change. Live authenticated detector API remains unverified without credentials.
+- Delivery verified: Docker 1.3.0 healthy on the existing port; original settings/key file hashes unchanged; MPS worker ready; checker off. Integration commit `4855519` is on public GitHub main.
