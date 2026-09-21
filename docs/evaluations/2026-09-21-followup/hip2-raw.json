@@ -1,0 +1,11 @@
+{
+  "text": "Artificial intelligence (AI) has become an important aspect of the workplace and in our daily lives. AI is being used in the workplace to automate repetitive tasks and to help make more complicated decisions. There are a lot of benefits to using AI. It can be used to make tasks more efficient. The use of AI can make tasks faster without the need to dedicate time or effort from the employees themselves. They can then focus on more creative or strategic tasks. There are also some concerns associated with the growing use of AI. Concerns such as data privacy, algorithmic bias, job displacement and the reliability of automated decision making have been raised. Organizations should carefully consider both the benefits and potential risks of using AI technologies. Artificial intelligence can provide significant value when used responsibly. Organizations that use technology along with ethical considerations and human judgement can use AI to maximize the benefits and minimize negative effects.",
+  "seconds": 31.028,
+  "inputTokens": 184,
+  "outputTokens": 180,
+  "device": "mps",
+  "model": "YixuanEvenXu/Qwen3-4B-Base-HIP-adapter",
+  "baseRevision": "906bfd4b4dc7f14ee4320094d8b41684abff8539",
+  "adapterRevision": "cb903e699da2fb063c1b4fa6f93147f7f9d8e6af",
+  "seed": 43
+}

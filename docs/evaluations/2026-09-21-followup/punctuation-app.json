@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-09-21T11:52:51.341Z",
+  "seconds": 0.3,
+  "model": "Qwen3.5-122B-A10B",
+  "input": "Artificial intelligence is now integral to both professional and everyday life. AI technologies are now being used to automate repetitive tasks and assist with more complex decision making. There are many benefits to artificial intelligence, such as efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. Employees can then focus on more creative, strategic, or high value activities. However, there are also some concerns associated with the increased use of artificial intelligence. For example, Issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should weigh both the potential value and risks associated with adopting artificial intelligence technologies. Artificial intelligence can have significant value when responsibly implemented. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.",
+  "result": {
+    "text": "Artificial intelligence is now integral to both professional and everyday life. AI technologies are now being used to automate repetitive tasks and assist with more complex decision-making. There are many benefits to artificial intelligence, such as efficiency. Tasks once requiring significant time and manual effort can now be completed faster with intelligent systems. Employees can then focus on more creative, strategic, or high-value activities. However, there are also some concerns associated with the increased use of artificial intelligence. For example, issues such as data privacy, algorithmic bias, job displacement, and the reliability of automated decisions continue to generate debate. Organizations should weigh both the potential value and risks associated with adopting artificial intelligence technologies. Artificial intelligence can have significant value when responsibly implemented. By combining technological innovation with ethical considerations and human oversight, organizations can use AI while reducing potential negative effects.",
+    "changed": true
+  },
+  "matchesMeasuredCleanup": true,
+  "productionSettingsTouched": false
+}

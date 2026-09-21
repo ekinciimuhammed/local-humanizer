@@ -1,0 +1,10 @@
+[
+  {
+    "stage": "hip1-repair",
+    "model": "Qwen3.5-122B-A10B",
+    "maxTokens": 4096,
+    "result": "incomplete response; no candidate or detector scan",
+    "limitation": "Initial probe threw before recording the response finish reason; truncation suspected, not established.",
+    "next": "One technical retry with existing production maxTokens 8192; retained same model, prompt and temperature. No additional HIP generation."
+  }
+]

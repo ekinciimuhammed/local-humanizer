@@ -9,6 +9,7 @@ let controller = null;
 let verified = false;
 let pendingSettings = Promise.resolve();
 let statsTimer = null;
+let versions = null;
 const strengths = {
   Light: 'A light touch. Mostly your original wording.',
   Balanced: 'Natural phrasing, faithful to the original.',
@@ -35,6 +36,10 @@ function updateTextState() {
   $('humanize-button').disabled = busy || !$('original').value.trim() || (config?.engine.kind !== 'hip' && !$('model-select').value);
   $('clear-original').disabled = busy || !$('original').value;
   $('copy-output').disabled = busy || !verified || !$('output').value;
+  $('punctuation-panel').hidden = !verified || !versions;
+  $('punctuation-button').disabled = busy || !verified || !versions || !config?.baseUrl || !$('punctuation-model').value;
+  $('punctuation-model').disabled = busy;
+  $('output-version').disabled = busy;
 }
 function renderMain() {
   const isHip = config.engine.kind === 'hip';
@@ -45,6 +50,11 @@ function renderMain() {
   if (!models.length) select.add(new Option('No enabled models', ''));
   for (const model of models) select.add(new Option(model.id, model.id));
   if (models.some(m => m.id === config.selectedModel)) select.value = config.selectedModel;
+  const punctuationSelect=$('punctuation-model'), selectedSecond=punctuationSelect.value;
+  punctuationSelect.replaceChildren();
+  if(!models.length)punctuationSelect.add(new Option('Connect a model in Settings',''));
+  for(const model of models)punctuationSelect.add(new Option(model.id,model.id));
+  punctuationSelect.value=models.some(m=>m.id===selectedSecond)?selectedSecond:config.selectedModel;
   $('model-help').hidden = isHip || models.length > 0;
   $('strength-select').value = config.strength;
   $('strength-description').textContent = strengths[config.strength];
@@ -153,6 +163,32 @@ for (const id of ['tone-select', 'extra-review']) $(id).addEventListener('change
   try { await saveSettings({ writing }); } catch (error) { renderMain(); message('rewrite-status', friendly(error), true); }
 });
 $('original').addEventListener('input', () => {updateTextState();detectorUI.invalidate();});
+$('punctuation-model').addEventListener('change',updateTextState);
+function clearVersions(){versions=null;$('version-control').hidden=true;$('output-version').value='raw';message('punctuation-status');}
+$('output-version').addEventListener('change',()=>{
+  if(busy||!versions)return;
+  $('output').value=$('output-version').value==='punctuation'?versions.punctuation:versions.raw;
+  detectorUI.invalidate('Output version changed. Check this version separately.');
+  clearWritingNotes();$('output-state').textContent=$('output-version').value==='raw'?'Raw rewrite':'Punctuation suggestion';updateTextState();
+});
+async function suggestPunctuation(){
+  if(busy||!verified||!versions||!$('punctuation-model').value)return;
+  const snapshot=versions;setBusy(true);controller=new AbortController();
+  message('punctuation-status','Checking punctuation with the second model…');
+  try{
+    const result=await api('/api/punctuation',{text:snapshot.raw,model:$('punctuation-model').value},'POST',controller.signal);
+    if(versions!==snapshot)return;
+    versions.punctuation=result.text;$('version-control').hidden=!result.changed;
+    // Keep the currently displayed raw draft until the user selects the suggestion.
+    $('output-version').value='raw';$('output').value=versions.raw;
+    detectorUI.invalidate('Punctuation suggestion available. Check each displayed version separately.');
+    clearWritingNotes();$('output-state').textContent='Raw rewrite';
+    message('punctuation-status',result.changed?'Punctuation suggestion ready':'No punctuation changes suggested. Raw rewrite kept.');
+  }catch(error){message('punctuation-status',controller.signal.aborted?'Punctuation check stopped. Your rewrite is kept.':friendly(error),!controller.signal.aborted);}
+  finally{controller=null;setBusy(false);}
+}
+$('punctuation-button').addEventListener('click',suggestPunctuation);
+$('clear-original').addEventListener('click',clearVersions);
 $('clear-original').addEventListener('click', () => { $('original').value = ''; $('output').value = ''; verified = false; clearWritingNotes(); $('output-state').textContent = 'Ready when you are'; message('rewrite-status'); updateTextState(); $('original').focus(); });
 $('clear-original').addEventListener('click',()=>detectorUI.invalidate('Text cleared.'));
 $('copy-output').addEventListener('click', async () => {
@@ -168,6 +204,7 @@ function setBusy(value) {
 async function humanize() {
   if (busy || !$('original').value.trim() || (config.engine.kind !== 'hip' && !$('model-select').value)) return;
   detectorUI.invalidate('Waiting for the new rewrite.');
+  clearVersions();
   setBusy(true); verified = false; clearWritingNotes(); $('output').value = ''; $('output-state').textContent = 'Writing · not yet checked';
   message('rewrite-status', 'Rewriting… The live preview is provisional until local checks finish.');
   controller = new AbortController();
@@ -185,7 +222,7 @@ async function humanize() {
       if (event.type === 'delta') $('output').value += event.text;
       if (['replace', 'done'].includes(event.type)) $('output').value = event.text;
       if (statsTimer === null) statsTimer = setTimeout(() => { statsTimer = null; updateTextState(); }, 150);
-      if (event.type === 'done') { showWritingNotes(event.writingNotes, event.skills); completed = true; verified = true; $('output-state').textContent = 'Local checks passed'; message('rewrite-status', `Done${event.chunks > 1 ? ` · ${event.chunks} sections` : ''}${event.reviewed ? ' · Extra editor review completed' : ''}. Local checks passed. Review the meaning and names before using the result.`); }
+      if (event.type === 'done') { versions={raw:event.text,punctuation:null}; showWritingNotes(event.writingNotes, event.skills); completed = true; verified = true; $('output-state').textContent = 'Local checks passed'; message('rewrite-status', `Done${event.chunks > 1 ? ` · ${event.chunks} sections` : ''}${event.reviewed ? ' · Extra editor review completed' : ''}. Local checks passed. Review the meaning and names before using the result.`); }
     };
     try {
       while (true) {

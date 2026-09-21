@@ -1,0 +1,26 @@
+[
+  {
+    "repo": "jialinyyzz/humanizer-gemma-4-e4b",
+    "revision": "93d4eee64b92e8b4ef331540fe1aadac0724dc00",
+    "file": "prompt_format.json",
+    "size": 537,
+    "sha256": "da4b5c87e6e1c56d20aef24d2fbb249ba2fd09d29a868457c61f096a96350a76",
+    "upstreamLfsVerified": false
+  },
+  {
+    "repo": "jialinyyzz/humanizer-gemma-4-e4b",
+    "revision": "93d4eee64b92e8b4ef331540fe1aadac0724dc00",
+    "file": "README.md",
+    "size": 6661,
+    "sha256": "ab40f21b9b8719c265b55e17b4abe4136f448db2b41dcbe13ab93a7c8b27ac97",
+    "upstreamLfsVerified": false
+  },
+  {
+    "repo": "jialinyyzz/humanizer-gemma-4-e4b",
+    "revision": "93d4eee64b92e8b4ef331540fe1aadac0724dc00",
+    "file": "gguf/humanizer-gemma-4-e4b-Q6_K.gguf",
+    "size": 6172061472,
+    "sha256": "baa27697697d87c85f5347b7673c357ff760ed6f7419ce459744c37026f7603c",
+    "upstreamLfsVerified": true
+  }
+]

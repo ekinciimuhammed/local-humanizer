@@ -55,6 +55,14 @@ test('HIP second pass is bounded and both passes are checked against original fa
   assert.equal(fail.at(-1).type,'error'); assert.match(fail.at(-1).message,/preservation/i);
 }));
 
+test('explicit four-pass HIP stops after four calls and rejects unbounded settings', () => fixture(async ({call,rewrite,calls}) => {
+  assert.equal((await call('/api/settings',{engine:{kind:'hip',hipRounds:4}},'PATCH')).status,200);
+  assert.equal((await call('/api/settings',{engine:{hipRounds:5}},'PATCH')).status,400);
+  const events=await rewrite('The study found 50 participants.');
+  assert.equal(events.at(-1).type,'done');assert.equal(events.at(-1).rounds,4);
+  assert.equal(calls.filter(c=>c.path==='/rewrite').length,4);
+}));
+
 test('HIP rejects protected/structured/oversized input before any worker call', () => fixture(async ({call,calls}) => {
   await call('/api/settings',{engine:{kind:'hip'}},'PATCH');
   for (const text of ['A quote: "Never change this."','Use `code` now.','# Heading\nA normal passage.','Read https://example.com today.','word '.repeat(1300),'<source_text>malformed']) {

@@ -46,7 +46,7 @@
           <p id="strength-description" class="strength-description">Natural phrasing, faithful to the original.</p>
         </div>
         <div id="hip-controls" class="writing-controls" hidden>
-          <div class="control"><label for="hip-rounds">HIP passes</label><select id="hip-rounds"><option value="1">1 pass</option><option value="2">2 passes · slower</option></select></div>
+          <div class="control"><label for="hip-rounds">HIP passes</label><select id="hip-rounds"><option value="1">1 pass</option><option value="2">2 passes · slower</option><option value="4">4 passes · experimental, slower</option></select></div>
           <p class="field-note">English prose only · up to 6,000 characters / 1,024 tokens · no code or quotations. HIP uses its trained style; tone, strength, skills and extra editor review apply to Connected LLM only. This experimental model may change meaning.</p>
           <span id="hip-status" class="field-note" role="status"></span>
         </div>
@@ -69,6 +69,17 @@
           </section>
         </div>
         <div class="action-row"><p class="writing-note">Same language. Same facts. A more natural read.</p><div class="actions"><span class="shortcut" aria-hidden="true">⌘ / Ctrl + Enter</span><button id="stop-button" class="button" type="button" hidden>Stop</button><button id="humanize-button" class="button primary" type="button" disabled>Humanize <span aria-hidden="true">→</span></button></div></div>
+        <section id="punctuation-panel" class="punctuation-panel" hidden aria-labelledby="punctuation-title">
+          <h3 id="punctuation-title">Second model · punctuation</h3>
+          <p class="field-note">Keep the raw rewrite first. This separate pass suggests punctuation and capitalization changes without rewriting the words. Each version needs its own detector check; a cleaner version can score higher.</p>
+          <div class="punctuation-controls">
+            <div><label for="punctuation-model">Second model</label><select id="punctuation-model"></select></div>
+            <button id="punctuation-button" class="button" type="button">Suggest punctuation</button>
+            <div id="version-control" hidden><label for="output-version">Displayed output</label><select id="output-version"><option value="raw">Raw rewrite</option><option value="punctuation">Punctuation suggestion</option></select></div>
+          </div>
+          <p id="punctuation-note" class="field-note">One additional call to your connected model. Up to 6,000 characters of plain prose. Semantic errors need separate review.</p>
+          <p id="punctuation-status" class="message" role="status" hidden></p>
+        </section>
         <details id="writing-notes" class="writing-notes" hidden>
           <summary>Writing notes <span>Local checks · no extra model call</span></summary>
           <p class="field-note">Editorial hints, not an AI detector. A flagged phrase can be appropriate. Counts exclude protected code, links, quotations and terms.</p>

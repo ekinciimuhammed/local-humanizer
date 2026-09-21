@@ -4,7 +4,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { join, resolve } from 'node:path';
 import { ConfigStore } from './config.mjs';
 import { normalizeBaseUrl, mergeModels } from './models.mjs';
-import { AppError, discoverModels, rewrite } from './provider.mjs';
+import { AppError, discoverModels, rewrite, proofreadPunctuation } from './provider.mjs';
 import { protectText, validateFacts, splitText } from './preservation.mjs';
 import { loadBuiltinSkills, skillCatalog, resolveSkills, parseSkill, importSkill, removeSkill, SKILL_LIMITS } from './skills.mjs';
 import { compareWriting } from './style-analysis.mjs';
@@ -35,7 +35,7 @@ function settingsPatch(body, config, builtins) {
     const value = body.engine;
     if (!value || typeof value !== 'object' || Array.isArray(value) || Object.keys(value).some(k => !['kind','hipRounds'].includes(k))) throw bad('Invalid engine preferences.');
     if ('kind' in value && !['connected','hip'].includes(value.kind)) throw bad('Select a supported engine.');
-    if ('hipRounds' in value && ![1,2].includes(value.hipRounds)) throw bad('HIP supports one or two passes.');
+    if ('hipRounds' in value && ![1,2,4].includes(value.hipRounds)) throw bad('HIP supports one, two or four fixed passes.');
     patch.engine = { ...config.engine, ...value };
   }
   if ('writing' in body) {
@@ -171,6 +171,16 @@ export async function createApp({ dataDir = process.env.HUMANIZER_DATA_DIR || re
         }));
       }
       if (req.method === 'PATCH' && route === '/api/settings') return send(res, 200, await store.update(current => settingsPatch(body, current, builtins)));
+      if (req.method === 'POST' && route === '/api/punctuation') {
+        if (!config.baseUrl) throw bad('Connect a second model in Settings to correct punctuation.');
+        if (!config.models.some(m => m.id === body.model && m.enabled && m.available)) throw bad('Select an enabled, available second model.');
+        if (Object.keys(body).some(key => !['model','text'].includes(key))) throw bad('Punctuation accepts only text and model.');
+        if (active) throw new AppError('A rewrite is already running. Stop it or wait for it to finish.',409);
+        active=true; const controller=new AbortController();
+        res.on('close',()=>controller.abort());
+        try { return send(res,200,await proofreadPunctuation(config,{model:body.model,text:body.text},controller.signal)); }
+        finally { active=false; }
+      }
       if (req.method === 'POST' && route === '/api/humanize') {
         if (config.engine.kind === 'hip') {
           if (active) throw new AppError('A rewrite is already running. Stop it or wait for it to finish.',409);

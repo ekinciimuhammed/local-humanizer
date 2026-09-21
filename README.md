@@ -2,6 +2,8 @@
 
 Kendi OpenAI-compatible LLM sunucunuzla çalışan, tamamen yerel bir metin düzenleme uygulaması. İki metin alanı, otomatik model keşfi ve üç yeniden yazım seviyesi. Amaç anlamı koruyarak daha doğal yazmak; AI detector atlatmak değildir.
 
+**1.4.0:** Önce ham metin, ardından ayrı bir ikinci modelle noktalama önerisi. Ham/düzeltilmiş sürümler ayrı tutulur; HIP için 1/2/4 sabit geçiş seçilebilir. [Yeni gerçek ölçümler](docs/evaluations/2026-09-21-followup/REPORT.md): aynı örnekte dört geçişli ham metin %45,9, kaynakla karşılaştırmalı araştırma düzeltmesi %66,5 AI aldı. Ham metinde anlam kaymaları var; genel başarı kanıtı yok.
+
 **1.3.0:** İsteğe bağlı yerel HIP motoru ve dış checker bağlantıları eklendi. HIP deneysel İngilizce düzyazı desteğidir; mevcut LLM bağlantısı varsayılan kalır. [Gerçek doğrulama raporu](docs/evaluations/2026-09-21-hip/REPORT.md): tek örnekte ZeroGPT %74,8 AI verdi, ancak anlam kontrolü başarısız oldu. Genel kalite veya detector geçiş başarısı gösterilmedi. [Ön araştırma](docs/research/2026-09-21-method-decision.md), uygulama öncesindeki kararı ve sınırları kaydeder.
 
 Ana uygulamanın Node.js dışında **çalışma zamanı bağımlılığı yoktur**. İsteğe bağlı HIP worker ayrıca Python/model ağırlıkları kullanır. Frontend, backend ve bütün font/asset kullanımı yereldir. Telemetry, analytics, cloud database veya zorunlu dış servis bulunmaz. Açıkça etkinleştirilen checker, metni seçilen dış servise gönderir.
@@ -62,7 +64,7 @@ LLM başka bir container'daysa iki uygulamayı aynı Docker ağına alın; Base 
 Yerel LLM/HIP kullanıp dış checker'ı kapalı tuttuğunuzda uygulama çalışma sırasında internet istemez. Uzak LLM veya dış checker seçilirse ilgili servis için bağlantı gerekir. İlk Docker build için sabitlenmiş Node base imajı, Docker olmadan kullanımda ise Node kurulumu önceden bulunmalıdır. Hazır imajı bağlı bir makinede oluşturup çevrimdışı makineye taşıyabilirsiniz:
 
 ```bash
-docker save local-humanizer:1.3.0 -o humanizer-image.tar
+docker save local-humanizer:1.4.0 -o humanizer-image.tar
 # Dosyayı çevrimdışı makineye taşıdıktan sonra:
 docker load -i humanizer-image.tar
 docker compose up -d --no-build
@@ -102,6 +104,14 @@ npm run dev  # Kaynak değişikliklerinde sunucuyu yeniden başlatır
 
 Boş model listesi bir çökme sebebi değildir: LLM sunucusunda bir model yükleyin ve listeyi yenileyin. Kapalı ya da kaldırılmış modelle üretim engellenir.
 
+## Önce ham çıktı, sonra ikinci model
+
+Yeniden yazım tamamlanınca **Second model · punctuation** bölümü açılır. Bağlı sunucudaki etkin modellerden birini seçip **Suggest punctuation** düğmesine basın. Bu aşama bir ek çağrıdır ve ham metni korur. **Displayed output** alanından `Raw rewrite` veya `Punctuation suggestion` seçilir. Yeni metin yazdırmak iki geçici sürümü de sıfırlar; sürümler diske kaydedilmez.
+
+İkinci aşama yalnızca noktalama, tire ve büyük/küçük harf önerir; sözcük ekleme/çıkarma, yeniden yazım, sayı/ad/kısaltma değişiklikleri reddedilir. 6.000 karaktere kadar düz metin desteklenir; alıntı/kod/URL/atıf/yapılı metin ve özel korunan terimler bu aşamada reddedilir. Anlam hatalarını düzeltmez ve dilbilgisel yeniden yazım yapmaz. Qwen3.5 için resmî thinking kapatma parametresi kullanılır; diğer model ailelerine bu alan gönderilmez.
+
+İptal, kota veya model hatasında mevcut çıktı korunur. Sürüm değiştirildiğinde eski detector sonucu temizlenir. **Her sürümü ayrı kontrol edin:** gerçek denemede yalnızca iki tire ve bir büyük harf düzeltmesinden sonra gösterilen skor %52,4'ten %100'e çıktı. Bu tek çift, değişikliğin her zaman aynı etkiyi yaratacağını kanıtlamaz; düzeltme öncesi skoru düzeltilmiş metne taşımak doğru değildir. API anahtarı yoksa uygulama skor üretmez.
+
 ## Local HIP engine
 
 **Engine → Local HIP · experimental**, `Qwen/Qwen3-4B-Base` üzerine yayımlanmış HIP LoRA adaptörünü kullanır. Yerel worker ayrı çalışır; mevcut LLM endpoint'i ve anahtarı değiştirilmez. Temiz kurulumda Connect yerine **Use local HIP instead** seçilebilir.
@@ -121,7 +131,7 @@ Worker `127.0.0.1:18081` üzerinde çalışır. Apple GPU/MPS, NVIDIA CUDA veya 
 
 HIP yalnızca **İngilizce düz yazı**, belge başına en fazla **6.000 karakter / 1.024 input token** destekler. Kod, alıntı, citation, bağlantı, belirgin Markdown veya eşleşen protected term içeren metinlerde Connected LLM kullanılır. Kaynak sessizce kesilmez. Metni otomatik bölerek bağlamı kaybetmemek için HIP'te chunking yapılmaz.
 
-Bir veya en fazla iki geçiş seçilebilir. Her geçiş 180 saniye ve 1.024 yeni token ile sınırlıdır; tamamlanmayan çıktı reddedilir. Stop native worker'a iptal iletir. HIP eğitimindeki source/target formatını kullanır; genel chat prompt'u, tone/strength, skill metni veya ek editör çağrısı bu yola eklenmez. Bu kontroller Connected LLM için korunur. Her HIP geçişi özgün metne karşı yerel bilgi kontrollerinden geçer; bu kontroller anlam eşdeğerliğini kanıtlamaz. Deneysel model önemli iddiaları değiştirebilir; çıktıyı inceleyin.
+Bir, iki veya dört sabit geçiş seçilebilir. Dört geçiş deneysel bir seçenektir; daha düşük bir skor uğruna kapsam ve anlam kaybı yaşanabilir. Otomatik hedef-skora-kadar döngü yoktur. Her geçiş 180 saniye ve 1.024 yeni token ile sınırlıdır; tamamlanmayan çıktı reddedilir. Stop native worker'a iptal iletir. HIP eğitimindeki source/target formatını kullanır; genel chat prompt'u, tone/strength, skill metni veya ek editör çağrısı bu yola eklenmez. Bu kontroller Connected LLM için korunur. Her HIP geçişi özgün metne karşı yerel bilgi kontrollerinden geçer; bu kontroller anlam eşdeğerliğini kanıtlamaz. Deneysel model önemli iddiaları değiştirebilir; çıktıyı inceleyin.
 
 Kaynaklar: [HIP kodu (MIT)](https://github.com/YixuanEvenXu/humanization-by-iterative-paraphrasing), [adaptör (Apache-2.0)](https://huggingface.co/YixuanEvenXu/Qwen3-4B-Base-HIP-adapter). Tam upstream uygulaması ürüne kopyalanmadı; worker bu modelin eğitim formatını uygulayan küçük bir yerel servis olarak yazıldı.
 
