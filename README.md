@@ -2,6 +2,8 @@
 
 Yerelde sunulan, kendi OpenAI-compatible LLM sunucunuzla çalışan bir metin düzenleme uygulaması. İki metin alanı, otomatik model keşfi ve üç yeniden yazım seviyesi. Amaç anlamı koruyarak daha doğal yazmak; detector skoru yazım kalitesi veya anlam doğruluğu kanıtı değildir.
 
+**1.7.0 — seçili bölümü sadeleştirme ve virgül kontrolü:** Çıktıdan kelime/cümle seçip **Simplify selected text** ile daha basit bir sürüm oluşturun. Seçilmemiş bölümler aynen kalır; ham metne geri dönebilirsiniz. **Suggest punctuation** artık görüntülenen ham veya sadeleştirilmiş sürüm üzerinde çalışır ve eksik virgülleri özellikle kontrol eder. Anlamı koruma talimatları ve deterministic bilgi kontrolleri sürer; otomatik “AI cümlesi” tespiti iddia edilmez. [Gerçek model denemeleri](docs/evaluations/2026-09-21-selection/REPORT.md).
+
 **1.6.0 — çoklu checker:** ZeroGPT ve Sapling'in herkese açık sayfaları yerel tarayıcı yardımcısıyla taranabilir. GPTZero / ZeroGPT API seçenekleri de aynı ekranda seçilebilir. Her servis için **önce → sonra**, yüzde puan farkı, zaman ve metin hash'i ayrı gösterilir; başarısız servis diğer sonuçları silmez. [Gerçek karşılaştırma ve erişim sınırları](docs/evaluations/2026-09-21-multi-checker/REPORT.md).
 
 **Genelleme sonucu:** Önceki ZeroGPT %0 çıktısına Sapling **%99,9** verdi. Dört yeni metinle yapılan karşılaştırma da genel başarı göstermedi; [tüm çıktılar, iki servis ölçümleri ve anlam incelemesi](docs/evaluations/2026-09-21-generalization/REPORT.md) korunuyor. Yeni genel prompt, yeterli kanıt olmadığı için üretime alınmadı.
@@ -120,11 +122,19 @@ Boş model listesi bir çökme sebebi değildir: LLM sunucusunda bir model yükl
 
 ## Önce ham çıktı, sonra ikinci model
 
-Yeniden yazım tamamlanınca **03 Refine → The finishing touches.** bölümü açılır. **Second model** alanında bağlı sunucudaki etkin modellerden birini seçip **Suggest punctuation** düğmesine basın. Bu aşama bir ek çağrıdır ve ham metni korur. **Displayed output** alanından `Raw rewrite` veya `Punctuation suggestion` seçilir. Yeni metin yazdırmak iki geçici sürümü de sıfırlar; sürümler diske kaydedilmez.
+Yeniden yazım tamamlanınca **03 Refine → The finishing touches.** bölümü açılır. **Second model** alanında bağlı sunucudaki etkin modellerden birini seçip **Suggest punctuation** düğmesine basın. Bu aşama bir ek çağrıdır ve ham metni korur; sadeleştirilmiş sürüm görüntüleniyorsa noktalama ona uygulanır. **Displayed output** alanından mevcut `Raw rewrite`, `Simplified selection` veya `Punctuation suggestion` seçilir. Yeni metin yazdırmak geçici sürümlerin tümünü sıfırlar; sürümler diske kaydedilmez.
 
 İkinci aşama yalnızca noktalama, tire ve büyük/küçük harf önerir; sözcük ekleme/çıkarma, yeniden yazım, sayı/ad/kısaltma değişiklikleri reddedilir. 6.000 karaktere kadar düz metin desteklenir; alıntı/kod/URL/atıf/yapılı metin ve özel korunan terimler bu aşamada reddedilir. Anlam hatalarını düzeltmez ve dilbilgisel yeniden yazım yapmaz. Qwen3.5 için resmî thinking kapatma parametresi kullanılır; diğer model ailelerine bu alan gönderilmez.
 
 İptal, kota veya model hatasında mevcut çıktı korunur. Sürüm değiştirildiğinde eski detector sonucu temizlenir. **Her sürümü ayrı kontrol edin:** gerçek denemede yalnızca iki tire ve bir büyük harf düzeltmesinden sonra gösterilen skor %52,4'ten %100'e çıktı. Bu tek çift, değişikliğin her zaman aynı etkiyi yaratacağını kanıtlamaz; düzeltme öncesi skoru düzeltilmiş metne taşımak doğru değildir. API seçenekleri kendi anahtarlarını gerektirir; anahtarsız web checker ayrı, açıkça seçilmesi gereken bir seçenektir. Gerçek tarama sonucu alınmadan skor üretilmez.
+
+### Seçili bölümü daha basit yazma
+
+Sağdaki çıktıda tam kelimeleri veya cümleleri seçin, **03 Refine → Simplify selected text** düğmesine basın. Model yalnızca seçili bölümü yeniden yazar; önündeki ve arkasındaki metin kod tarafında aynen birleştirilir. Her işlem tek model çağrısıdır, seçim en fazla 6.000 karakterdir. İsim, sayı, tarih ve korunan alıntı/kod kontrolleri uygulanır; kısmi kelime ya da kısmi korunan içerik seçimi reddedilir. Bu kontroller semantik eşdeğerlik kanıtı değildir; sonucu okuyarak değerlendirin.
+
+Sadeleştirilmiş sürüm görüntülenir; **Displayed output → Raw rewrite** ilk metne döner. Ardından **Suggest punctuation** ile bu sürümde eksik virgül/noktalama önerisi alınabilir. Noktalama modeli kelimeleri değiştiremez; ham/sade/noktalama sürümleri ayrıdır. Yeni bir sadeleştirme önceki noktalama önerisini geçersiz kılar. Metin değiştiğinde checker skorları temizlenir; yeni sürümü yeniden tarayın.
+
+Mevcut checker bağlantıları sadece toplam yüzdeyi döndürür. Bu nedenle düğme checker’ın kesin olarak işaretlediği bir cümleyi otomatik bulmaz; düzeltilecek bölümü kullanıcı seçer. Puanı düşürmek için rastgele virgül silme, yazım hatası ekleme veya anlam bozma uygulanmaz.
 
 ## Local HIP engine
 

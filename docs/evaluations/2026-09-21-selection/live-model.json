@@ -1,0 +1,34 @@
+[
+  {
+    "id": "commas-en",
+    "text": "If the file opens check the date. However the result may change.",
+    "model": "gemma-4-31B-it",
+    "result": {
+      "text": "If the file opens, check the date. However, the result may change.",
+      "changed": true
+    },
+    "error": null
+  },
+  {
+    "id": "commas-tr",
+    "text": "Çantaya kalem defter ve kitap koydu.",
+    "model": "gemma-4-31B-it",
+    "result": {
+      "text": "Çantaya kalem, defter ve kitap koydu.",
+      "changed": true
+    },
+    "error": null
+  },
+  {
+    "id": "simple-selection",
+    "text": "Keep this note. The system enables employees to obtain information before making a decision. Keep this ending.",
+    "start": 16,
+    "end": 91,
+    "model": "gemma-4-31B-it",
+    "result": {
+      "text": "Keep this note. Employees can use the system to get information before they make a decision. Keep this ending.",
+      "changed": true
+    },
+    "error": null
+  }
+]

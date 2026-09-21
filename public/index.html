@@ -82,13 +82,14 @@
         <details class="checker-stage" open><summary><span class="step-number">02</span><span class="stage-summary"><span class="eyebrow">CHECK · OPTIONAL</span><strong>Review your raw rewrite.</strong></span><span class="stage-tag">External checker</span></summary><p class="checker-notice">Compare the original → rewrite across your selected services. Checking sends the displayed output outside this app; source comparison also sends the original. Choose services in Settings.</p><div id="checker-results"></div></details>
         <section id="punctuation-panel" class="punctuation-panel" hidden aria-labelledby="punctuation-title">
           <div class="stage-heading"><span class="step-number">03</span><div><p class="eyebrow">REFINE · OPTIONAL</p><h3 id="punctuation-title">The finishing touches.</h3></div><span class="stage-tag">Second model</span></div>
-          <p class="field-note">Keep your raw rewrite, then ask a second model to suggest punctuation and capitalization. Words stay unchanged. Check each version separately; cleaner punctuation can raise a detector score.</p>
+          <p class="field-note">Select a passage in the output to use simpler words while keeping its meaning. Then check punctuation, including missing commas, with a second model. Your raw rewrite stays available. Check each changed version separately.</p>
           <div class="punctuation-controls">
             <div><label for="punctuation-model">Second model</label><select id="punctuation-model"></select></div>
+            <button id="simplify-selection" class="button" type="button" disabled>Simplify selected text</button>
             <button id="punctuation-button" class="button" type="button">Suggest punctuation</button>
-            <div id="version-control" hidden><label for="output-version">Displayed output</label><select id="output-version"><option value="raw">Raw rewrite</option><option value="punctuation">Punctuation suggestion</option></select></div>
+            <div id="version-control" hidden><label for="output-version">Displayed output</label><select id="output-version"><option value="raw">Raw rewrite</option><option id="simplified-option" value="simplified" hidden>Simplified selection</option><option id="punctuation-option" value="punctuation" hidden>Punctuation suggestion</option></select></div>
           </div>
-          <p id="punctuation-note" class="field-note">One additional call to your connected model. Up to 6,000 characters of plain prose. Semantic errors need separate review.</p>
+          <p id="punctuation-note" class="field-note">Select complete words or sentences in the output. Each action makes one model call; up to 6,000 selected characters. Punctuation keeps words unchanged. Checker percentages do not identify individual sentences here; choose the passage yourself.</p>
           <p id="punctuation-status" class="message" role="status" hidden></p>
         </section>
       </section>

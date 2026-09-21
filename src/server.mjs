@@ -4,7 +4,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { join, resolve } from 'node:path';
 import { ConfigStore } from './config.mjs';
 import { normalizeBaseUrl, mergeModels } from './models.mjs';
-import { AppError, discoverModels, rewrite, proofreadPunctuation } from './provider.mjs';
+import { AppError, discoverModels, rewrite, proofreadPunctuation, simplifySelection } from './provider.mjs';
 import { protectText, validateFacts, splitText } from './preservation.mjs';
 import { loadBuiltinSkills, skillCatalog, resolveSkills, parseSkill, importSkill, removeSkill, SKILL_LIMITS } from './skills.mjs';
 import { compareWriting } from './style-analysis.mjs';
@@ -171,14 +171,15 @@ export async function createApp({ dataDir = process.env.HUMANIZER_DATA_DIR || re
         }));
       }
       if (req.method === 'PATCH' && route === '/api/settings') return send(res, 200, await store.update(current => settingsPatch(body, current, builtins)));
-      if (req.method === 'POST' && route === '/api/punctuation') {
-        if (!config.baseUrl) throw bad('Connect a second model in Settings to correct punctuation.');
+      if (req.method === 'POST' && ['/api/punctuation', '/api/simplify-selection'].includes(route)) {
+        const simplify = route === '/api/simplify-selection';
+        if (!config.baseUrl) throw bad('Connect a model in Settings to refine the output.');
         if (!config.models.some(m => m.id === body.model && m.enabled && m.available)) throw bad('Select an enabled, available second model.');
-        if (Object.keys(body).some(key => !['model','text'].includes(key))) throw bad('Punctuation accepts only text and model.');
+        if (Object.keys(body).some(key => !(simplify ? ['model','text','start','end'] : ['model','text']).includes(key))) throw bad('Unsupported refinement fields.');
         if (active) throw new AppError('A rewrite is already running. Stop it or wait for it to finish.',409);
         active=true; const controller=new AbortController();
         res.on('close',()=>controller.abort());
-        try { return send(res,200,await proofreadPunctuation(config,{model:body.model,text:body.text},controller.signal)); }
+        try { return send(res,200,await (simplify ? simplifySelection(config,body,controller.signal) : proofreadPunctuation(config,{model:body.model,text:body.text},controller.signal))); }
         finally { active=false; }
       }
       if (req.method === 'POST' && route === '/api/humanize') {

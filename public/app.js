@@ -39,6 +39,10 @@ function updateTextState() {
   $('punctuation-panel').hidden = !verified || !versions;
   $('punctuation-button').disabled = busy || !verified || !versions || !config?.baseUrl || !$('punctuation-model').value;
   $('punctuation-model').disabled = busy;
+  $('simplify-selection').disabled = busy || !verified || !versions || !config?.baseUrl || !$('punctuation-model').value || $('output').selectionStart === $('output').selectionEnd;
+  $('simplified-option').hidden = !versions?.simplified;
+  $('punctuation-option').hidden = !versions?.punctuation;
+  $('version-control').hidden = !versions || (!versions.simplified && !versions.punctuation);
   $('output-version').disabled = busy;
 }
 function renderMain() {
@@ -164,30 +168,54 @@ for (const id of ['tone-select', 'extra-review']) $(id).addEventListener('change
 });
 $('original').addEventListener('input', () => {updateTextState();detectorUI.invalidate();});
 $('punctuation-model').addEventListener('change',updateTextState);
+$('output').addEventListener('select',updateTextState);
 function clearVersions(){versions=null;$('version-control').hidden=true;$('output-version').value='raw';message('punctuation-status');}
 $('output-version').addEventListener('change',()=>{
   if(busy||!versions)return;
-  $('output').value=$('output-version').value==='punctuation'?versions.punctuation:versions.raw;
+  $('output').value=versions[$('output-version').value] || versions.raw;
   detectorUI.invalidate('Output version changed. Check this version separately.');
-  clearWritingNotes();$('output-state').textContent=$('output-version').value==='raw'?'Raw rewrite':'Punctuation suggestion';updateTextState();
+  clearWritingNotes();$('output-state').textContent={raw:'Raw rewrite',simplified:'Simplified selection',punctuation:'Punctuation suggestion'}[$('output-version').value];updateTextState();
 });
 async function suggestPunctuation(){
   if(busy||!verified||!versions||!$('punctuation-model').value)return;
-  const snapshot=versions;setBusy(true);controller=new AbortController();
+  const snapshot=versions;
+  const baseVersion=$('output-version').value==='punctuation'?(snapshot.punctuationBaseVersion || 'raw'):$('output-version').value;
+  const baseText=snapshot[baseVersion];
+  setBusy(true);controller=new AbortController();
   message('punctuation-status','Checking punctuation with the second model…');
   try{
-    const result=await api('/api/punctuation',{text:snapshot.raw,model:$('punctuation-model').value},'POST',controller.signal);
+    const result=await api('/api/punctuation',{text:baseText,model:$('punctuation-model').value},'POST',controller.signal);
     if(versions!==snapshot)return;
-    versions.punctuation=result.text;$('version-control').hidden=!result.changed;
-    // Keep the currently displayed raw draft until the user selects the suggestion.
-    $('output-version').value='raw';$('output').value=versions.raw;
+    versions.punctuation=result.changed?result.text:null;versions.punctuationBaseVersion=baseVersion;
+    // Keep the base version displayed until the user selects the punctuation suggestion.
+    $('output-version').value=baseVersion;$('output').value=baseText;
     detectorUI.invalidate('Punctuation suggestion available. Check each displayed version separately.');
-    clearWritingNotes();$('output-state').textContent='Raw rewrite';
-    message('punctuation-status',result.changed?'Punctuation suggestion ready':'No punctuation changes suggested. Raw rewrite kept.');
+    clearWritingNotes();$('output-state').textContent=baseVersion==='simplified'?'Simplified selection':'Raw rewrite';
+    message('punctuation-status',result.changed?'Punctuation suggestion ready':'No punctuation changes suggested. Current version kept.');
   }catch(error){message('punctuation-status',controller.signal.aborted?'Punctuation check stopped. Your rewrite is kept.':friendly(error),!controller.signal.aborted);}
   finally{controller=null;setBusy(false);}
 }
 $('punctuation-button').addEventListener('click',suggestPunctuation);
+async function simplifySelectedText(){
+  if(busy || !verified || !versions || !$('punctuation-model').value)return;
+  const text=$('output').value,start=$('output').selectionStart,end=$('output').selectionEnd;
+  if(start===end){message('punctuation-status','Select a passage in the output first.');return;}
+  const snapshot=versions;setBusy(true);controller=new AbortController();
+  message('punctuation-status','Simplifying the selected passage…');
+  try{
+    const result=await api('/api/simplify-selection',{text,start,end,model:$('punctuation-model').value},'POST',controller.signal);
+    if(versions!==snapshot)return;
+    if(result.changed){
+      versions.simplified=result.text;versions.punctuation=null;versions.punctuationBaseVersion=null;
+      $('output-version').value='simplified';$('output').value=result.text;
+      detectorUI.invalidate('Selected passage changed. Check this version separately.');clearWritingNotes();$('output-state').textContent='Simplified selection';
+    }
+    message('punctuation-status',result.changed?'Selected passage simplified. Review the meaning, then check this version.':'No simpler wording suggested. Current version kept.');
+  }catch(error){message('punctuation-status',controller.signal.aborted?'Simplification stopped. Your output is kept.':friendly(error),!controller.signal.aborted);}
+  finally{controller=null;setBusy(false);}
+}
+$('simplify-selection').addEventListener('click',simplifySelectedText);
+
 $('clear-original').addEventListener('click',clearVersions);
 $('clear-original').addEventListener('click', () => { $('original').value = ''; $('output').value = ''; verified = false; clearWritingNotes(); $('output-state').textContent = 'Ready when you are'; message('rewrite-status'); updateTextState(); $('original').focus(); });
 $('clear-original').addEventListener('click',()=>detectorUI.invalidate('Text cleared.'));
@@ -222,7 +250,7 @@ async function humanize() {
       if (event.type === 'delta') $('output').value += event.text;
       if (['replace', 'done'].includes(event.type)) $('output').value = event.text;
       if (statsTimer === null) statsTimer = setTimeout(() => { statsTimer = null; updateTextState(); }, 150);
-      if (event.type === 'done') { versions={raw:event.text,punctuation:null}; showWritingNotes(event.writingNotes, event.skills); completed = true; verified = true; $('output-state').textContent = 'Local checks passed'; message('rewrite-status', `Done${event.chunks > 1 ? ` · ${event.chunks} sections` : ''}${event.reviewed ? ' · Extra editor review completed' : ''}. Local checks passed. Review the meaning and names before using the result.`); }
+      if (event.type === 'done') { versions={raw:event.text,simplified:null,punctuation:null}; showWritingNotes(event.writingNotes, event.skills); completed = true; verified = true; $('output-state').textContent = 'Local checks passed'; message('rewrite-status', `Done${event.chunks > 1 ? ` · ${event.chunks} sections` : ''}${event.reviewed ? ' · Extra editor review completed' : ''}. Local checks passed. Review the meaning and names before using the result.`); }
     };
     try {
       while (true) {

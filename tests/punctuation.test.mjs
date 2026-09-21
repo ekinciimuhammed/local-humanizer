@@ -141,3 +141,10 @@ test('punctuation uses the configured request timeout', () => fixture(async ({ p
   config.generation.timeoutSeconds = 0.03;
   await assert.rejects(() => proofread(), error => error instanceof provider.AppError && error.code === 'aborted' && /timed out/i.test(error.message));
 }));
+
+test('punctuation explicitly checks missing commas and can add them without replacing words',()=>fixture(async({state,calls,proofread})=>{
+ state.content=JSON.stringify([{before:'If the file opens check the date.',after:'If the file opens, check the date.'},{before:'However the result may change.',after:'However, the result may change.'}]);
+ const result=await proofread('If the file opens check the date. However the result may change.');
+ assert.equal(result.text,'If the file opens, check the date. However, the result may change.');
+ assert.match(calls[0].body.messages[0].content,/missing commas/i);assert.match(calls[0].body.messages[0].content,/meaning/i);
+}));
