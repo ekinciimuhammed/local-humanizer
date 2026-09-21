@@ -2,6 +2,8 @@
 
 Kendi OpenAI-compatible LLM sunucunuzla çalışan, tamamen yerel bir metin düzenleme uygulaması. İki metin alanı, otomatik model keşfi ve üç yeniden yazım seviyesi. Amaç anlamı koruyarak daha doğal yazmak; AI detector atlatmak değildir.
 
+Son araştırma: [özel paraphrase modelleri, resmî checker API'leri ve sınırlı pilot kararı](docs/research/2026-09-21-method-decision.md). Bu belge gelecek deneyin tasarımıdır; HIP modeli veya otomatik dış checker mevcut sürüme eklenmiş değildir.
+
 Node.js dışında **çalışma zamanı bağımlılığı yoktur**. Frontend, backend ve bütün font/asset kullanımı yereldir. Telemetry, analytics, cloud database, dış loglama veya zorunlu servis bulunmaz.
 
 ## Docker ile başlatma

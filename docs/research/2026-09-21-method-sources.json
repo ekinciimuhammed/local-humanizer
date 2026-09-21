@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-09-21",
+  "status": "researched_not_executed",
+  "repositories": [
+    {"url": "https://github.com/YixuanEvenXu/humanization-by-iterative-paraphrasing", "commit": "44062ee8531141e35225335ff98439b9ccd54da5", "licenseObserved": "MIT"},
+    {"url": "https://github.com/githigher/MASH", "commit": "29428a4cb732d1a7514e37dac8646b5fbf945b5f", "licenseObserved": "README research-only statement; no permissive license assumed"},
+    {"url": "https://github.com/chengez/Adversarial-Paraphrasing", "commit": "d8515ab705e10b08a1a04214767114522c454bd7", "licenseObserved": "not reviewed; no code copied"}
+  ],
+  "models": [
+    {"id": "Qwen/Qwen3-4B-Base", "revision": "906bfd4b4dc7f14ee4320094d8b41684abff8539", "weightBytes": 8044982000, "licenseObserved": "apache-2.0", "gated": false},
+    {"id": "YixuanEvenXu/Qwen3-4B-Base-HIP-adapter", "revision": "cb903e699da2fb063c1b4fa6f93147f7f9d8e6af", "weightBytes": 1057033224, "licenseObserved": "apache-2.0", "gated": false}
+  ],
+  "detectorDocumentation": {
+    "zerogpt": {"url": "https://api.zerogpt.com/openapi.json", "titleObserved": "ZeroGPT Business API", "versionObserved": "0.1.0", "locallySerializedSchemaSha256": "cd906e21aa400854d7793a8255ed0cbc7dab4ab5af3c3e3c5e25015f2ba33067", "authenticatedCallTested": false},
+    "gptzero": {"url": "https://gptzero.me/machine-learning", "endpointObserved": "https://api.gptzero.me/v2/predict/text", "authenticatedCallTested": false}
+  },
+  "modelWeightsDownloaded": false,
+  "newLiveModelCalls": 0,
+  "newDetectorScans": 0
+}
