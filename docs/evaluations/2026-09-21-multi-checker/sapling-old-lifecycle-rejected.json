@@ -1,0 +1,15 @@
+{
+  "provider": "sapling-web",
+  "source": null,
+  "result": null,
+  "errors": {
+    "source": {
+      "code": "browser_error",
+      "message": "The public website could not be checked. Its page may have changed or blocked this request. No score is available."
+    },
+    "result": {
+      "code": "browser_error",
+      "message": "The public website could not be checked. Its page may have changed or blocked this request. No score is available."
+    }
+  }
+}

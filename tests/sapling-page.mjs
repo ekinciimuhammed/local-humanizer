@@ -1,0 +1,12 @@
+// Offline browser contract: Sapling arrives with a sample result. Only a fresh
+// Checking… → Check Again cycle after exact input and one click can be accepted.
+import assert from 'node:assert/strict';
+import {runPublicCheck} from '../browser-checker/checker.mjs';
+const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'playwright-core');
+let stale=false,mutate=false,oldScore=false,clicks=0;
+const browserType={async launch(options){const b=await chromium.launch(options),newContext=b.newContext.bind(b);b.newContext=async options=>{const c=await newContext(options);await c.exposeBinding('clicked',()=>clicks++);await c.route('**/*',route=>route.request().url()==='https://sapling.ai/ai-content-detector'?route.fulfill({contentType:'text/html',body:`<!doctype html><meta charset="utf-8"><div id="content-editor" contenteditable="plaintext-only">Old sample.</div><button id="checkButton">Check Again</button><div id="fake-p">Fake: <span id="fake-prob">99</span>%</div><script>checkButton.onclick=()=>{window.clicked();${stale?'':`document.getElementById('checkButton').textContent='Checking…';document.getElementById('checkButton').disabled=true;${oldScore?'':"document.getElementById('fake-prob').textContent='...';"}setTimeout(()=>{${mutate?"document.getElementById('content-editor').textContent='Changed text.';":''}${oldScore?'':"document.getElementById('fake-prob').textContent='0';"}document.getElementById('checkButton').textContent='Check Again';document.getElementById('checkButton').disabled=false;},100);`}};</script>`}):route.abort());return c;};return b;}};
+const result=await runPublicCheck('An exact new paragraph.\n\nA second paragraph.',{browserType,provider:'sapling-web',timeoutMs:5000});assert.equal(result.percentage,0);assert.equal(clicks,1);
+stale=true;await assert.rejects(runPublicCheck('Another paragraph.',{browserType,provider:'sapling-web',timeoutMs:1500}),/score|timed out/i);assert.equal(clicks,2);
+stale=false;mutate=true;await assert.rejects(runPublicCheck('Do not change me.',{browserType,provider:'sapling-web',timeoutMs:5000}),/changed|input/i);assert.equal(clicks,3);
+mutate=false;oldScore=true;await assert.rejects(runPublicCheck('A different document.',{browserType,provider:'sapling-web',timeoutMs:5000}),/score|pre-existing/i);assert.equal(clicks,4);
+console.log('Sapling offline contract passed: new score only, unchanged text, stale sample rejected.');

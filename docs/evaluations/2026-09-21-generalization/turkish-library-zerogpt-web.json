@@ -1,0 +1,20 @@
+{
+  "id": "turkish-library",
+  "provider": "zerogpt-web",
+  "source": {
+    "percentage": 100,
+    "textHash": "5ad8f7b2cc02c7cc478f58ecf7d7e51e39ea4368dff0f42efbba422650e3d337",
+    "checkedAt": "2026-09-21T14:47:17.002Z"
+  },
+  "existing": {
+    "percentage": 100,
+    "textHash": "57d2a4c74ffba9f12a1db5e5a270f131e7ed4af23c442c46050de2e6373eee4c",
+    "checkedAt": "2026-09-21T14:47:20.750Z"
+  },
+  "general": {
+    "percentage": 100,
+    "textHash": "99667b048b0cf69779871ae31ae37f1da62cf4706527f4dea8ad7b043b6a2f12",
+    "checkedAt": "2026-09-21T14:47:24.816Z"
+  },
+  "errors": {}
+}

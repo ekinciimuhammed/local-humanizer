@@ -1,0 +1,14 @@
+{
+  "provider": "sapling-web",
+  "source": {
+    "percentage": 100,
+    "textHash": "b4679e04031b340fc0b1a7f05167f54baada4eb7c12c01f25433ddd74bc1cd9b",
+    "checkedAt": "2026-09-21T14:48:02.012Z"
+  },
+  "result": {
+    "percentage": 99.9,
+    "textHash": "fd87826afffb65eaf190112ae9772e05a215625973e148a0a8e971503ab5951c",
+    "checkedAt": "2026-09-21T14:48:08.596Z"
+  },
+  "errors": {}
+}

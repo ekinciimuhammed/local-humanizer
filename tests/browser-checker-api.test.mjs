@@ -42,3 +42,10 @@ test('browser helper has a deadline and redacts unexpected browser errors', asyn
   const failed = await fixture(t, async () => { throw Error('Private browser page content'); });
   const result = await failed.call({ text: 'Text.' }); assert.equal(result.status, 502); assert.equal((await result.text()).includes('Private browser page content'), false);
 });
+
+test('browser helper accepts an allowlisted website identity and forwards it, never arbitrary URLs', async t => {
+  let provider, calls=0; const {call}=await fixture(t,async(text,options)=>{provider=options.provider;calls++;return{percentage:14,textHash:createHash('sha256').update(text).digest('hex'),checkedAt:new Date().toISOString()};});
+  const response=await call({text:'Some text.',provider:'sapling-web'});assert.equal(response.status,200);assert.equal(provider,'sapling-web');
+  for(const value of ['https://evil.test','quillbot-web',null])assert.equal((await call({text:'Some text.',provider:value})).status,400);
+  assert.equal(calls,1);
+});

@@ -1,0 +1,20 @@
+{
+  "id": "remote-work",
+  "provider": "zerogpt-web",
+  "source": {
+    "percentage": 100,
+    "textHash": "78f8a697d116697b337a4ef0265e3caa94f18b8ae84eb057619b2a9369114adf",
+    "checkedAt": "2026-09-21T14:46:39.831Z"
+  },
+  "existing": {
+    "percentage": 96,
+    "textHash": "e807ac042c765b011dcc04c4a830a1e3b667f72a11481ae54222f4b53185edf9",
+    "checkedAt": "2026-09-21T14:46:43.592Z"
+  },
+  "general": {
+    "percentage": 100,
+    "textHash": "e07f534a31707aebabfa008ef721ac18d8bc7f309f6e7ea1138fb4c56a2393f5",
+    "checkedAt": "2026-09-21T14:46:47.841Z"
+  },
+  "errors": {}
+}

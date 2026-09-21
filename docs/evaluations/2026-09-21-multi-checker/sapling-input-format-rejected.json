@@ -1,0 +1,15 @@
+{
+  "provider": "sapling-web",
+  "source": null,
+  "result": null,
+  "errors": {
+    "source": {
+      "code": "input_changed",
+      "message": "The website changed or truncated the input. Text was not submitted."
+    },
+    "result": {
+      "code": "input_changed",
+      "message": "The website changed or truncated the input. Text was not submitted."
+    }
+  }
+}

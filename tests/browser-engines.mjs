@@ -50,7 +50,7 @@ try{
  await page.screenshot({path:'docs/screenshots/checker-settings.png',fullPage:true});
  await page.locator('#close-settings').click();
  await page.locator('#humanize-button').click();
- await page.getByText('Check complete. Scores refer to the text versions shown below.',{exact:true}).waitFor({state:'attached'});
+ await page.getByText('1/1 checks completed. Scores refer to the text versions shown below.',{exact:true}).waitFor({state:'attached'});
  if(!await page.locator('#checker-results').locator('..').evaluate(element=>element.open)) await page.locator('#checker-results').locator('..').locator('summary').click();
  assert.equal(await page.getByText('AI-only class probability: 60.0%',{exact:true}).count(),2);
  assert.equal(checkerCalls,1); // Identical source/output shares the same cached scan.
@@ -58,7 +58,7 @@ try{
  await page.locator('#original').fill('A different source for cancellation.');
  assert.equal(await page.locator('.checker-card').count(),0);
  slow=true;await page.locator('#humanize-button').click();
- await page.getByText('Checking with the external service…',{exact:true}).waitFor();
+ await page.getByText('Checking GPTZero API (1/1)…',{exact:true}).waitFor();
  await page.getByRole('button',{name:'Cancel check',exact:true}).click();
  await page.getByText('Checker request cancelled. No score is available.',{exact:true}).waitFor();
  assert.equal(await page.locator('#output').inputValue(),'A different source for cancellation.');

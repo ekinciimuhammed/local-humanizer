@@ -1,0 +1,20 @@
+{
+  "id": "compost",
+  "provider": "zerogpt-web",
+  "source": {
+    "percentage": 58.3,
+    "textHash": "769e344d299369aa5102ebf79fa0f13341376483fc0d112fed90e31abb3f2708",
+    "checkedAt": "2026-09-21T14:46:51.669Z"
+  },
+  "existing": {
+    "percentage": 65,
+    "textHash": "2bf21df5461c805bb5bae6213d25798fc6a974c73cb3b904e3e4d7b3980fe0e4",
+    "checkedAt": "2026-09-21T14:46:57.529Z"
+  },
+  "general": {
+    "percentage": 57.5,
+    "textHash": "af5cf4ccfbdd76d02115e3de6914c66a7fa80e603e45acabe7e3fecdf4952ae3",
+    "checkedAt": "2026-09-21T14:47:01.155Z"
+  },
+  "errors": {}
+}

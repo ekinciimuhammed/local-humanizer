@@ -2,6 +2,10 @@
 
 Yerelde sunulan, kendi OpenAI-compatible LLM sunucunuzla çalışan bir metin düzenleme uygulaması. İki metin alanı, otomatik model keşfi ve üç yeniden yazım seviyesi. Amaç anlamı koruyarak daha doğal yazmak; detector skoru yazım kalitesi veya anlam doğruluğu kanıtı değildir.
 
+**1.6.0 — çoklu checker:** ZeroGPT ve Sapling'in herkese açık sayfaları yerel tarayıcı yardımcısıyla taranabilir. GPTZero / ZeroGPT API seçenekleri de aynı ekranda seçilebilir. Her servis için **önce → sonra**, yüzde puan farkı, zaman ve metin hash'i ayrı gösterilir; başarısız servis diğer sonuçları silmez. [Gerçek karşılaştırma ve erişim sınırları](docs/evaluations/2026-09-21-multi-checker/REPORT.md).
+
+**Genelleme sonucu:** Önceki ZeroGPT %0 çıktısına Sapling **%99,9** verdi. Dört yeni metinle yapılan karşılaştırma da genel başarı göstermedi; [tüm çıktılar, iki servis ölçümleri ve anlam incelemesi](docs/evaluations/2026-09-21-generalization/REPORT.md) korunuyor. Yeni genel prompt, yeterli kanıt olmadığı için üretime alınmadı.
+
 **Son doğrulama:** Canlı uygulamanın verdiğiniz örnekten ürettiği ham çıktı, üç ayrı ZeroGPT taramasında **%0** aldı; aynı karşılaştırmada kaynak **%100** aldı. [Metin, ayarlar, ekran görüntüsü ve sınırlar](docs/evaluations/2026-09-21-roundtrip/REPORT.md). Önemli anlam kontrolü geçti; küçük ifade sorunları var. Bu tek örnek, her yeni üretimde veya başka checker’da sıfır garantisi değildir.
 
 **1.5.0:** Yeni **Rewrite → Check → Refine** çalışma alanı, Connected LLM için **Plainspoken · experimental** tonu ve API anahtarı gerektirmeyen isteğe bağlı **ZeroGPT public website (experimental)** checker. Web checker ayrı bir yerel tarayıcı yardımcısı kullanır; varsayılan kapalıdır ve açıldığında metni dış siteye gönderir. Bu seçenekler daha düşük skor veya anlam korunması garantisi vermez. [Yeni ölçümler](docs/evaluations/2026-09-21-expansion/REPORT.md): gerçek uygulamada örnek metin %100 → %22,4; iki yeni doğrulama metninden biri iyileşirken diğeri kötüleşti. Test ayarları ve başarısız sonuçlar raporda birlikte tutulur.
@@ -154,6 +158,7 @@ Kaynaklar: [HIP kodu (MIT)](https://github.com/YixuanEvenXu/humanization-by-iter
 | **GPTZero API** | GPTZero API hesabı/anahtarı | AI-only, mixed ve human-only sınıf olasılıkları ayrı ayrı |
 | **ZeroGPT.com API** | ZeroGPT Business hesabı ve gerekli JWT/API bilgileri | API'nin `fakePercentage` değeri |
 | **ZeroGPT public website (experimental)** | Yerel browser-checker yardımcısı ve erişilebilir herkese açık ZeroGPT sayfası; API anahtarı gerekmez | Sayfada yeni tarama için gerçekten gösterilen yüzde (`visiblePercentage`) |
+| **Sapling public website (experimental)** | Aynı yerel yardımcı ve erişilebilir Sapling sayfası; API anahtarı gerekmez | Görünür `Fake` yüzdesi (`visiblePercentage`) |
 
 API seçeneklerinde LLM anahtarınız checker anahtarı olarak kullanılmaz. Anahtarları Settings'e girin; sohbete veya Git'e yazmayın. [GPTZero API kurulumu](https://support.gptzero.me/articles/5840144813-how-can-i-get-the-api-and-request-code-samples), [ZeroGPT Business API](https://api.zerogpt.com/docs/).
 
@@ -161,12 +166,12 @@ API seçeneklerinde LLM anahtarınız checker anahtarı olarak kullanılmaz. Ana
 - **Check automatically after a successful rewrite:** ayrıca açıldığında, başarılı rewrite bittikten sonra ayrı bir tarama başlatır. Yazmayı veya Copy'yi bekletmez. Kapalıyken manuel kontrol, **02 Check → External checker** panelindeki düğmeyle başlatılır. Cancel check yalnızca taramayı durdurur.
 - Her sağlayıcının ölçümü kendi adıyla gösterilir; ortak/ortalama bir AI skoru üretilmez. Web sayfasının yüzdesi ile API'nin sınıf olasılığı aynı ölçüm değildir.
 - Sonuç kartında sağlayıcı, taranan metnin hash'i, tarama zamanı ve bildirilmişse detector sürümü bulunur. Web sayfası için detector sürümü **not reported** gösterilir. Metin veya görüntülenen çıktı sürümü değişince eski sonuç kaldırılır. Başka sekmede servis/izin değişirse ya da sunucu yeniden başlarsa eski sekme gönderim yapamaz; yenileyerek yeni ayarı yükleyin.
-- Bir işlemde en fazla kaynak ve sonuç için birer tarama; otomatik retry/yeniden yazım yok. Aynı metin ve değişmemiş checker ayarları için 10 dakikalık bellekte sonuç önbelleği vardır. En fazla 50 kayıt; metin diske yazılmaz. Detector sürümü servis tarafından değişebilir; önbellekli sonucun zamanı görünür.
+- Her seçili servis için en fazla kaynak ve sonuç için birer tarama; otomatik retry/yeniden yazım yok. Aynı metin ve değişmemiş checker ayarları için 10 dakikalık bellekte sonuç önbelleği vardır. En fazla 50 kayıt; metin diske yazılmaz. Detector sürümü servis tarafından değişebilir; önbellekli sonucun zamanı görünür.
 - API seçenekleri metin başına 50.000 karakter ve işlem başına 30 saniye ile sınırlıdır; servis hesabının daha düşük limitleri ayrıca geçerlidir. Web seçeneğinde metin başına 15.000 karakter, her sayfa taramasında 60 saniye ve kaynak/sonuç karşılaştırmasında toplam 125 saniye sınırı vardır. Limit/kota/izin/ağ hatası skor değildir; **0%** olarak sunulmaz. Gerçek sonuç 0% ise gösterilir. Metin kırpılmaz.
 
 Checker credential'ları ana LLM ayarlarından ayrı `data/detectors/` altında AES-256-GCM ile şifrelenir; dosyalar `0600`, dizin `0700` olur. Backup için bu klasördeki ayar ve key dosyalarını birlikte koruyun. API credential'ı olmadan başarılı canlı detector API doğrulaması yapılmış sayılmaz. ZeroGPT Business şeması JWT bildirir; hesap örneğiniz gerektiriyorsa ayrıca ApiKey girilebilir. Hesaba özgü auth uyumluluğu gerçek bir taramayla sınanmalıdır.
 
-### API anahtarı olmadan: deneysel ZeroGPT web checker
+### API anahtarı olmadan: deneysel web checker’lar
 
 Proje klasöründe isteğe bağlı yardımcıyı başlatın:
 
@@ -180,13 +185,21 @@ docker compose --profile browser-checker ps browser-checker
 docker compose --profile browser-checker stop browser-checker
 ```
 
-Ardından **Settings → External checker → ZeroGPT public website (experimental)** seçin, **Enable external checking** kutusunu açıp kaydedin. Çıktıyı **02 Check** bölümündeki düğmeyle tarayın. Her başarılı rewrite sonrasında çalışmasını istiyorsanız **Check automatically after a successful rewrite** seçeneğini ayrıca açıp kaydedin. Kaynak metin yalnızca **Also send and check the original text** açıksa gönderilir. Bu ayarlar kapalıyken sessiz bir arka plan taraması yapılmaz.
+Ardından **Settings → External checker** altında **ZeroGPT public website (experimental)** veya **Sapling public website (experimental)** seçin, **Enable external checking** kutusunu açıp kaydedin. Çıktıyı **02 Check** bölümündeki düğmeyle tarayın. Her başarılı rewrite sonrasında çalışmasını istiyorsanız **Check automatically after a successful rewrite** seçeneğini ayrıca açıp kaydedin. Kaynak metin yalnızca **Also send and check the original text** açıksa gönderilir. Bu ayarlar kapalıyken sessiz bir arka plan taraması yapılmaz.
 
 Compose içindeki ana uygulama yardımcıya `http://browser-checker:18083` servis adresiyle ulaşır; Linux'ta host loopback erişimine dayanmaz. Node uygulaması doğrudan host'ta çalışıyorsa aynı Docker yardımcısına varsayılan `http://127.0.0.1:18083` adresinden ulaşır. Yardımcının host portu yalnızca loopback üzerinde yayınlanır. Özel bir yerel kurulum için `HUMANIZER_BROWSER_CHECKER_URL` kullanılabilir; keyfi uzak URL kabul edilmez. Ana uygulama ve yardımcıyı güncellerken `docker compose --profile browser-checker up -d --build` çalıştırın.
 
-Yardımcı her taramada yeni, giriş yapılmamış bir tarayıcı açar; metni herkese açık `https://www.zerogpt.com/` sayfasına yazar ve **Detect Text** düğmesine bir kez basar. Kaydedilmiş hesap profili veya LLM/API anahtarı kullanmaz; özel API endpoint'lerine doğrudan çağrı yapmaz ve CAPTCHA aşmayı denemez. Sayfa metni değiştirir/kırparsa ya da gönderimden önce zaten bir sonuç gösteriyorsa tarama reddedilir. Yeni görünür yüzde alınamazsa, challenge/kota çıkarsa veya süre dolarsa skor gösterilmez; otomatik retry ve skora göre yeniden yazım döngüsü yoktur. Kamuya açık sayfanın erişimi ve çalışma biçimi değişebilir; bu seçenek garantili bir API hizmeti değildir.
+Yardımcı her taramada yeni, giriş yapılmamış bir tarayıcı açar; metni seçili servisin herkese açık sayfasına yazar ve tarama düğmesine bir kez basar. Kaydedilmiş hesap profili veya LLM/API anahtarı kullanmaz; özel API endpoint'lerine doğrudan çağrı yapmaz ve CAPTCHA aşmayı denemez. Sayfa metni değiştirir/kırparsa tarama reddedilir. ZeroGPT sayfasındaki önceden mevcut sonuç reddedilir; Sapling’in yerleşik örnek sonucu tamamlandıktan sonra yeni bir tarama döngüsü ve eski skorun temizlendiği doğrulanır. Yeni görünür yüzde alınamazsa, challenge/kota çıkarsa veya süre dolarsa skor gösterilmez; otomatik retry ve skora göre yeniden yazım döngüsü yoktur. Kamuya açık sayfanın erişimi ve çalışma biçimi değişebilir; bu seçenek garantili bir API hizmeti değildir.
 
 Yardımcı bir seferde tek tarama yapar. Compose yapılandırması tarayıcı profilini ve önbelleğini geçici bellek dosya sisteminde tutar; kullanıcı metni, ekran görüntüsü veya tarama geçmişi diske kaydedilmez. Bu yerel saklama davranışı dış sitenin kendi veri politikasını değiştirmez. İlk yardımcı build'i Playwright/Chromium imajını ve sabitlenmiş paketi indirir; gerçek tarama için internet gerekir.
+
+### Birden fazla servisi karşılaştırma
+
+Settings → External checker bölümünde ana servisi seçin; **Also compare with** listesinden ek servisleri işaretleyin. **Also send and check the original text** seçeneği önce/sonra karşılaştırmasını açar. Ayarları kaydettikten sonra **Check with … services** düğmesini kullanın. İstenirse başarılı rewrite sonrasında otomatik tarama da ayrıca açılabilir. Mevcut kullanıcıların servis seçimi ve paylaşım izinleri güncellemede değiştirilmez.
+
+Tarayıcı seçeneğinde API anahtarı gerekmez. Her seçili servis sırayla taranır; başarısızlık kendi satırında görünür. Metin veya ham/düzeltilmiş sürüm değiştiğinde eski sonuçlar kaldırılır. Aynı servisin aynı metin skoru bellekte en fazla 10 dakika tekrar kullanılabilir; tarama zamanı ayrıntılarda korunur. Farklı servislerin skorları birleştirilmez. GPTZero satırındaki ana yüzde AI-only sınıf olasılığıdır; mixed/human değerleri ayrıntılarda kalır.
+
+Sapling sayfasındaki hazır örnek sonucu yeni metne atanmaz: önce örnek taramasının tamamlanması, ardından yeni metnin gerçek **Checking… → Check Again** döngüsü beklenir. Metin taramadan önce ve sonra doğrulanır. QuillBot/Scribbr bu ortamda güvenlik kontrolünde kaldığı, GPTZero ücretsiz sayfası görünür sonuç üretmediği için çalışır web adaptörü olarak sunulmaz.
 
 ## OpenAI-compatible protokol
 

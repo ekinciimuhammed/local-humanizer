@@ -6,8 +6,10 @@ import { AppError } from './provider.mjs';
 
 const secrets = ['gptzeroApiKey', 'zerogptBearerToken', 'zerogptApiKey'];
 const flags = ['enabled', 'autoCheck', 'compareSource'];
-const providers = ['gptzero', 'zerogpt', 'zerogpt-web'];
-const defaults = { enabled: false, autoCheck: false, compareSource: false, provider: 'gptzero', gptzeroApiKey: '', zerogptBearerToken: '', zerogptApiKey: '' };
+const providers = ['gptzero', 'zerogpt', 'zerogpt-web', 'sapling-web'];
+const isWebsite = provider => provider.endsWith('-web');
+const selected = config => [...new Set([config.provider, ...config.additionalProviders])];
+const defaults = { enabled: false, autoCheck: false, compareSource: false, provider: 'gptzero', additionalProviders: [], gptzeroApiKey: '', zerogptBearerToken: '', zerogptApiKey: '' };
 export const DETECTOR_LIMITS = Object.freeze({ maxChars: 50_000, webMaxChars: 15_000, timeoutMs: 30_000, webTimeoutMs: 125_000, maxResponseBytes: 1_000_000 });
 const invalid = message => new AppError(message, 400, 'detector_input');
 const hash = text => createHash('sha256').update(text).digest('hex');
@@ -16,6 +18,7 @@ function validatePatch(patch) {
   if (!patch || typeof patch !== 'object' || Array.isArray(patch) || Object.keys(patch).some(key => !Object.hasOwn(defaults, key))) throw invalid('Invalid checker settings.');
   for (const key of flags) if (key in patch && typeof patch[key] !== 'boolean') throw invalid(`${key} must be enabled or disabled.`);
   if ('provider' in patch && !providers.includes(patch.provider)) throw invalid('Choose a supported checker service.');
+  if ('additionalProviders' in patch && (!Array.isArray(patch.additionalProviders) || patch.additionalProviders.length > providers.length - 1 || new Set(patch.additionalProviders).size !== patch.additionalProviders.length || patch.additionalProviders.some(p => !providers.includes(p)))) throw invalid('Choose each supported additional checker at most once.');
   for (const key of secrets) if (key in patch && (typeof patch[key] !== 'string' || patch[key].length > 8192 || /[^\x20-\x7e]/.test(patch[key]))) throw invalid('Checker credentials must be a single line of ASCII text, up to 8192 characters.');
   return structuredClone(patch);
 }
@@ -41,8 +44,8 @@ export class DetectorStore {
   }
   get() { return structuredClone(this.#state); }
   public() {
-    const { enabled, autoCheck, compareSource, provider, gptzeroApiKey, zerogptBearerToken, zerogptApiKey } = this.#state;
-    return { enabled, autoCheck, compareSource, provider, revision: this.#revision, hasGptzeroApiKey: Boolean(gptzeroApiKey), hasZerogptBearerToken: Boolean(zerogptBearerToken), hasZerogptApiKey: Boolean(zerogptApiKey) };
+    const { enabled, autoCheck, compareSource, provider, additionalProviders, gptzeroApiKey, zerogptBearerToken, zerogptApiKey } = this.#state;
+    return { enabled, autoCheck, compareSource, provider, additionalProviders: [...additionalProviders], revision: this.#revision, hasGptzeroApiKey: Boolean(gptzeroApiKey), hasZerogptBearerToken: Boolean(zerogptBearerToken), hasZerogptApiKey: Boolean(zerogptApiKey) };
   }
   update(patch) {
     const operation = this.#queue.then(async () => {
@@ -61,7 +64,7 @@ export class DetectorStore {
 }
 
 function normalize(provider, body, text) {
-  if (provider === 'zerogpt-web') {
+  if (isWebsite(provider)) {
     if (!body || typeof body !== 'object' || Object.keys(body).length !== 3 || Object.keys(body).some(key => !['percentage', 'textHash', 'checkedAt'].includes(key)) || typeof body.percentage !== 'number' || !Number.isFinite(body.percentage) || body.percentage < 0 || body.percentage > 100 || body.textHash !== hash(text) || typeof body.checkedAt !== 'string' || !Number.isFinite(Date.parse(body.checkedAt)) || Math.abs(Date.now() - Date.parse(body.checkedAt)) > 5 * 60_000) throw new AppError('The browser helper returned an invalid score or text version. No score is available.', 502, 'detector_schema');
     return { metrics: { visiblePercentage: body.percentage }, classification: null, detectorVersion: null, checkedAt: body.checkedAt };
   }
@@ -85,20 +88,21 @@ export class DetectorService {
   async check(input, { signal } = {}) {
     const config = this.store.get();
     if (!config.enabled) throw invalid('External checking is disabled. Enable it in Settings first.');
-    if (config.provider !== 'zerogpt-web' && (config.provider === 'gptzero' ? !config.gptzeroApiKey.trim() : !(config.zerogptBearerToken.trim() || config.zerogptApiKey.trim()))) throw invalid('Add credentials for this checker in Settings first. An API key or bearer token is required.');
     if (!input || typeof input !== 'object' || Array.isArray(input) || Object.keys(input).some(key => !['source', 'result', 'provider', 'settingsRevision', 'automatic'].includes(key))) throw invalid('Invalid checker request.');
     if (!providers.includes(input.provider) || typeof input.settingsRevision !== 'string' || !/^[a-f0-9]{24}$/.test(input.settingsRevision) || typeof input.automatic !== 'boolean') throw invalid('Checker requests require the displayed provider, settings revision and automatic-check choice. Reload checker settings.');
     const signature = this.store.public().revision;
-    if (input.provider !== config.provider || input.settingsRevision !== signature) throw new AppError('Checker settings changed in another tab or since restarting. Reload checker settings before sending text.', 409, 'detector_stale');
+    if (!selected(config).includes(input.provider) || input.settingsRevision !== signature) throw new AppError('Checker settings changed in another tab or since restarting. Reload checker settings before sending text.', 409, 'detector_stale');
+    config.provider = input.provider;
+    if (!isWebsite(config.provider) && (config.provider === 'gptzero' ? !config.gptzeroApiKey.trim() : !(config.zerogptBearerToken.trim() || config.zerogptApiKey.trim()))) throw invalid('Add credentials for this checker in Settings first. An API key or bearer token is required.');
     if (input.automatic && !config.autoCheck) throw invalid('Automatic external checking is disabled. Enable it in checker settings first.');
     const entries = config.compareSource ? [['source', input.source], ['result', input.result]] : [['result', input.result]];
-    const maxChars = config.provider === 'zerogpt-web' ? DETECTOR_LIMITS.webMaxChars : DETECTOR_LIMITS.maxChars;
+    const maxChars = isWebsite(config.provider) ? DETECTOR_LIMITS.webMaxChars : DETECTOR_LIMITS.maxChars;
     for (const [name, text] of entries) if (typeof text !== 'string' || !text.trim() || text.length > maxChars) throw invalid(`Checker ${name} must contain 1–${maxChars.toLocaleString('en-US')} characters. Text is never truncated.`);
     if (this.#active) throw new AppError('A checker request is already running. Wait or cancel it first.', 409, 'detector_busy');
     const controller = new AbortController();
     const cancelled = () => controller.abort(new AppError('Checker request cancelled.', 499, 'detector_cancelled'));
     if (signal?.aborted) cancelled(); else signal?.addEventListener('abort', cancelled, { once: true });
-    const timeoutMs = config.provider === 'zerogpt-web' ? DETECTOR_LIMITS.webTimeoutMs : DETECTOR_LIMITS.timeoutMs;
+    const timeoutMs = isWebsite(config.provider) ? DETECTOR_LIMITS.webTimeoutMs : DETECTOR_LIMITS.timeoutMs;
     const timer = setTimeout(() => controller.abort(new AppError('Checker request timed out. No score is available.', 504, 'detector_timeout')), Math.min(this.timeoutMs ?? timeoutMs, timeoutMs));
     let rejectAbort;
     const aborted = new Promise((_, reject) => { rejectAbort = () => reject(controller.signal.reason); controller.signal.addEventListener('abort', rejectAbort, { once: true }); });
@@ -112,7 +116,7 @@ export class DetectorService {
       const work = async () => {
         const results = { provider: config.provider };
         for (const [name, text] of entries) {
-          current(); const textHash = hash(text), cacheKey = `${signature}:${textHash}`;
+          current(); const textHash = hash(text), cacheKey = `${signature}:${config.provider}:${textHash}`;
           const cached = this.#cache.get(cacheKey);
           if (cached && Date.now() - cached.time < 10 * 60_000) { results[name] = structuredClone(cached.scan); continue; }
           const measured = await this.#scan(config, text, controller.signal);
@@ -127,14 +131,14 @@ export class DetectorService {
     } catch (error) {
       if (controller.signal.aborted) throw controller.signal.reason;
       if (error instanceof AppError) throw error;
-      if (config.provider === 'zerogpt-web') throw new AppError('Cannot reach the optional website checker. Start the browser-checker Docker profile on port 18083. No score is available.', 503, 'detector_network');
+      if (isWebsite(config.provider)) throw new AppError('Cannot reach the optional website checker. Start the browser-checker Docker profile on port 18083. No score is available.', 503, 'detector_network');
       throw new AppError('The external checker could not be reached or returned an invalid response. No score is available.', 502, 'detector_network');
     } finally {
       clearTimeout(timer); signal?.removeEventListener('abort', cancelled); controller.signal.removeEventListener('abort', rejectAbort); this.#active = false;
     }
   }
   async #scan(config, text, signal) {
-    const isGpt = config.provider === 'gptzero', isWeb = config.provider === 'zerogpt-web';
+    const isGpt = config.provider === 'gptzero', isWeb = isWebsite(config.provider);
     const headers = { 'Content-Type': 'application/json', Accept: 'application/json' };
     let url;
     if (isWeb) {
@@ -147,7 +151,7 @@ export class DetectorService {
       if (config.zerogptApiKey) headers.ApiKey = config.zerogptApiKey;
     }
     const response = await this.fetchImpl(url || (isGpt ? 'https://api.gptzero.me/v2/predict/text' : 'https://api.zerogpt.com/api/detect/detectText'), {
-      method: 'POST', headers, body: JSON.stringify(isWeb ? { text } : isGpt ? { document: text } : { input_text: text }), signal, redirect: 'error',
+      method: 'POST', headers, body: JSON.stringify(isWeb ? { text, ...(config.provider === 'zerogpt-web' ? {} : {provider: config.provider}) } : isGpt ? { document: text } : { input_text: text }), signal, redirect: 'error',
     });
     if (!response.ok) {
       await response.body?.cancel().catch(() => {});

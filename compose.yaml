@@ -1,7 +1,7 @@
 services:
   humanizer:
     build: .
-    image: local-humanizer:1.5.0
+    image: local-humanizer:1.6.0
     environment:
       HUMANIZER_BROWSER_CHECKER_URL: http://browser-checker:18083
     ports:

@@ -1,0 +1,20 @@
+{
+  "id": "software-cache",
+  "provider": "sapling-web",
+  "source": {
+    "percentage": 100,
+    "textHash": "755f295cfd33912b8d30b73990dde177b698e5e879eff6ae10a0c498487fb5e1",
+    "checkedAt": "2026-09-21T14:50:28.041Z"
+  },
+  "existing": {
+    "percentage": 99.9,
+    "textHash": "f61459d50ee5d1aa2a86489fbcd26985550f873188cbc535d3b05a98908f0373",
+    "checkedAt": "2026-09-21T14:50:38.626Z"
+  },
+  "general": {
+    "percentage": 100,
+    "textHash": "b55c3b0f7341c30a555b1777a8f2f42fc6dcf9c2111642f4ed52885bf3394ab4",
+    "checkedAt": "2026-09-21T14:50:48.695Z"
+  },
+  "errors": {}
+}

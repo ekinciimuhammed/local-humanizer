@@ -149,3 +149,9 @@ test('web provider UI can check without credentials and clearly labels the publi
     assert.match(textContent(resultRoot), /visible.*0\.0%/i); assert.match(textContent(settingsRoot), /experimental/i);
   } finally { if (previous === undefined) delete globalThis.document; else globalThis.document = previous; }
 });
+
+test('Sapling parser accepts only the displayed Fake result and rejects marketing or ambiguous numbers', () => {
+  assert.equal(parseVisibleResult('Fake: 83.1%\nShare Certificate', 'sapling-web'),83.1);
+  assert.equal(parseVisibleResult('Fake: 0%', 'sapling-web'),0);
+  for(const body of ['99% accuracy','Fake: %','Fake: 101%','Fake: 12%\nFake: 13%','Performing security verification\nFake: 0%']) assert.throws(()=>parseVisibleResult(body,'sapling-web'));
+});
